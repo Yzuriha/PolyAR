@@ -1,9 +1,18 @@
+@font-face {
+  font-family: Roboto;
+  src: url(/assets/Roboto-Regular.ttf);
+}
+
 body {
   color: white;
+  opacity: 0.75;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  margin: 10px;
   // These Styles only serve as a temporary placeholder for developement
   background-image: url("/assets/images/backgroundPlaceholder.jpg");
   background-size: cover;
-  height: 100vh;
+  height: calc(100vh - 20px);
 }
 
 a {
@@ -22,6 +31,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   .navigation__button {
     width: 150px;
     height: 50px;
@@ -32,4 +42,44 @@ a {
     align-items: center;
     margin: 30px;
   }
+}
+
+
+@navigation-height: 30px;
+@information-height: 50px;
+@instruction-height: 75px;
+.lernen, .quiz {
+  height: 100%;
+
+  .information, .interaction, .instruction {
+    .center();
+  }
+
+  .navigation {
+    height: 30px;
+
+    .navigation_back {
+      background-size: cover;
+      height: 100%;
+    }
+  }
+
+  .information {
+    height: 50px;
+  }
+
+  .interaction {
+    height: calc(100% - @navigation-height - @information-height - @instruction-height);
+  }
+
+  .instruction {
+    height: 75px;
+  }
+}
+
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
