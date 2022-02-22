@@ -8,10 +8,31 @@
 </head>
 <body>
 <main class="quiz">
-    <section class="navigation"></section>
-    <section class="information"></section>
-    <section class="interaction"></section>
-    <section class="instruction"></section>
+    <section class="navigation">
+        <a href="index.html">
+            <img class="navigation_back" src="assets/images/backarrow.svg" alt="back-button">
+        </a>
+    </section>
+    <section class="information">
+        <div>Das Bild wurde schonmal gefunden</div>
+    </section>
+    <section class="interaction">
+        <div class="interaction__scan-marker">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="scan-marker-border" d="M25,2 L2,2 L2,25"/>
+                <path class="scan-marker-border" d="M2,75 L2,98 L25,98"/>
+                <path class="scan-marker-border" d="M75,98 L98,98 L98,75"/>
+                <path class="scan-marker-border" d="M98,25 L98,2 L75,2"/>
+            </svg>
+        </div>
+        <div class="interaction__confirm"></div>
+        <img src="assets/images/placeholderCube.svg" alt="placeholder-cube">
+    </section>
+    <section class="instruction">
+        <div>W Ü R F E L</div>
+        <div>1 / 6</div>
+        <div class="instruction__progress"></div>
+    </section>
 </main>
 </body>
 </html>

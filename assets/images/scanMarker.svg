@@ -1,0 +1,6 @@
+<svg width="209" height="209" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="scan-marker-border" d="M25,2 L2,2 L2,25" fill="none" stroke="white" stroke-width="1"/>
+    <path class="scan-marker-border" d="M2,75 L2,98 L25,98" fill="none" stroke="white" stroke-width="1"/>
+    <path class="scan-marker-border" d="M75,98 L98,98 L98,75" fill="none" stroke="white" stroke-width="1"/>
+    <path class="scan-marker-border" d="M98,25 L98,2 L75,2" fill="none" stroke="white" stroke-width="1"/>
+</svg>
