@@ -74,7 +74,10 @@ AFRAME.registerComponent("gesture-handler", {
     moveSomething: function (event) {
         if (this.isVisible) {
             console.log("MOVE")
-            this.el.object3D.position.x =  this.el.object3D.position.x + 1;
+            // this.el.object3D.position.x =  this.el.object3D.position.x + 1;
+            this.el.object3D.scale.x = 2 * this.initialScale.x;
+            this.el.object3D.scale.y = 2 * this.initialScale.y;
+            this.el.object3D.scale.z = 2 * this.initialScale.z;
         }
     }
 });
