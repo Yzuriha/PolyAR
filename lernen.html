@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
-<!--        <script src="js/aframe-ar.js"></script>-->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        <script src="js/aframe-ar.js"></script>
+<!--    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>-->
 
+    <script src="js/components/raycaster-listener.js"></script>
     <script src="js/components/gesture-detector.js"></script>
     <script src="js/components/gesture-handler.js"></script>
+    <script src="js/events.js"></script>
 
 
     <title>PolyAR - Lernen</title>
@@ -25,46 +27,7 @@
     <section class="information">
         <div>Halte deine Kamera über ein Bild :)</div>
     </section>
-    <section class="interaction">
-
-
-<!--
-        <a-scene  >
-            <a-assets>
-                <a-mixin id="cube" geometry="primitive: box"></a-mixin>
-                <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
-                <a-mixin id="blue" material="color: #36A3EB"></a-mixin>
-            </a-assets>
-
-            <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable"></a-entity>
-
-            <a-entity position="0 .6 4">
-                <a-camera>
-                    <a-entity raycaster="far: 30; objects: .intersectable"
-                              cursor
-                              geometry="primitive: ring; radiusOuter: 0.015;
-                              radiusInner: 0.01; segmentsTheta: 32"
-                              material="color: #283644; shader: flat"
-                              position="0 0 -0.75"></a-entity>
-                </a-camera>
-            </a-entity>
-
-            <a-entity position="0 0 0" rotation="0 0 0">
-                <a-entity mixin="blue cube"
-                          class="intersectable"
-                          animation="startEvents: click; loop: 1; dir: alternate; property: position; from: 0 0 0; to: 0 0 -10; dur: 2000">
-                </a-entity>
-            </a-entity>
-            <a-entity position="1 0 0" rotation="0 0 0">
-                <a-entity mixin="green cube"
-                          class="intersectable"
-                          animation="startEvents: click; loop: 1; dir: alternate; property: position; from: 0 0 0; to: 0 0 -10; dur: 2000">
-                </a-entity>
-            </a-entity>
-
-
-        </a-scene>
-        -->
+    <section class="interaction" style="border: 1px solid red">
 
         <a-scene
                 arjs
@@ -79,30 +42,66 @@
                         src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb">
                 </a-asset-item>
                     <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+                    <a-mixin id="plane" geometry="primitive: plane"></a-mixin>
                     <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
                     <a-mixin id="blue" material="color: #36A3EB"></a-mixin>
             </a-assets>
 
+
+            <a-entity id="mouseCursor"
+                      position="0 0 -1"
+                      geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                      material="color: red; shader: flat"
+                      raycaster="objects: .clickable; showLine: true; lineColor: red; origin: 0 0 0; "></a-entity>
             <a-marker
                     preset="hiro"
-                    raycaster="objects: .clickable"
                     emitevents="true"
-                    cursor="fuse: false; rayOrigin: mouse;"
                     id="markerA">
-<!--                <a-entity-->
-<!--                        id="bowser-model"-->
-<!--                        gltf-model="#bowser"-->
-<!--                        position="0 0 0"-->
-<!--                        scale="0.05 0.05 0.05"-->
-<!--                        class="clickable"-->
-<!--                        gesture-handler>-->
-<!--                </a-entity>-->
-                <a-entity position="0 0 0" rotation="0 0 0">
-                    <a-entity mixin="blue cube"
-                              class="clickable"
-                              gesture-handler>
+                <a-entity gesture-handler>
+                    <a-entity position="-1 0 0" rotation="-90 -90 0">
+                        <a-entity mixin="green plane"
+                                  class="clickable"
+                                  id="third"
+                                  raycaster-listener>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity position="0 0 0" rotation="-90 -90 0">
+                        <a-entity mixin="blue plane"
+                                  class="clickable"
+                                  id="first"
+                                  raycaster-listener>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity position="1 0 0" rotation="-90 -90 0">
+                        <a-entity mixin="green plane"
+                                  class="clickable"
+                                  id="second"
+                                  raycaster-listener>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity position="0 0 -1" rotation="-90 -90 0">
+                        <a-entity mixin="green plane"
+                                  class="clickable"
+                                  id="fourth"
+                                  raycaster-listener>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity position="0 0 1" rotation="-90 -90 0">
+                        <a-entity mixin="green plane"
+                                  class="clickable"
+                                  id="fifth"
+                                  raycaster-listener>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity position="0 0 2" rotation="-90 -90 0">
+                        <a-entity mixin="blue plane"
+                                  class="clickable"
+                                  id="sixth"
+                                  raycaster-listener>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
+
             </a-marker>
             <a-entity camera></a-entity>
         </a-scene>

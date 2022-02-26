@@ -3,10 +3,10 @@
 
 AFRAME.registerComponent("gesture-detector", {
     schema: {
-        element: { default: "" }
+        element: {default: ""}
     },
 
-    init: function() {
+    init: function () {
         this.targetElement =
             this.data.element && document.querySelector(this.data.element);
 
@@ -25,9 +25,13 @@ AFRAME.registerComponent("gesture-detector", {
         this.targetElement.addEventListener("touchend", this.emitGestureEvent);
 
         this.targetElement.addEventListener("touchmove", this.emitGestureEvent);
+
+        this.mouseCursor = document.getElementById("mouseCursor");
+        this.boxFirst = document.getElementById("first").object3D;
+
     },
 
-    remove: function() {
+    remove: function () {
         this.targetElement.removeEventListener("touchstart", this.emitGestureEvent);
 
         this.targetElement.removeEventListener("touchend", this.emitGestureEvent);
@@ -56,9 +60,11 @@ AFRAME.registerComponent("gesture-detector", {
             this.el.emit(eventName, previousState);
 
             this.internalState.previousState = null;
+
         }
 
         if (gestureStarted) {
+
             currentState.startTime = performance.now();
 
             currentState.startPosition = currentState.position;
@@ -71,6 +77,15 @@ AFRAME.registerComponent("gesture-detector", {
             this.el.emit(eventName, currentState);
 
             this.internalState.previousState = currentState;
+
+            this.mouseCursor.setAttribute('raycaster', {
+                direction: {
+                    x: currentState.startPosition.x - 0.5774099318403116,
+                    y: -1 * (currentState.startPosition.y - 0.42940603700097374)
+                }
+            })
+
+
         }
 
         if (gestureContinues) {
@@ -96,12 +111,11 @@ AFRAME.registerComponent("gesture-detector", {
 
             const eventName =
                 this.getEventPrefix(currentState.touchCount) + "fingermove";
-
             this.el.emit(eventName, eventDetail);
         }
     },
 
-    getTouchState: function(event) {
+    getTouchState: function (event) {
         if (event.touches.length === 0) {
             return null;
         }
@@ -128,7 +142,7 @@ AFRAME.registerComponent("gesture-detector", {
             touchList.reduce((sum, touch) => sum + touch.clientY, 0) /
             touchList.length;
 
-        touchState.positionRaw = { x: centerPositionRawX, y: centerPositionRawY };
+        touchState.positionRaw = {x: centerPositionRawX, y: centerPositionRawY};
 
         // Scale touch position and spread by average of window dimensions
 

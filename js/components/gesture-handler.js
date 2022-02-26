@@ -3,15 +3,16 @@
 
 AFRAME.registerComponent("gesture-handler", {
     schema: {
-        enabled: { default: true },
-        rotationFactor: { default: 5 },
-        minScale: { default: 0.3 },
-        maxScale: { default: 8 },
+        enabled: {default: true},
+        rotationFactor: {default: 5},
+        minScale: {default: 0.3},
+        maxScale: {default: 8},
     },
 
     init: function () {
         this.handleScale = this.handleScale.bind(this);
         this.handleRotation = this.handleRotation.bind(this);
+        this.moveSomething = this.moveSomething.bind(this);
 
         this.isVisible = false;
         this.initialScale = this.el.object3D.scale.clone();
@@ -19,10 +20,12 @@ AFRAME.registerComponent("gesture-handler", {
 
         this.el.sceneEl.addEventListener("markerFound", (e) => {
             this.isVisible = true;
+            console.log("markerFound")
         });
 
         this.el.sceneEl.addEventListener("markerLost", (e) => {
             this.isVisible = false;
+            console.log("markerLost")
         });
     },
 
@@ -50,7 +53,6 @@ AFRAME.registerComponent("gesture-handler", {
                 event.detail.positionChange.x * this.data.rotationFactor;
             this.el.object3D.rotation.x +=
                 event.detail.positionChange.y * this.data.rotationFactor;
-            console.log("ROTATE")
         }
     },
 
@@ -64,7 +66,6 @@ AFRAME.registerComponent("gesture-handler", {
                 this.data.maxScale
             );
 
-            console.log("SCALE")
             this.el.object3D.scale.x = this.scaleFactor * this.initialScale.x;
             this.el.object3D.scale.y = this.scaleFactor * this.initialScale.y;
             this.el.object3D.scale.z = this.scaleFactor * this.initialScale.z;
@@ -72,12 +73,16 @@ AFRAME.registerComponent("gesture-handler", {
     },
 
     moveSomething: function (event) {
+
+        // console.log("MOVE", event)
+
+        console.log("CLICKED", event)
+
         if (this.isVisible) {
-            console.log("MOVE")
             // this.el.object3D.position.x =  this.el.object3D.position.x + 1;
-            this.el.object3D.scale.x = 2 * this.initialScale.x;
-            this.el.object3D.scale.y = 2 * this.initialScale.y;
-            this.el.object3D.scale.z = 2 * this.initialScale.z;
+            // this.el.object3D.scale.x = 1.1 * this.initialScale.x;
+            // this.el.object3D.scale.y = 1.1 * this.initialScale.y;
+            // this.el.object3D.scale.z = 1.1 * this.initialScale.z;
         }
     }
 });
