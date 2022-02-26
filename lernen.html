@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!--    <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>-->
 
-    <script src="js/aframe-ar.js"></script>
+<!--        <script src="js/aframe-ar.js"></script>-->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
-
-    <script src="js/components/a-square.js"></script>
-    <script src="js/components/cursor-listener.js"></script>
+    <script src="js/components/gesture-detector.js"></script>
+    <script src="js/components/gesture-handler.js"></script>
 
 
     <title>PolyAR - Lernen</title>
@@ -27,69 +26,86 @@
         <div>Halte deine Kamera über ein Bild</div>
     </section>
     <section class="interaction">
-<!--        <a-scene embedded arjs>-->
-<!--            <a-marker preset="hiro">-->
+
+
+<!--
+        <a-scene  >
+            <a-assets>
+                <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+                <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
+                <a-mixin id="blue" material="color: #36A3EB"></a-mixin>
+            </a-assets>
+
+            <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable"></a-entity>
+
+            <a-entity position="0 .6 4">
+                <a-camera>
+                    <a-entity raycaster="far: 30; objects: .intersectable"
+                              cursor
+                              geometry="primitive: ring; radiusOuter: 0.015;
+                              radiusInner: 0.01; segmentsTheta: 32"
+                              material="color: #283644; shader: flat"
+                              position="0 0 -0.75"></a-entity>
+                </a-camera>
+            </a-entity>
+
+            <a-entity position="0 0 0" rotation="0 0 0">
+                <a-entity mixin="blue cube"
+                          class="intersectable"
+                          animation="startEvents: click; loop: 1; dir: alternate; property: position; from: 0 0 0; to: 0 0 -10; dur: 2000">
+                </a-entity>
+            </a-entity>
+            <a-entity position="1 0 0" rotation="0 0 0">
+                <a-entity mixin="green cube"
+                          class="intersectable"
+                          animation="startEvents: click; loop: 1; dir: alternate; property: position; from: 0 0 0; to: 0 0 -10; dur: 2000">
+                </a-entity>
+            </a-entity>
+
+
+        </a-scene>
+        -->
+
+        <a-scene
+                arjs
+                embedded
+                renderer="logarithmicDepthBuffer: true;"
+                vr-mode-ui="enabled: false"
+                gesture-detector
+                id="scene">
+            <a-assets>
+                <a-asset-item
+                        id="bowser"
+                        src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb">
+                </a-asset-item>
+                    <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+                    <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
+                    <a-mixin id="blue" material="color: #36A3EB"></a-mixin>
+            </a-assets>
+
+            <a-marker
+                    preset="hiro"
+                    raycaster="objects: .clickable"
+                    emitevents="true"
+                    cursor="fuse: false; rayOrigin: mouse;"
+                    id="markerA">
 <!--                <a-entity-->
+<!--                        id="bowser-model"-->
+<!--                        gltf-model="#bowser"-->
 <!--                        position="0 0 0"-->
 <!--                        scale="0.05 0.05 0.05"-->
-<!--                        gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"-->
-<!--                ></a-entity>-->
-<!--            </a-marker>-->
-<!--            <a-entity camera></a-entity>-->
-<!--        </a-scene>-->
-
-        <!--        <a-scene>-->
-        <!--            <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>-->
-        <!--            <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>-->
-        <!--            <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>-->
-        <!--            <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>-->
-        <!--            <a-sky color="#ECECEC"></a-sky>-->
-        <!--        </a-scene>-->
-
-
-        <!--                <a-scene>-->
-        <!--                    <a-entity class="clickable" a-square="color: #FFFFFF; event: anEvent; message: square1" position="0 0 -10" rotation="0 0 0"></a-entity>-->
-        <!--                    <a-entity class="clickable" a-square="color: #000000; event: anEvent; message: square2" position="0 1 -10" rotation="0 0 0"></a-entity>-->
-        <!--                    <a-entity cursor="rayOrigin:mouse" raycaster="objects: .clickable"></a-entity>-->
-        <!--                </a-scene>-->
-
-
-        <!--        <a-scene>-->
-        <!--            <a-entity class="clickable" a-square="color: #000000; event: anEvent; message: square1"-->
-        <!--                      position="-0.5 -0.5 -2"-->
-        <!--                      rotation="0 0 0"></a-entity>-->
-        <!--            <a-entity class="clickable" a-square="color: #FFFFFF; event: anEvent; message: square2"-->
-        <!--                      position="0.5 -0.5 -2"-->
-        <!--                      rotation="0 0 0"></a-entity>-->
-        <!--            <a-entity camera look-controls>-->
-        <!--                <a-entity cursor="fuse: true; rayOrigin: mouse"-->
-        <!--                          raycaster="objects: .clickable"-->
-        <!--                          position="0 0 -2"-->
-        <!--                          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"-->
-        <!--                          material="color: red; shader: flat"></a-entity>-->
-        <!--            </a-entity>-->
-        <!--        </a-scene>-->
-
-                <a-scene>
-                    <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow
-                           animation="startEvents: click; property: position;
-                  from: -1 1.5 -3; to: -1 0.5 -3 dur: 1000">
-                    </a-box>
-                    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow
-                              animation="startEvents: click; property: scale;
-                  from: 2 2 2; to: 1 1 1; dur: 1000">
-                    </a-sphere>
-                    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow
-                                animation__enter="startEvents: mouseenter; property: scale;
-                  to: 2 2 2; dur: 1000"
-                                animation__leave="startEvents: mouseleave; property: scale;
-                  to: 1 1 1; dur: 1000">
-                    </a-cylinder>
-                    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
-                    <a-sky color="#ECECEC"></a-sky>
-
-                    <a-entity cursor="rayOrigin:mouse"></a-entity>
-                </a-scene>
+<!--                        class="clickable"-->
+<!--                        gesture-handler>-->
+<!--                </a-entity>-->
+                <a-entity position="0 0 0" rotation="0 0 0">
+                    <a-entity mixin="blue cube"
+                              class="clickable"
+                              gesture-handler>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+            <a-entity camera></a-entity>
+        </a-scene>
 
     </section>
     <section class="instruction">
