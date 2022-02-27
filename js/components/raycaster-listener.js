@@ -11,10 +11,12 @@ AFRAME.registerComponent('raycaster-listener', {
             this.raycaster = evt.detail.el;
         });
         this.el.addEventListener('raycaster-intersected-cleared', evt => {
-            // this.raycaster = null;
+            this.raycaster = null;
         });
 
         this.mouseCursor = document.getElementById("mouseCursor");
+
+        this.delayDone = false;
     },
 
     tick: function () {
@@ -29,7 +31,14 @@ AFRAME.registerComponent('raycaster-listener', {
             return;
         }
 
-        console.log("intersection", intersection.object.el.id);
+        if (this.mouseCursor.object3D.visible) {
+            // console.log("intersection", intersection.object.el.id);
+            let eventName = intersection.object.el.id + "-clicked"
+            this.el.emit(eventName)
+            // After 1 Tick was registred, it means a Click was done, meaning the Detection should be deactivated again
+            // or else it will keep firing the Event multiple times
+            this.mouseCursor.object3D.visible = false
+        }
     }
 });
 

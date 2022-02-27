@@ -27,7 +27,6 @@ AFRAME.registerComponent("gesture-detector", {
         this.targetElement.addEventListener("touchmove", this.emitGestureEvent);
 
         this.mouseCursor = document.getElementById("mouseCursor");
-        this.boxFirst = document.getElementById("first").object3D;
 
     },
 
@@ -61,6 +60,8 @@ AFRAME.registerComponent("gesture-detector", {
 
             this.internalState.previousState = null;
 
+            this.mouseCursor.object3D.visible = false
+
         }
 
         if (gestureStarted) {
@@ -77,6 +78,8 @@ AFRAME.registerComponent("gesture-detector", {
             this.el.emit(eventName, currentState);
 
             this.internalState.previousState = currentState;
+
+            this.mouseCursor.object3D.visible = true
 
             this.mouseCursor.setAttribute('raycaster', {
                 direction: {

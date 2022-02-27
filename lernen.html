@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
-        <script src="js/aframe-ar.js"></script>
-<!--    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>-->
+    <script src="js/aframe-ar.js"></script>
+    <!--    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>-->
 
     <script src="js/components/raycaster-listener.js"></script>
     <script src="js/components/gesture-detector.js"></script>
     <script src="js/components/gesture-handler.js"></script>
+    <script src="js/components/a-square.js"></script>
     <script src="js/events.js"></script>
 
 
@@ -41,10 +42,15 @@
                         id="bowser"
                         src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb">
                 </a-asset-item>
-                    <a-mixin id="cube" geometry="primitive: box"></a-mixin>
-                    <a-mixin id="plane" geometry="primitive: plane"></a-mixin>
-                    <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
-                    <a-mixin id="blue" material="color: #36A3EB"></a-mixin>
+                <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+                <a-mixin id="plane" geometry="primitive: plane"></a-mixin>
+                <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
+                <a-mixin id="blue" material="color: #36A3EB"></a-mixin>
+                <a-mixin id="standard-square-blue" a-square="color: #36A3EB" raycaster-listener></a-mixin>
+                <a-mixin id="standard-square-green" a-square="color: #9DE0AD" raycaster-listener></a-mixin>
+                <a-mixin id="top" a-square="rotationAxis: top"></a-mixin>
+                <a-mixin id="left" a-square="rotationAxis: left"></a-mixin>
+                <a-mixin id="right" a-square="rotationAxis: right"></a-mixin>
             </a-assets>
 
 
@@ -52,55 +58,89 @@
                       position="0 0 -1"
                       geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
                       material="color: red; shader: flat"
-                      raycaster="objects: .clickable; showLine: true; lineColor: red; origin: 0 0 0; "></a-entity>
+                      visible="false"
+                      raycaster="objects: .clickable; showLine: true; lineColor: red;"></a-entity>
             <a-marker
                     preset="hiro"
                     emitevents="true"
                     id="markerA">
+
+                <!-- Set Rotation and Position on outer Element for Children to inherit -->
+                <a-entity gesture-handler rotation="-90 -90 90" position="-0.5 0 0.5">
+                    <a-entity mixin="standard-square-blue"
+                              id="first">
+                    </a-entity>
+                    <a-entity mixin="standard-square-green"
+                              position="0 1 0"
+                              id="second"
+                              class="clickable"
+                              got-clicked="rotation: 90 0 0">
+                    </a-entity>
+                    <a-entity mixin="standard-square-green right"
+                              position="0 0 0"
+                              id="third"
+                              class="clickable"
+                              got-clicked="rotation: 0 90 0">
+                    </a-entity>
+                    <a-entity mixin="standard-square-green left"
+                              position="1 0 0"
+                              id="fourth"
+                              class="clickable"
+                              got-clicked="rotation: 0 -90 0">
+                    </a-entity>
+                    <a-entity mixin="standard-square-green top"
+                              position="0 0 0"
+                              id="fifth"
+                              class="clickable"
+                              got-clicked="rotation: -90 0 0">
+                        <a-entity mixin="standard-square-blue top"
+                                  position="0 -1 0"
+                                  id="sixth"
+                                  class="clickable"
+                                  got-clicked="rotation: -90 0 0">
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+
+
+<!--
                 <a-entity gesture-handler>
-                    <a-entity position="-1 0 0" rotation="-90 -90 0">
-                        <a-entity mixin="green plane"
-                                  class="clickable"
-                                  id="third"
-                                  raycaster-listener>
-                        </a-entity>
+                    <a-entity position="-1 0 0" rotation="-90 -90 0" mixin="green plane"
+                              class="clickable"
+                              id="third"
+                              got-clicked="position: -0.5 0.5 0; rotation: 0 -90 0"
+                              raycaster-listener>
                     </a-entity>
-                    <a-entity position="0 0 0" rotation="-90 -90 0">
-                        <a-entity mixin="blue plane"
-                                  class="clickable"
-                                  id="first"
-                                  raycaster-listener>
-                        </a-entity>
+                    <a-entity position="0 0 0" rotation="-90 -90 0" mixin="blue plane"
+                                  id="first">
                     </a-entity>
-                    <a-entity position="1 0 0" rotation="-90 -90 0">
-                        <a-entity mixin="green plane"
+                    <a-entity position="1 0 0" rotation="-90 -90 0"
+                              mixin="green plane"
                                   class="clickable"
                                   id="second"
+                                  got-clicked="position: 0.5 0.5 0; rotation: 0 -90 0"
                                   raycaster-listener>
-                        </a-entity>
                     </a-entity>
-                    <a-entity position="0 0 -1" rotation="-90 -90 0">
-                        <a-entity mixin="green plane"
+                    <a-entity position="0 0 -1" rotation="-90 -90 0" mixin="green plane"
                                   class="clickable"
                                   id="fourth"
+                                  got-clicked="position: 0 0.5 -0.5; rotation: 0 0 -90"
                                   raycaster-listener>
-                        </a-entity>
                     </a-entity>
-                    <a-entity position="0 0 1" rotation="-90 -90 0">
-                        <a-entity mixin="green plane"
+                    <a-entity position="0 0 1" rotation="-90 -90 0" mixin="green plane"
                                   class="clickable"
                                   id="fifth"
+                                  got-clicked="position: 0 0.5 0.5; rotation: 0 -180 90"
                                   raycaster-listener>
-                        </a-entity>
-                    </a-entity>
-                    <a-entity position="0 0 2" rotation="-90 -90 0">
-                        <a-entity mixin="blue plane"
+                        <a-entity position="1 0 0" rotation="0 0 0" mixin="blue plane"
                                   class="clickable"
                                   id="sixth"
+                                  got-clicked="position: 0.5 0 0.5; rotation: 0 -90 0"
                                   raycaster-listener>
                         </a-entity>
                     </a-entity>
                 </a-entity>
+-->
 
             </a-marker>
             <a-entity camera></a-entity>
