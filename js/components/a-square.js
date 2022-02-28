@@ -3,7 +3,7 @@ AFRAME.registerComponent('a-square', {
         width: {type: 'number', default: 1},
         height: {type: 'number', default: 1},
         color: {type: 'color', default: '#FFFFFF'},
-        rotationAxis: {type: 'string', default: 'bottom'}
+        rotationAxis: {type: 'string', default: 'bottom'},
     },
 
     init: function () {
@@ -46,9 +46,10 @@ AFRAME.registerComponent('a-square', {
         const mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({color: data.color}) );
         el.setObject3D('mesh', mesh);
 
-        this.el.addEventListener("click", (evt) => {
-            console.log("YES", evt)
-        })
+        // this.el.addEventListener("click", (evt) => {
+        //     console.log("YES", evt)
+        //     console.log("BA", this.el)
+        // })
 
     },
 });

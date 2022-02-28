@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./css/style.css">
-    <title>PolyAR - Quiz</title>
 
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-
+    <!-- Rendering Library-->
+    <script src="js/aframe.js"></script>
+    <!-- Tracking Library-->
     <script src="js/aframe-ar.js"></script>
-    <!--    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>-->
-
-    <script src="js/components/raycaster-listener.js"></script>
-    <script src="js/components/gesture-detector.js"></script>
-    <script src="js/components/gesture-handler.js"></script>
+    <!-- Custom Components-->
     <script src="js/components/a-square.js"></script>
-    <script src="js/events.js"></script>
+    <script src="js/components/click-handler.js"></script>
 
+    <title>PolyAR - Quiz</title>
 </head>
 <body>
 <main class="quiz">
@@ -28,7 +25,7 @@
         <div>Das Bild wurde schonmal gefunden</div>
     </section>
     <section class="interaction">
-        <!--<div class="interaction__scan-marker">
+   <!--     <div class="interaction__scan-marker">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="scan-marker-border" d="M25,2 L2,2 L2,25"/>
                 <path class="scan-marker-border" d="M2,75 L2,98 L25,98"/>
@@ -36,54 +33,68 @@
                 <path class="scan-marker-border" d="M98,25 L98,2 L75,2"/>
             </svg>
         </div>
-        <div class="interaction__confirm"></div>-->
+        <div class="interaction__confirm"></div>
+        <img src="assets/images/placeholderCube.svg" alt="placeholder-cube">-->
+
 
         <a-scene
-                testcomp
                 arjs
                 embedded
                 renderer="logarithmicDepthBuffer: true;"
                 vr-mode-ui="enabled: false"
                 id="scene">
             <a-assets>
-                <a-asset-item
-                        id="bowser"
-                        src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb">
-                </a-asset-item>
-                <a-mixin id="cube" geometry="primitive: box"></a-mixin>
-                <a-mixin id="plane" geometry="primitive: plane"></a-mixin>
-                <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
-                <a-mixin id="blue" material="color: #36A3EB"></a-mixin>
-                <a-mixin id="standard-square-blue" a-square="color: #36A3EB" ></a-mixin>
-                <a-mixin id="standard-square-green" a-square="color: #9DE0AD" ></a-mixin>
+                <a-mixin id="standard-square-blue" a-square="color: #36A3EB"></a-mixin>
+                <a-mixin id="standard-square-green" a-square="color: #9DE0AD"></a-mixin>
                 <a-mixin id="top" a-square="rotationAxis: top"></a-mixin>
                 <a-mixin id="left" a-square="rotationAxis: left"></a-mixin>
                 <a-mixin id="right" a-square="rotationAxis: right"></a-mixin>
             </a-assets>
-
-            <a-marker
-                    cursor="rayOrigin: mouse"
-
+            <a-marker cursor="rayOrigin: mouse"
+                      raycaster="objects: .clickable"
                     preset="hiro"
                     emitevents="true"
                     id="markerA">
-
-                <!-- Set Rotation and Position on outer Element for Children to inherit -->
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5">
                     <a-entity mixin="standard-square-blue"
                               id="first">
                     </a-entity>
                     <a-entity mixin="standard-square-green"
-                              id="second" position="1 1 0">
+                              position="0 1 0"
+                              id="second"
+                              class="clickable"
+                              click-handler="rotation: 90 0 0">
+                    </a-entity>
+                    <a-entity mixin="standard-square-green right"
+                              position="0 0 0"
+                              id="third"
+                              class="clickable"
+                              click-handler="rotation: 0 90 0">
+                    </a-entity>
+                    <a-entity mixin="standard-square-green left"
+                              position="1 0 0"
+                              id="fourth"
+                              class="clickable"
+                              click-handler="rotation: 0 -90 0">
+                    </a-entity>
+                    <a-entity mixin="standard-square-green top"
+                              position="0 0 0"
+                              id="fifth"
+                              class="clickable"
+                              click-handler="rotation: -90 0 0">
+                        <a-entity mixin="standard-square-blue top"
+                                  position="0 -1 0"
+                                  id="sixth"
+                                  class="clickable"
+                                  click-handler="rotation: -90 0 0">
+                        </a-entity>
                     </a-entity>
                 </a-entity>
+
             </a-marker>
-            <a-camera>
-
-
-            </a-camera>
+            <a-entity camera id="camera">
+            </a-entity>
         </a-scene>
-
     </section>
     <section class="instruction">
         <div>W Ü R F E L</div>
