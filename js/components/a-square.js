@@ -46,5 +46,21 @@ AFRAME.registerComponent('a-square', {
         const mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({color: data.color}) );
         el.setObject3D('mesh', mesh);
 
+        this.el.addEventListener("click", (evt) => {
+            console.log("YES", evt)
+        })
+
+    },
+});
+
+AFRAME.registerComponent('testcomp', {
+    schema: {
+        width: {type: 'number', default: 1},
+        height: {type: 'number', default: 1},
+        color: {type: 'color', default: '#FFFFFF'},
+        rotationAxis: {type: 'string', default: 'bottom'}
+    },
+
+    init: function () {
     },
 });

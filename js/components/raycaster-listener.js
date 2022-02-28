@@ -17,13 +17,14 @@ AFRAME.registerComponent('raycaster-listener', {
         this.mouseCursor = document.getElementById("mouseCursor");
 
         this.delayDone = false;
+
+        // console.log(this.el.sceneEl.canvas.getBoundingClientRect())
     },
 
     tick: function () {
         if (!this.raycaster) {
             return;
         }  // Not intersecting.
-
 
         let intersection = this.raycaster.components.raycaster.getIntersection(this.el);
 
@@ -32,6 +33,8 @@ AFRAME.registerComponent('raycaster-listener', {
         }
 
         if (this.mouseCursor.object3D.visible) {
+            console.log("intersetcion", this.raycaster.components.raycaster.getIntersection(this.el).point)
+
             // console.log("intersection", intersection.object.el.id);
             let eventName = intersection.object.el.id + "-clicked"
             this.el.emit(eventName)

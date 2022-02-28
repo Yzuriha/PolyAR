@@ -28,6 +28,8 @@
     <section class="information">
         <div>Halte deine Kamera über ein Bild :)</div>
     </section>
+    <div style="height: 100%; border: 1px solid red; position: fixed; left: 590px"></div>
+    <div style="height: 1px; width: 100vw; border: 1px solid red; position: fixed; top: 410px"></div>
     <section class="interaction" style="border: 1px solid red">
 
         <a-scene
@@ -55,12 +57,15 @@
 
 
             <a-entity id="mouseCursor"
-                      position="0 0 -1"
+                      position="0 0 0"
                       geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
                       material="color: red; shader: flat"
                       visible="false"
+                      cursor="rayOrigin: mouse"
                       raycaster="objects: .clickable; showLine: true; lineColor: red;"></a-entity>
             <a-marker
+
+
                     preset="hiro"
                     emitevents="true"
                     id="markerA">
@@ -101,49 +106,13 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-
-
-<!--
-                <a-entity gesture-handler>
-                    <a-entity position="-1 0 0" rotation="-90 -90 0" mixin="green plane"
-                              class="clickable"
-                              id="third"
-                              got-clicked="position: -0.5 0.5 0; rotation: 0 -90 0"
-                              raycaster-listener>
-                    </a-entity>
-                    <a-entity position="0 0 0" rotation="-90 -90 0" mixin="blue plane"
-                                  id="first">
-                    </a-entity>
-                    <a-entity position="1 0 0" rotation="-90 -90 0"
-                              mixin="green plane"
-                                  class="clickable"
-                                  id="second"
-                                  got-clicked="position: 0.5 0.5 0; rotation: 0 -90 0"
-                                  raycaster-listener>
-                    </a-entity>
-                    <a-entity position="0 0 -1" rotation="-90 -90 0" mixin="green plane"
-                                  class="clickable"
-                                  id="fourth"
-                                  got-clicked="position: 0 0.5 -0.5; rotation: 0 0 -90"
-                                  raycaster-listener>
-                    </a-entity>
-                    <a-entity position="0 0 1" rotation="-90 -90 0" mixin="green plane"
-                                  class="clickable"
-                                  id="fifth"
-                                  got-clicked="position: 0 0.5 0.5; rotation: 0 -180 90"
-                                  raycaster-listener>
-                        <a-entity position="1 0 0" rotation="0 0 0" mixin="blue plane"
-                                  class="clickable"
-                                  id="sixth"
-                                  got-clicked="position: 0.5 0 0.5; rotation: 0 -90 0"
-                                  raycaster-listener>
-                        </a-entity>
-                    </a-entity>
-                </a-entity>
--->
-
             </a-marker>
-            <a-entity camera></a-entity>
+            <a-entity camera id="camera">
+<!--                <a-entity  position="-0.517 -0.387 -1"-->
+<!--                          a-square="color: #36A3EB; width: 1.02; height: 0.769"-->
+<!--                          id="xyx">-->
+<!--                </a-entity>-->
+            </a-entity>
         </a-scene>
 
     </section>

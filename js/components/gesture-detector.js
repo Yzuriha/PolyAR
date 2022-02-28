@@ -27,6 +27,8 @@ AFRAME.registerComponent("gesture-detector", {
         this.targetElement.addEventListener("touchmove", this.emitGestureEvent);
 
         this.mouseCursor = document.getElementById("mouseCursor");
+        this.testCube = document.getElementById("markerA");
+        this.camera = document.getElementById("camera")
 
     },
 
@@ -81,12 +83,60 @@ AFRAME.registerComponent("gesture-detector", {
 
             this.mouseCursor.object3D.visible = true
 
+            let canvas = this.el.canvas.getBoundingClientRect()
+            console.log(canvas)
+            // console.log(canvas)
+            //
+            // console.log("CURRENTSTATE", currentState.positionRaw)
+            // console.log("CURRENTSTATE", currentState.startPosition)
+            // // console.log("REAL", {})
+
+
+            const pointer = new THREE.Vector2();
+            const origi = new THREE.Vector3(0 , 0, 0)
+            let caster = new THREE.Raycaster()
+            console.log("CANVAS", canvas)
+            pointer.x = ((currentState.positionRaw.x - canvas.left) / canvas.width) * 2 - 1
+            pointer.y = -((currentState.positionRaw.y - canvas.top) / canvas.height) * 2 + 1
+            console.log("POINTER", pointer)
+            caster.setFromCamera(pointer, document.getElementById("camera").getObject3D("camera"))
+            console.log("CAST", caster.ray.direction)
+
             this.mouseCursor.setAttribute('raycaster', {
-                direction: {
-                    x: currentState.startPosition.x - 0.5774099318403116,
-                    y: -1 * (currentState.startPosition.y - 0.42940603700097374)
-                }
+                // origin: {
+                //     x: currentState.startPosition.x - 0.5774099318403116,
+                //     y: -1 * (currentState.startPosition.y - 0.42940603700097374)
+                // },
+                direction: new THREE.Vector3(currentState.startPosition.x, currentState.startPosition.x.y, this.testCube.object3D.position.z),
+                origin: origi
             })
+
+            let cursorIn3D = new THREE.Vector3(pointer.x, pointer.y, -1)
+            console.log("CURSOR", cursorIn3D)
+
+            console.log("DISTANCEZ", this.testCube.object3D.position.z)
+            // Position
+            // this.mouseCursor.object3D.position.x = (currentState.positionRaw.x / canvas.width) * 2 - 1
+            // this.mouseCursor.object3D.position.y = -(currentState.positionRaw.y / canvas.height) * 2 + 1
+
+            // this.mouseCursor.object3D.position.x = ((currentState.positionRaw.x / canvas.width) * 2 - 1)
+            // this.mouseCursor.object3D.position.y = (-(currentState.positionRaw.y / canvas.height) * 2 + 1)
+
+
+
+
+            // console.log("MOUSEPOSITION", {
+            //     x: this.mouseCursor.object3D.position.x,
+            //     y: this.mouseCursor.object3D.position.y
+            // })
+            //
+            // console.log("TESTCUBE", this.testCube.object3D.position)
+            // let depth = this.el.camera.position.distanceTo(this.testCube.object3D.position)
+            // console.log("DISTANCE", this.el.camera.position.distanceTo(this.testCube.object3D.position))
+            //
+            //
+            // console.log("WIDTH", this.visibleHeightAtZDepth(depth, this.el.camera))
+            // console.log("HEiGHT", this.visibleWidthAtZDepth(depth, this.el.camera))
 
 
         }
@@ -116,6 +166,24 @@ AFRAME.registerComponent("gesture-detector", {
                 this.getEventPrefix(currentState.touchCount) + "fingermove";
             this.el.emit(eventName, eventDetail);
         }
+    },
+
+    visibleHeightAtZDepth: function ( depth, camera )  {
+        // compensate for cameras not positioned at z=0
+        const cameraOffset = camera.position.z;
+        if ( depth < cameraOffset ) depth -= cameraOffset;
+        else depth += cameraOffset;
+
+        // vertical fov in radians
+        const vFOV = camera.fov * Math.PI / 180;
+
+        // Math.abs to ensure the result is always positive
+        return 2 * Math.tan( vFOV / 2 ) * Math.abs( depth );
+    },
+
+    visibleWidthAtZDepth: function ( depth, camera ) {
+        const height = this.visibleHeightAtZDepth( depth, camera );
+        return height * camera.aspect;
     },
 
     getTouchState: function (event) {

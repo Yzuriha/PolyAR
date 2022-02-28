@@ -76,7 +76,7 @@ AFRAME.registerComponent("gesture-handler", {
 
         // console.log("MOVE", event)
 
-        console.log("CLICKED", event)
+        // console.log("CLICKED", event)
 
         if (this.isVisible) {
             // this.el.object3D.position.x =  this.el.object3D.position.x + 1;
