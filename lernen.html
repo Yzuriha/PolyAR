@@ -9,8 +9,11 @@
     <!-- Tracking Library-->
     <script src="js/aframe-ar.js"></script>
     <!-- Custom Components-->
-    <script src="js/components/a-square.js"></script>
+    <script src="js/components/a-four.js"></script>
     <script src="js/components/click-handler.js"></script>
+    <script src="js/components/gesture-detector.js"></script>
+    <script src="js/components/gesture-handler.js"></script>
+
 
 
     <title>PolyAR - Lernen</title>
@@ -29,58 +32,365 @@
 
         <a-scene arjs
                  embedded
+                 gesture-detector
                  renderer="logarithmicDepthBuffer: true;"
                  vr-mode-ui="enabled: false"
                  id="scene">
             <a-assets>
-                <a-mixin id="standard-square-blue" a-square="color: #36A3EB"></a-mixin>
-                <a-mixin id="standard-square-green" a-square="color: #9DE0AD"></a-mixin>
-                <a-mixin id="top" a-square="rotationAxis: top"></a-mixin>
-                <a-mixin id="left" a-square="rotationAxis: left"></a-mixin>
-                <a-mixin id="right" a-square="rotationAxis: right"></a-mixin>
+                <a-mixin id="wood" material="src: url(assets/texture.jpg)"></a-mixin>
+                <a-mixin id="stone" material="src: url(assets/texture.jpg)"></a-mixin>
+
+                <a-mixin id="raycaster" cursor="rayOrigin: mouse" raycaster="objects: .clickable" emitevents="true"></a-mixin>
+
+                <a-mixin id="square" a-four></a-mixin>
+                <a-mixin id="square-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
+                <a-mixin id="square-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="square-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
+                <a-mixin id="square-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
             </a-assets>
-            <a-marker cursor="rayOrigin: mouse"
-                      raycaster="objects: .clickable"
+
+<!--            <a-marker mixin="raycaster"
                       preset="hiro"
-                      emitevents="true"
-                      id="markerA">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5">
-                    <a-entity mixin="standard-square-blue"
-                              id="first">
+                      data-object-name="W Ü R F E L"
+                      id="wurfel1">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
                     </a-entity>
-                    <a-entity mixin="standard-square-green"
+                    <a-entity mixin="square-bot stone event"
                               position="0 1 0"
-                              id="second"
-                              class="clickable"
-                              click-handler="rotation: 90 0 0">
+                              class="clickable">
                     </a-entity>
-                    <a-entity mixin="standard-square-green right"
-                              position="0 0 0"
-                              id="third"
-                              class="clickable"
-                              click-handler="rotation: 0 90 0">
+                    <a-entity mixin="square-right stone event"
+                              position="0 1 0"
+                              class="clickable">
                     </a-entity>
-                    <a-entity mixin="standard-square-green left"
+                    <a-entity mixin="square-left stone event"
                               position="1 0 0"
-                              id="fourth"
-                              class="clickable"
-                              click-handler="rotation: 0 -90 0">
+                              class="clickable">
                     </a-entity>
-                    <a-entity mixin="standard-square-green top"
-                              position="0 0 0"
-                              id="fifth"
-                              class="clickable"
-                              click-handler="rotation: -90 0 0">
-                        <a-entity mixin="standard-square-blue top"
+                    <a-entity mixin="square-top stone event"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-top stone event"
                                   position="0 -1 0"
-                                  id="sixth"
-                                  class="clickable"
-                                  click-handler="rotation: -90 0 0">
+                                  class="clickable">
                         </a-entity>
                     </a-entity>
                 </a-entity>
+            </a-marker>-->
 
+<!--            <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel2">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-left stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-bot stone"
+                                  position="0 1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-stone top"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-stone right"
+                                  position="-1 0 0"
+                                  class="clickable">
+                            <a-entity mixin="square-stone top"
+                                      position="0 -1 0"
+                                      class="clickable">
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+<!--            <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel3">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-bot stone"
+                              position="0 1 0"
+                              class="clickable">
+                        <a-entity mixin="square-right stone"
+                                  position="0 1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-left stone"
+                              position="1 0 0"
+                              class="clickable">
+                    </a-entity>
+                    <a-entity mixin="square-top stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+<!--            <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel4">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-bot stone"
+                              position="0 1 0"
+                              class="clickable">
+                        <a-entity mixin="square-right stone"
+                                  position="0 1 0"
+                                  class="clickable">
+                        </a-entity>
+                        <a-entity mixin="square-left stone"
+                                  position="1 0 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+<!--            <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel5">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-bot stone"
+                              position="0 1 0"
+                              class="clickable">
+                        <a-entity mixin="square-left stone"
+                                  position="1 0 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                            <a-entity mixin="square-right stone"
+                                      position="-1 0 0"
+                                      class="clickable">
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+<!--            <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel6">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-right stone"
+                              position="0 1 0"
+                              class="clickable">
+                    </a-entity>
+                    <a-entity mixin="square-left stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-bot stone"
+                                  position="0 1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+<!--            <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel7">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-bot stone"
+                              position="0 1 0"
+                              class="clickable">
+                    </a-entity>
+                    <a-entity mixin="square-left stone"
+                              position="1 0 0"
+                              class="clickable">
+                    </a-entity>
+                    <a-entity mixin="square-top stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-right stone"
+                                  position="-1 0 0"
+                                  class="clickable">
+                        </a-entity>
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+ <!--           <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel8">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-left stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-bot stone"
+                                  position="0 1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                            <a-entity mixin="square-right stone"
+                                      position="-1 0 0"
+                                      class="clickable">
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+  <!--          <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel9">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-left stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-bot stone"
+                                  position="0 1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-right stone"
+                                  position="-1 0 0"
+                                  class="clickable">
+                        </a-entity>
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+<!--            <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel10">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-bot stone"
+                              position="0 1 0"
+                              class="clickable">
+                        <a-entity mixin="square-bot stone"
+                                  position="0 1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-right stone"
+                              position="0 1 0"
+                              class="clickable">
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                            <a-entity mixin="square-top stone"
+                                      position="0 -1 0"
+                                      class="clickable">
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+            <a-marker mixin="raycaster"
+                      preset="hiro"
+                      data-object-name="W Ü R F E L"
+                      id="wurfel11">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="square stone">
+                    </a-entity>
+                    <a-entity mixin="square-bot stone"
+                              position="0 1 0"
+                              class="clickable">
+                        <a-entity mixin="square-right stone"
+                                  position="0 1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top stone"
+                              position="1 0 0"
+                              class="clickable">
+                        <a-entity mixin="square-left stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                        </a-entity>
+                        <a-entity mixin="square-top stone"
+                                  position="0 -1 0"
+                                  class="clickable">
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
             </a-marker>
+
+
             <a-entity camera id="camera">
             </a-entity>
         </a-scene>

@@ -2,10 +2,10 @@
 
 AFRAME.registerComponent("gesture-detector", {
     schema: {
-        element: { default: "" }
+        element: {default: ""}
     },
 
-    init: function() {
+    init: function () {
         this.targetElement =
             this.data.element && document.querySelector(this.data.element);
 
@@ -26,7 +26,7 @@ AFRAME.registerComponent("gesture-detector", {
         this.targetElement.addEventListener("touchmove", this.emitGestureEvent);
     },
 
-    remove: function() {
+    remove: function () {
         this.targetElement.removeEventListener("touchstart", this.emitGestureEvent);
 
         this.targetElement.removeEventListener("touchend", this.emitGestureEvent);
@@ -100,7 +100,7 @@ AFRAME.registerComponent("gesture-detector", {
         }
     },
 
-    getTouchState: function(event) {
+    getTouchState: function (event) {
         if (event.touches.length === 0) {
             return null;
         }
@@ -127,7 +127,7 @@ AFRAME.registerComponent("gesture-detector", {
             touchList.reduce((sum, touch) => sum + touch.clientY, 0) /
             touchList.length;
 
-        touchState.positionRaw = { x: centerPositionRawX, y: centerPositionRawY };
+        touchState.positionRaw = {x: centerPositionRawX, y: centerPositionRawY};
 
         // Scale touch position and spread by average of window dimensions
 
