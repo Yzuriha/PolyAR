@@ -61,7 +61,7 @@ a {
 }
 .lernen .interaction,
 .quiz .interaction {
-  height: calc(100% - 30px - 50px - 75px);
+  height: 100%;
   position: relative;
 }
 .lernen .interaction .interaction__scan-marker,
