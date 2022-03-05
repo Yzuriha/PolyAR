@@ -64468,8 +64468,8 @@ object-assign
             MOUSEDOWN: 'mousedown',
             MOUSELEAVE: 'mouseleave',
             MOUSEUP: 'mouseup',
-            // TOUCHSTART: 'touchstart',
-            // TOUCHEND: 'touchend',
+            TOUCHSTART: 'touchstart',
+            TOUCHEND: 'touchend',
         };
 
         var STATES = {
@@ -64685,6 +64685,8 @@ object-assign
                 // Raycast again for touch.
                 if (this.data.rayOrigin === 'mouse' && evt.type === 'touchstart') {
                     this.onMouseMove(evt);
+                    // this.onMouseMove(evt);
+                    //
                     this.el.components.raycaster.checkIntersections();
                     evt.preventDefault();
                 }
