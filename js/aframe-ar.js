@@ -1719,6 +1719,8 @@ THREEx.ARClickability.prototype.computeIntersects = function (domEvent, objects)
     var sourceElement = this._sourceElement
     var cameraPicking = this._cameraPicking
 
+    console.log("IDK")
+
     // compute mouse coordinatge with [-1,1]
     var eventCoords = new THREE.Vector3();
     eventCoords.x = (domEvent.layerX / parseInt(sourceElement.style.width)) * 2 - 1;

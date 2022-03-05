@@ -64673,6 +64673,10 @@ object-assign
 
                     origin.setFromMatrixPosition(camera.matrixWorld);
                     direction.set(mouse.x, mouse.y, 0.5).unproject(camera).sub(origin).normalize();
+
+                    console.log("MOUSEX", mouse.x)
+                    console.log("MOUSEY", mouse.y)
+                    console.log('raycaster', rayCasterConfig)
                     this.el.setAttribute('raycaster', rayCasterConfig);
                     if (evt.type === 'touchmove') { evt.preventDefault(); }
                 };
@@ -64685,8 +64689,6 @@ object-assign
                 // Raycast again for touch.
                 if (this.data.rayOrigin === 'mouse' && evt.type === 'touchstart') {
                     this.onMouseMove(evt);
-                    // this.onMouseMove(evt);
-                    //
                     this.el.components.raycaster.checkIntersections();
                     evt.preventDefault();
                 }
@@ -64713,8 +64715,11 @@ object-assign
                     this.cursorDownEl.emit(EVENTS.MOUSEUP, this.intersectedEventDetail);
                 }
 
-                if ((!data.fuse || data.rayOrigin === 'mouse') &&
+                // console.log("int", this.intersectedEl)
+                // console.log("cur", this.cursorDownEl)
+                if ((data.rayOrigin === 'mouse') &&
                     this.intersectedEl && this.cursorDownEl === this.intersectedEl) {
+                    console.log("CLICK")
                     this.twoWayEmit(EVENTS.CLICK);
                 }
 
@@ -67873,7 +67878,8 @@ object-assign
             INTERSECT: 'raycaster-intersected',
             INTERSECTION: 'raycaster-intersection',
             INTERSECT_CLEAR: 'raycaster-intersected-cleared',
-            INTERSECTION_CLEAR: 'raycaster-intersection-cleared'
+            INTERSECTION_CLEAR: 'raycaster-intersection-cleared',
+            INTERSECTION_CLOSEST_ENTITY_CHANGED: 'raycaster-closest-entity-changed'
         };
 
         /**
@@ -68121,6 +68127,16 @@ object-assign
                     this.intersectionDetail.els = newIntersectedEls;
                     this.intersectionDetail.intersections = newIntersections;
                     el.emit(EVENTS.INTERSECTION, this.intersectionDetail);
+                }
+
+                // Emit event when the closest intersected entity has changed.
+                if (prevIntersectedEls.length === 0 && intersections.length > 0 ||
+                    prevIntersectedEls.length > 0 && intersections.length === 0 ||
+                    (prevIntersectedEls.length && intersections.length &&
+                        prevIntersectedEls[0] !== intersections[0].object.el)) {
+                    this.intersectionDetail.els = this.intersectedEls;
+                    this.intersectionDetail.intersections = intersections;
+                    el.emit(EVENTS.INTERSECTION_CLOSEST_ENTITY_CHANGED, this.intersectionDetail);
                 }
 
                 // Update line length.
