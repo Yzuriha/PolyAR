@@ -13,21 +13,21 @@
     <script src="js/components/click-handler.js"></script>
     <script src="js/components/gesture-detector.js"></script>
     <script src="js/components/gesture-handler.js"></script>
-
+    <script src="js/components/marker-detection-handler.js"></script>
 
 
     <title>PolyAR - Lernen</title>
 </head>
 <body>
 <main class="lernen">
-<!--    <section class="navigation">-->
-<!--        <a href="index.html">-->
-<!--            <img class="navigation_back" src="assets/images/backarrow.svg" alt="back-button">-->
-<!--        </a>-->
-<!--    </section>-->
-<!--    <section class="information">-->
-<!--        <div>Halte deine Kamera über ein Bild :)</div>-->
-<!--    </section>-->
+    <!--    <section class="navigation">-->
+    <!--        <a href="index.html">-->
+    <!--            <img class="navigation_back" src="assets/images/backarrow.svg" alt="back-button">-->
+    <!--        </a>-->
+    <!--    </section>-->
+    <!--    <section class="information">-->
+    <!--        <div>Halte deine Kamera über ein Bild :)</div>-->
+    <!--    </section>-->
     <section class="interaction">
 
         <a-scene arjs="patternRatio: 0.85;"
@@ -37,10 +37,11 @@
                  vr-mode-ui="enabled: false"
                  id="scene">
             <a-assets>
-                <a-mixin id="wood" material="src: url(assets/texture.jpg)"></a-mixin>
-                <a-mixin id="stone" material="src: url(assets/texture.jpg)"></a-mixin>
+                <a-mixin id="wood" material="src: url(assets/textures/texture.jpg)"></a-mixin>
+                <a-mixin id="stone" material="src: url(assets/textures/texture.jpg)"></a-mixin>
 
-                <a-mixin id="raycaster" cursor="rayOrigin: mouse" raycaster="objects: .clickable" emitevents="true"></a-mixin>
+                <a-mixin id="raycaster" cursor="rayOrigin: mouse" raycaster="objects: .clickable"
+                         emitevents="true"></a-mixin>
 
                 <a-mixin id="square" a-four></a-mixin>
                 <a-mixin id="square-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
@@ -49,16 +50,20 @@
                 <a-mixin id="square-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
             </a-assets>
 
-<!--            <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-1.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel1">
+                      id="cube1">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
                     </a-entity>
                     <a-entity mixin="square-bot stone event"
                               position="0 1 0"
+                              id="test"
                               class="clickable">
                     </a-entity>
                     <a-entity mixin="square-right stone event"
@@ -78,12 +83,15 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
-<!--            <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel2">
+                      id="cube2">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -96,25 +104,28 @@
                                   class="clickable">
                         </a-entity>
                     </a-entity>
-                    <a-entity mixin="square-stone top"
+                    <a-entity mixin="square-top stone"
                               position="1 0 0"
                               class="clickable">
-                        <a-entity mixin="square-stone right"
+                        <a-entity mixin="square-right stone"
                                   position="-1 0 0"
                                   class="clickable">
-                            <a-entity mixin="square-stone top"
+                            <a-entity mixin="square-top stone"
                                       position="0 -1 0"
                                       class="clickable">
                             </a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
-<!--            <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-3.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel3">
+                      id="cube3">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -140,12 +151,15 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
-<!--            <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-4.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel4">
+                      id="cube4">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -171,12 +185,15 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
-<!--            <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-5.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel5">
+                      id="cube5">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -202,12 +219,15 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
-<!--            <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-6.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel6">
+                      id="cube6">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -233,12 +253,15 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
-<!--            <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-7.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel7">
+                      id="cube7">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -264,12 +287,15 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
- <!--           <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-8.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel8">
+                      id="cube8">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -295,12 +321,15 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
-  <!--          <a-marker mixin="raycaster"
-                      preset="hiro"
+            <a-marker mixin="raycaster"
+                      url="assets/marker/cube/pattern-cube-9.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel9">
+                      id="cube9">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -326,16 +355,16 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>-->
+            </a-marker>
 
 
-<!--            Pattern Ratio: 0.80; Image Size: 512px; 25 border; fill is best-->
             <a-marker mixin="raycaster"
-                      url="assets/marker/fillWBorderOC/85/pattern-10.patt"
+                      url="assets/marker/cube/pattern-cube-10.patt"
                       preset="custom"
                       type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel10">
+                      id="cube10">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -363,11 +392,13 @@
                 </a-entity>
             </a-marker>
 
-<!--
             <a-marker mixin="raycaster"
-                      preset="hiro"
+                      url="assets/marker/cube/pattern-cube-11.patt"
+                      preset="custom"
+                      type="pattern"
+                      marker-detection-handler
                       data-object-name="W Ü R F E L"
-                      id="wurfel11">
+                      id="cube11">
                 <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
                           gesture-handler>
                     <a-entity mixin="square stone">
@@ -394,8 +425,6 @@
                     </a-entity>
                 </a-entity>
             </a-marker>
--->
-
 
             <a-entity camera id="camera">
             </a-entity>
