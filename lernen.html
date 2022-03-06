@@ -37,10 +37,12 @@
                  custom-cursor
                  gesture-detector
                  vr-mode-ui="enabled: false"
+                 light="defaultLightsEnabled: false"
                  id="scene">
+            <!-- MIXINS -->
             <a-assets>
                 <a-mixin id="wood" material="src: url(assets/textures/texture.jpg)"></a-mixin>
-                <a-mixin id="stone" material="src: url(assets/textures/texture.jpg)"></a-mixin>
+                <a-mixin id="stone" material="src: url(assets/textures/stone3.jpg)"></a-mixin>
 
                 <a-mixin id="square" a-four></a-mixin>
                 <a-mixin id="square-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
@@ -49,6 +51,13 @@
                 <a-mixin id="square-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
             </a-assets>
 
+            <!-- CAMERA -->
+            <a-entity camera id="camera"></a-entity>
+
+            <a-entity light="intensity: 0.35; castShadow: true; type: directional" position="-0.5 1 1"></a-entity>
+            <a-entity light="intensity: 0.7; type: ambient"></a-entity>
+
+            <!-- CUBES -->
             <a-marker url="assets/marker/cube/pattern-cube-1.patt"
                       preset="custom"
                       type="pattern"
@@ -62,23 +71,22 @@
                     </a-entity>
                     <a-entity mixin="square-bot stone event"
                               position="0 1 0"
-                              id="test"
-                              class="clickable">
+                              data-tag="cube1">
                     </a-entity>
                     <a-entity mixin="square-right stone event"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube1">
                     </a-entity>
                     <a-entity mixin="square-left stone event"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube1">
                     </a-entity>
                     <a-entity mixin="square-top stone event"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube1">
                         <a-entity mixin="square-top stone event"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube1">
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -97,21 +105,21 @@
                     </a-entity>
                     <a-entity mixin="square-left stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube2">
                         <a-entity mixin="square-bot stone"
                                   position="0 1 0"
-                                  class="clickable">
+                                  data-tag="cube2">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube2">
                         <a-entity mixin="square-right stone"
                                   position="-1 0 0"
-                                  class="clickable">
+                                  data-tag="cube2">
                             <a-entity mixin="square-top stone"
                                       position="0 -1 0"
-                                      class="clickable">
+                                      data-tag="cube2">
                             </a-entity>
                         </a-entity>
                     </a-entity>
@@ -131,22 +139,22 @@
                     </a-entity>
                     <a-entity mixin="square-bot stone"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube3">
                         <a-entity mixin="square-right stone"
                                   position="0 1 0"
-                                  class="clickable">
+                                  data-tag="cube3">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-left stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube3">
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube3">
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube3">
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -165,22 +173,22 @@
                     </a-entity>
                     <a-entity mixin="square-bot stone"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube4">
                         <a-entity mixin="square-right stone"
                                   position="0 1 0"
-                                  class="clickable">
+                                  data-tag="cube4">
                         </a-entity>
                         <a-entity mixin="square-left stone"
                                   position="1 0 0"
-                                  class="clickable">
+                                  data-tag="cube4">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube4">
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube4">
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -199,21 +207,21 @@
                     </a-entity>
                     <a-entity mixin="square-bot stone"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube5">
                         <a-entity mixin="square-left stone"
                                   position="1 0 0"
-                                  class="clickable">
+                                  data-tag="cube5">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube5">
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube5">
                             <a-entity mixin="square-right stone"
                                       position="-1 0 0"
-                                      class="clickable">
+                                      data-tag="cube5">
                             </a-entity>
                         </a-entity>
                     </a-entity>
@@ -233,22 +241,22 @@
                     </a-entity>
                     <a-entity mixin="square-right stone"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube6">
                     </a-entity>
                     <a-entity mixin="square-left stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube6">
                         <a-entity mixin="square-bot stone"
                                   position="0 1 0"
-                                  class="clickable">
+                                  data-tag="cube6">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube6">
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube6">
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -267,22 +275,22 @@
                     </a-entity>
                     <a-entity mixin="square-bot stone"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube7">
                     </a-entity>
                     <a-entity mixin="square-left stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube7">
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube7">
                         <a-entity mixin="square-right stone"
                                   position="-1 0 0"
-                                  class="clickable">
+                                  data-tag="cube7">
                         </a-entity>
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube7">
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -301,21 +309,21 @@
                     </a-entity>
                     <a-entity mixin="square-left stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube8">
                         <a-entity mixin="square-bot stone"
                                   position="0 1 0"
-                                  class="clickable">
+                                  data-tag="cube8">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube8">
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube8">
                             <a-entity mixin="square-right stone"
                                       position="-1 0 0"
-                                      class="clickable">
+                                      data-tag="cube8">
                             </a-entity>
                         </a-entity>
                     </a-entity>
@@ -335,22 +343,22 @@
                     </a-entity>
                     <a-entity mixin="square-left stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube9">
                         <a-entity mixin="square-bot stone"
                                   position="0 1 0"
-                                  class="clickable">
+                                  data-tag="cube9">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube9">
                         <a-entity mixin="square-right stone"
                                   position="-1 0 0"
-                                  class="clickable">
+                                  data-tag="cube9">
                         </a-entity>
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube9">
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -369,21 +377,21 @@
                     </a-entity>
                     <a-entity mixin="square-bot stone"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube10">
                         <a-entity mixin="square-bot stone"
                                   position="0 1 0"
-                                  class="clickable">
+                                  data-tag="cube10">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-right stone"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube10">
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube10">
                             <a-entity mixin="square-top stone"
                                       position="0 -1 0"
-                                      class="clickable">
+                                      data-tag="cube10">
                             </a-entity>
                         </a-entity>
                     </a-entity>
@@ -403,29 +411,28 @@
                     </a-entity>
                     <a-entity mixin="square-bot stone"
                               position="0 1 0"
-                              class="clickable">
+                              data-tag="cube11">
                         <a-entity mixin="square-right stone"
                                   position="0 1 0"
-                                  class="clickable">
+                                  data-tag="cube11">
                         </a-entity>
                     </a-entity>
                     <a-entity mixin="square-top stone"
                               position="1 0 0"
-                              class="clickable">
+                              data-tag="cube11">
                         <a-entity mixin="square-left stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube11">
                         </a-entity>
                         <a-entity mixin="square-top stone"
                                   position="0 -1 0"
-                                  class="clickable">
+                                  data-tag="cube11">
                         </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
 
-            <a-entity camera id="camera">
-            </a-entity>
+            <!-- CUBLOIDS -->
         </a-scene>
 
     </section>
