@@ -13,6 +13,9 @@ AFRAME.registerComponent('a-four', {
         const square = new THREE.Shape();
         let rotationAxis = data.rotationAxis;
 
+        // console.log("doc", document.body.getBoundingClientRect());
+        // console.log("doc2", window.innerHeight, window.innerWidth);
+        // console.log("doc3", window.height, window.width);
         square.moveTo(0, 0);
         // rotationAxis === "bottom" || left
         square.lineTo(data.width, 0);

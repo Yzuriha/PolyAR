@@ -14,10 +14,11 @@
     <script src="js/components/gesture-detector.js"></script>
     <script src="js/components/gesture-handler.js"></script>
     <script src="js/components/marker-detection-handler.js"></script>
+    <script src="js/components/rescaler.js">//unneeded</script>
+    <script src="js/components/custom-cursor.js"></script>
 
 
     <title>PolyAR - Lernen</title>
-
 
 </head>
 <body>
@@ -37,15 +38,13 @@
 
         <a-scene arjs="patternRatio: 0.85;"
                  embedded
+                 custom-cursor
                  gesture-detector
                  vr-mode-ui="enabled: false"
                  id="scene">
             <a-assets>
                 <a-mixin id="wood" material="src: url(assets/textures/texture.jpg)"></a-mixin>
                 <a-mixin id="stone" material="src: url(assets/textures/texture.jpg)"></a-mixin>
-
-                <a-mixin id="raycaster" cursor="rayOrigin: mouse" raycaster="objects: .clickable"
-                         emitevents="true"></a-mixin>
 
                 <a-mixin id="square" a-four></a-mixin>
                 <a-mixin id="square-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
@@ -54,8 +53,7 @@
                 <a-mixin id="square-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
             </a-assets>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-1.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-1.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -89,8 +87,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-2.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-2.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -123,8 +120,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-3.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-3.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -157,8 +153,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-4.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-4.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -191,8 +186,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-5.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-5.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -225,8 +219,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-6.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-6.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -259,8 +252,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-7.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-7.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -293,8 +285,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-8.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-8.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -327,8 +318,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-9.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-9.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -361,9 +351,7 @@
                 </a-entity>
             </a-marker>
 
-
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-10.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-10.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
@@ -396,8 +384,7 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker mixin="raycaster"
-                      url="assets/marker/cube/pattern-cube-11.patt"
+            <a-marker url="assets/marker/cube/pattern-cube-11.patt"
                       preset="custom"
                       type="pattern"
                       marker-detection-handler
