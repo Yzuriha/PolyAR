@@ -39,11 +39,22 @@
                  vr-mode-ui="enabled: false"
                  light="defaultLightsEnabled: false"
                  id="scene">
-            <!-- MIXINS -->
+
+            <!-- GLOBAL ASSETS -->
             <a-assets>
                 <a-mixin id="wood" material="src: url(assets/textures/texture.jpg)"></a-mixin>
-                <a-mixin id="stone" material="src: url(assets/textures/stone3.jpg)"></a-mixin>
+                <a-mixin id="stone" material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5"></a-mixin>
+            </a-assets>
 
+            <!-- CAMERA -->
+            <a-entity camera id="camera"></a-entity>
+
+            <!-- LIGHTS -->
+            <a-entity light="intensity: 0.35; castShadow: true; type: directional" position="-0.5 1 1"></a-entity>
+            <a-entity light="intensity: 0.7; type: ambient"></a-entity>
+
+            <!-- CUBES -->
+            <a-assets>
                 <a-mixin id="square" a-four></a-mixin>
                 <a-mixin id="square-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
                 <a-mixin id="square-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
@@ -51,13 +62,6 @@
                 <a-mixin id="square-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
             </a-assets>
 
-            <!-- CAMERA -->
-            <a-entity camera id="camera"></a-entity>
-
-            <a-entity light="intensity: 0.35; castShadow: true; type: directional" position="-0.5 1 1"></a-entity>
-            <a-entity light="intensity: 0.7; type: ambient"></a-entity>
-
-            <!-- CUBES -->
             <a-marker url="assets/marker/cube/pattern-cube-1.patt"
                       preset="custom"
                       type="pattern"
@@ -433,6 +437,46 @@
             </a-marker>
 
             <!-- CUBLOIDS -->
+            <a-assets>
+
+                <a-mixin id="rect-hl" a-four="width: 1.5"></a-mixin>
+                <a-mixin id="rect-hm" a-four="width: 1.5; height: 0.5"></a-mixin>
+                <a-mixin id="rect-hs" a-four="height: 0.5"></a-mixin>
+
+                <a-mixin id="rect-vl" a-four="height: 1.5"></a-mixin>
+                <a-mixin id="rect-vm" a-four="height: 1.5; width: 0.5"></a-mixin>
+                <a-mixin id="rect-vs" a-four="width: 0.5"></a-mixin>
+
+                <a-mixin id="rect-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
+                <a-mixin id="rect-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
+                <a-mixin id="rect-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
+            </a-assets>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="Q U A D E R"
+                      id="cuboid2">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
+                          gesture-handler>
+                    <a-entity mixin="rect-hl stone"></a-entity>
+                    <a-entity mixin="rect-hm rect-bot stone"
+                              position="0 1 0"
+                              data-tag="cuboid2">
+                        <a-entity mixin="rect-hl rect-bot stone"
+                                  position="0 0.5 0"
+                                  data-tag="cuboid2">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-hm rect-top stone" position="1.5 0 0" data-tag="cuboid2">
+                        <a-entity mixin="rect-hs rect-right stone" position="-1.5 0 0" data-tag="cuboid2"></a-entity>
+                        <a-entity mixin="rect-hs rect-left stone" position="0 -0.5 0" data-tag="cuboid2"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
         </a-scene>
 
     </section>
