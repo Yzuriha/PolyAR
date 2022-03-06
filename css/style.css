@@ -38,77 +38,57 @@ a {
 .quiz {
   height: 100%;
 }
+.lernen .navigation,
+.quiz .navigation,
 .lernen .information,
 .quiz .information,
 .lernen .interaction,
 .quiz .interaction {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 1;
 }
 .lernen .navigation,
 .quiz .navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 30px;
+  margin: 10px;
 }
 .lernen .navigation .navigation_back,
 .quiz .navigation .navigation_back {
-  background-size: cover;
-  height: 100%;
+  height: 30px;
 }
 .lernen .information,
 .quiz .information {
+  position: fixed;
+  left: 0;
+  top: 50px;
+  right: 0;
   height: 50px;
+}
+.lernen .information .information__text,
+.quiz .information .information__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 .lernen .interaction,
 .quiz .interaction {
   height: 100%;
-  position: relative;
-}
-.lernen .interaction .interaction__scan-marker,
-.quiz .interaction .interaction__scan-marker {
-  width: 80vw;
-  height: 80vw;
-  position: absolute;
-  top: 10%;
-}
-.lernen .interaction .interaction__scan-marker.interaction__scan-marker--success .scan-marker-border,
-.quiz .interaction .interaction__scan-marker.interaction__scan-marker--success .scan-marker-border {
-  stroke: green;
-}
-.lernen .interaction .interaction__scan-marker.interaction__scan-marker--error .scan-marker-border,
-.quiz .interaction .interaction__scan-marker.interaction__scan-marker--error .scan-marker-border {
-  stroke: red;
-}
-.lernen .interaction .interaction__scan-marker .scan-marker-border,
-.quiz .interaction .interaction__scan-marker .scan-marker-border {
-  stroke: white;
-  fill: none;
-  stroke-width: 1;
-}
-.lernen .interaction .interaction__confirm,
-.quiz .interaction .interaction__confirm {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 2px solid white;
-  border-radius: 50%;
-  bottom: 10%;
 }
 .lernen .instruction,
 .quiz .instruction {
-  height: 75px;
-  display: grid;
-  justify-content: center;
-  text-align: center;
-}
-.lernen .instruction .instruction__progress,
-.quiz .instruction .instruction__progress {
-  height: 5px;
-  position: absolute;
+  position: fixed;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background-color: white;
+  height: 75px;
+}
+.lernen .instruction .instruction__text,
+.quiz .instruction .instruction__text {
+  text-align: center;
+  height: 100%;
 }
 .center {
   display: flex;

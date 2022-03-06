@@ -53,77 +53,50 @@ a {
 .lernen, .quiz {
   height: 100%;
 
-  .information, .interaction {
-    .center();
+  .navigation, .information, .interaction {
+    // Text should always be above Marker
+    z-index: 1;
   }
 
   .navigation {
-    height: 30px;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: @navigation-height;
+    margin: 10px;
     .navigation_back {
-      background-size: cover;
-      height: 100%;
+      height: @navigation-height;
     }
   }
 
   .information {
-    height: 50px;
+    position: fixed;
+    left: 0;
+    top: 50px;
+    right: 0;
+    height: @information-height;
+    .information__text {
+      .center();
+      height: 100%;
+    }
   }
 
   .interaction {
-    //height: calc(100% - @navigation-height - @information-height - @instruction-height);
     height: 100%;
-    //top: - @navigation-height - @information-height;
-    position: relative;
-
-    .interaction__scan-marker {
-      width: 80vw;
-      height: 80vw;
-      position: absolute;
-      top: 10%;
-
-      &.interaction__scan-marker--success .scan-marker-border {
-        stroke: green;
-      }
-
-      &.interaction__scan-marker--error .scan-marker-border {
-        stroke: red;
-      }
-
-      .scan-marker-border {
-        stroke: white;
-        fill: none;
-        stroke-width: 1;
-      }
-    }
-
-    .interaction__confirm {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      border: 2px solid white;
-      border-radius: 50%;
-      bottom: 10%;
-    }
   }
 
   .instruction {
-    height: 75px;
-    display: grid;
-    justify-content: center;
-    text-align: center;
-
-    .instruction__progress {
-      height: 5px;
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: @instruction-height;
+    .instruction__text {
+      text-align: center;
+      height: 100%;
     }
   }
 }
-
 
 .center {
   display: flex;

@@ -14,7 +14,6 @@
     <script src="js/components/gesture-detector.js"></script>
     <script src="js/components/gesture-handler.js"></script>
     <script src="js/components/marker-detection-handler.js"></script>
-    <script src="js/components/rescaler.js">//unneeded</script>
     <script src="js/components/custom-cursor.js"></script>
 
 
@@ -23,17 +22,14 @@
 </head>
 <body>
 <main class="lernen">
-
-    <div id="curse"></div>
-
-    <!--    <section class="navigation">-->
-    <!--        <a href="index.html">-->
-    <!--            <img class="navigation_back" src="assets/images/backarrow.svg" alt="back-button">-->
-    <!--        </a>-->
-    <!--    </section>-->
-    <!--    <section class="information">-->
-    <!--        <div>Halte deine Kamera über ein Bild :)</div>-->
-    <!--    </section>-->
+    <section class="navigation">
+        <a href="index.html">
+            <img class="navigation_back" src="assets/images/backarrow.svg" alt="back-button">
+        </a>
+    </section>
+    <section class="information">
+        <div class="information__text"></div>
+    </section>
     <section class="interaction">
 
         <a-scene arjs="patternRatio: 0.85;"
@@ -434,7 +430,7 @@
 
     </section>
     <section class="instruction">
-        <div>W Ü R F E L</div>
+        <div class="instruction__text"></div>
     </section>
 </main>
 </body>
