@@ -10,6 +10,8 @@ AFRAME.registerComponent("marker-detection-handler", {
 
             // Set the Instruction Text to the Name of the Polyhedron
             document.querySelector(".instruction__text").innerText = this.el.getAttribute("data-object-name")
+            // Fade in the name
+            document.querySelector(".instruction__text").classList.remove("no-opacity")
         });
 
         this.el.addEventListener("markerLost", (e) => {
@@ -18,8 +20,12 @@ AFRAME.registerComponent("marker-detection-handler", {
                 allClickableEntities[i].classList.remove("clickable")
             }
 
+            // Fade Out the name
+            document.querySelector(".instruction__text").classList.add("no-opacity")
             // Remove the Text when Marker is list
-            document.querySelector(".instruction__text").innerText = ""
+            setTimeout(() => {
+                document.querySelector(".instruction__text").innerText = ""
+            }, 500) // fade out takes 500ms
         });
     },
 });
