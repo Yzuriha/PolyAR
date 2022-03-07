@@ -43,9 +43,12 @@
             <!-- GLOBAL ASSETS -->
             <a-assets>
                 <a-mixin id="wood" material="src: url(assets/textures/texture.jpg)"></a-mixin>
-                <a-mixin id="red" material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #950000"></a-mixin>
-                <a-mixin id="green" material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #008363"></a-mixin>
-                <a-mixin id="blue" material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #003293"></a-mixin>
+                <a-mixin id="red"
+                         material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #950000"></a-mixin>
+                <a-mixin id="green"
+                         material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #008363"></a-mixin>
+                <a-mixin id="blue"
+                         material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #003293"></a-mixin>
             </a-assets>
 
             <!-- CAMERA -->
@@ -71,29 +74,13 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube1">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square red">
-                    </a-entity>
-                    <a-entity mixin="square-bot green event"
-                              position="0 1 0"
-                              data-tag="cube1">
-                    </a-entity>
-                    <a-entity mixin="square-right blue event"
-                              position="0 1 0"
-                              data-tag="cube1">
-                    </a-entity>
-                    <a-entity mixin="square-left blue event"
-                              position="1 0 0"
-                              data-tag="cube1">
-                    </a-entity>
-                    <a-entity mixin="square-top green event"
-                              position="1 0 0"
-                              data-tag="cube1">
-                        <a-entity mixin="square-top blue event"
-                                  position="0 -1 0"
-                                  data-tag="cube1">
-                        </a-entity>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green event" position="0 1 0" data-tag="cube1"></a-entity>
+                    <a-entity mixin="square-right blue event" position="0 1 0" data-tag="cube1"></a-entity>
+                    <a-entity mixin="square-left blue event" position="1 0 0" data-tag="cube1"></a-entity>
+                    <a-entity mixin="square-top green event" position="1 0 0" data-tag="cube1">
+                        <a-entity mixin="square-top blue event" position="0 -1 0" data-tag="cube1"></a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -105,27 +92,14 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube2">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="square blue"></a-entity>
-                    <a-entity mixin="square-left red"
-                              position="1 0 0"
-                              data-tag="cube2">
-                        <a-entity mixin="square-bot green"
-                                  position="0 1 0"
-                                  data-tag="cube2">
-                        </a-entity>
+                    <a-entity mixin="square-left red" position="1 0 0" data-tag="cube2">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube2"></a-entity>
                     </a-entity>
-                    <a-entity mixin="square-top green"
-                              position="1 0 0"
-                              data-tag="cube2">
-                        <a-entity mixin="square-right red"
-                                  position="-1 0 0"
-                                  data-tag="cube2">
-                            <a-entity mixin="square-top blue"
-                                      position="0 -1 0"
-                                      data-tag="cube2">
-                            </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube2">
+                        <a-entity mixin="square-right red" position="-1 0 0" data-tag="cube2">
+                            <a-entity mixin="square-top blue" position="0 -1 0" data-tag="cube2"></a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -138,29 +112,15 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube3">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square red">
-                    </a-entity>
-                    <a-entity mixin="square-bot green"
-                              position="0 1 0"
-                              data-tag="cube3">
-                        <a-entity mixin="square-right blue"
-                                  position="0 1 0"
-                                  data-tag="cube3">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube3">
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube3">
                         </a-entity>
                     </a-entity>
-                    <a-entity mixin="square-left blue"
-                              position="1 0 0"
-                              data-tag="cube3">
-                    </a-entity>
-                    <a-entity mixin="square-top green"
-                              position="1 0 0"
-                              data-tag="cube3">
-                        <a-entity mixin="square-top red"
-                                  position="0 -1 0"
-                                  data-tag="cube3">
-                        </a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube3"></a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube3">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube3"></a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -172,29 +132,14 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube4">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square green">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square green"></a-entity>
+                    <a-entity mixin="square-bot red" position="0 1 0" data-tag="cube4">
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube4"></a-entity>
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube4"></a-entity>
                     </a-entity>
-                    <a-entity mixin="square-bot red"
-                              position="0 1 0"
-                              data-tag="cube4">
-                        <a-entity mixin="square-right blue"
-                                  position="0 1 0"
-                                  data-tag="cube4">
-                        </a-entity>
-                        <a-entity mixin="square-left blue"
-                                  position="1 0 0"
-                                  data-tag="cube4">
-                        </a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top red"
-                              position="1 0 0"
-                              data-tag="cube4">
-                        <a-entity mixin="square-top green"
-                                  position="0 -1 0"
-                                  data-tag="cube4">
-                        </a-entity>
+                    <a-entity mixin="square-top red" position="1 0 0" data-tag="cube4">
+                        <a-entity mixin="square-top green" position="0 -1 0" data-tag="cube4"></a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -206,28 +151,14 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube5">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square red">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube5">
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube5"></a-entity>
                     </a-entity>
-                    <a-entity mixin="square-bot green"
-                              position="0 1 0"
-                              data-tag="cube5">
-                        <a-entity mixin="square-left blue"
-                                  position="1 0 0"
-                                  data-tag="cube5">
-                        </a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green"
-                              position="1 0 0"
-                              data-tag="cube5">
-                        <a-entity mixin="square-top red"
-                                  position="0 -1 0"
-                                  data-tag="cube5">
-                            <a-entity mixin="square-right blue"
-                                      position="-1 0 0"
-                                      data-tag="cube5">
-                            </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube5">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube5">
+                            <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube5"></a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -240,29 +171,14 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube6">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square red">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube6"></a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube6">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube6"></a-entity>
                     </a-entity>
-                    <a-entity mixin="square-right blue"
-                              position="0 1 0"
-                              data-tag="cube6">
-                    </a-entity>
-                    <a-entity mixin="square-left blue"
-                              position="1 0 0"
-                              data-tag="cube6">
-                        <a-entity mixin="square-bot green"
-                                  position="0 1 0"
-                                  data-tag="cube6">
-                        </a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green"
-                              position="1 0 0"
-                              data-tag="cube6">
-                        <a-entity mixin="square-top red"
-                                  position="0 -1 0"
-                                  data-tag="cube6">
-                        </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube6">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube6"></a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -274,29 +190,13 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube7">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square red">
-                    </a-entity>
-                    <a-entity mixin="square-bot green"
-                              position="0 1 0"
-                              data-tag="cube7">
-                    </a-entity>
-                    <a-entity mixin="square-left blue"
-                              position="1 0 0"
-                              data-tag="cube7">
-                    </a-entity>
-                    <a-entity mixin="square-top green"
-                              position="1 0 0"
-                              data-tag="cube7">
-                        <a-entity mixin="square-right blue"
-                                  position="-1 0 0"
-                                  data-tag="cube7">
-                        </a-entity>
-                        <a-entity mixin="square-top red"
-                                  position="0 -1 0"
-                                  data-tag="cube7">
-                        </a-entity>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube7"></a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube7"></a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube7">
+                        <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube7"></a-entity>
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube7"></a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -308,28 +208,14 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube8">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square red">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube8">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube8"></a-entity>
                     </a-entity>
-                    <a-entity mixin="square-left blue"
-                              position="1 0 0"
-                              data-tag="cube8">
-                        <a-entity mixin="square-bot green"
-                                  position="0 1 0"
-                                  data-tag="cube8">
-                        </a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green"
-                              position="1 0 0"
-                              data-tag="cube8">
-                        <a-entity mixin="square-top red"
-                                  position="0 -1 0"
-                                  data-tag="cube8">
-                            <a-entity mixin="square-right blue"
-                                      position="-1 0 0"
-                                      data-tag="cube8">
-                            </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube8">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube8">
+                            <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube8"></a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -342,29 +228,14 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube9">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square red">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube9">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube9"></a-entity>
                     </a-entity>
-                    <a-entity mixin="square-left blue"
-                              position="1 0 0"
-                              data-tag="cube9">
-                        <a-entity mixin="square-bot green"
-                                  position="0 1 0"
-                                  data-tag="cube9">
-                        </a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green"
-                              position="1 0 0"
-                              data-tag="cube9">
-                        <a-entity mixin="square-right blue"
-                                  position="-1 0 0"
-                                  data-tag="cube9">
-                        </a-entity>
-                        <a-entity mixin="square-top red"
-                                  position="0 -1 0"
-                                  data-tag="cube9">
-                        </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube9">
+                        <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube9"></a-entity>
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube9"></a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -376,28 +247,14 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube10">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square green">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square green"></a-entity>
+                    <a-entity mixin="square-bot red" position="0 1 0" data-tag="cube10">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube10"></a-entity>
                     </a-entity>
-                    <a-entity mixin="square-bot red"
-                              position="0 1 0"
-                              data-tag="cube10">
-                        <a-entity mixin="square-bot green"
-                                  position="0 1 0"
-                                  data-tag="cube10">
-                        </a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-right blue"
-                              position="0 1 0"
-                              data-tag="cube10">
-                        <a-entity mixin="square-top red"
-                                  position="0 -1 0"
-                                  data-tag="cube10">
-                            <a-entity mixin="square-top blue"
-                                      position="0 -1 0"
-                                      data-tag="cube10">
-                            </a-entity>
+                    <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube10">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube10">
+                            <a-entity mixin="square-top blue" position="0 -1 0" data-tag="cube10"></a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -410,29 +267,14 @@
                       marker-detection-handler
                       data-object-name="W Ü R F E L"
                       id="cube11">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
-                    <a-entity mixin="square red">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube11">
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube11"></a-entity>
                     </a-entity>
-                    <a-entity mixin="square-bot green"
-                              position="0 1 0"
-                              data-tag="cube11">
-                        <a-entity mixin="square-right blue"
-                                  position="0 1 0"
-                                  data-tag="cube11">
-                        </a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green"
-                              position="1 0 0"
-                              data-tag="cube11">
-                        <a-entity mixin="square-left blue"
-                                  position="0 -1 0"
-                                  data-tag="cube11">
-                        </a-entity>
-                        <a-entity mixin="square-top red"
-                                  position="0 -1 0"
-                                  data-tag="cube11">
-                        </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube11">
+                        <a-entity mixin="square-left blue" position="0 -1 0" data-tag="cube11"></a-entity>
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube11"></a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -461,16 +303,10 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid2">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hl green"></a-entity>
-                    <a-entity mixin="rect-hm rect-bot red"
-                              position="0 1 0"
-                              data-tag="cuboid2">
-                        <a-entity mixin="rect-hl rect-bot green"
-                                  position="0 0.5 0"
-                                  data-tag="cuboid2">
-                        </a-entity>
+                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid2">
+                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid2"></a-entity>
                     </a-entity>
                     <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid2"></a-entity>
                     <a-entity mixin="rect-vs rect-right blue" position="0 1 0" data-tag="cuboid2"></a-entity>
@@ -485,29 +321,15 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid4">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hl green"></a-entity>
-                    <a-entity mixin="rect-hm rect-bot red"
-                              position="0 1 0"
-                              data-tag="cuboid4">
-                        <a-entity mixin="rect-hl rect-bot green"
-                                  position="0 0.5 0"
-                                  data-tag="cuboid4">
-                        </a-entity>
+                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid4">
+                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid4"></a-entity>
                     </a-entity>
-                    <a-entity mixin="rect-hm rect-top red"
-                              position="1.5 0 0"
-                              data-tag="cuboid4">
-                        <a-entity mixin="rect-hs rect-right blue"
-                                  position="-1.5 0 0"
-                                  data-tag="cuboid4">
-                        </a-entity>
+                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid4">
+                        <a-entity mixin="rect-hs rect-right blue" position="-1.5 0 0" data-tag="cuboid4"></a-entity>
                     </a-entity>
-                    <a-entity mixin="rect-vs rect-left blue"
-                              position="1.5 0 0"
-                              data-tag="cuboid4">
-                    </a-entity>
+                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid4"></a-entity>
                 </a-entity>
             </a-marker>
 
@@ -518,28 +340,15 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid9">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hl green"></a-entity>
-                    <a-entity mixin="rect-hm rect-bot red"
-                              position="0 1 0"
-                              data-tag="cuboid9">
-                        <a-entity mixin="rect-hl rect-bot green"
-                                  position="0 0.5 0"
-                                  data-tag="cuboid9">
-                            <a-entity mixin="rect-vs rect-left blue"
-                                      position="1.5 0 0"
-                                      data-tag="cuboid9">
-                            </a-entity>
+                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid9">
+                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid9">
+                            <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid9"></a-entity>
                         </a-entity>
                     </a-entity>
-                    <a-entity mixin="rect-hm rect-top red"
-                              position="1.5 0 0"
-                              data-tag="cuboid9">
-                        <a-entity mixin="rect-hs rect-right blue"
-                                  position="-1.5 0 0"
-                                  data-tag="cuboid9">
-                        </a-entity>
+                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid9">
+                        <a-entity mixin="rect-hs rect-right blue" position="-1.5 0 0" data-tag="cuboid9"></a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -551,11 +360,10 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid15">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-vm red"></a-entity>
                     <a-entity mixin="rect-vs rect-bot blue" position="0 1.5 0" data-tag="cuboid15">
-                        <a-entity mixin="rect-vm rect-bot red" position="0 0.5 0" data-tag="cuboid15"></a-entity>
+                        <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid15"></a-entity>
                         <a-entity mixin="rect-hl rect-left green" position="0.5 0 0" data-tag="cuboid15"></a-entity>
                     </a-entity>
                     <a-entity mixin="rect-vl rect-right green" position="0 1.5 0" data-tag="cuboid15"></a-entity>
@@ -570,8 +378,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid19">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-vm red"></a-entity>
                     <a-entity mixin="rect-vs rect-bot blue" position="0 1.5 0" data-tag="cuboid19">
                         <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid19">
@@ -591,8 +398,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid24">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hm red"></a-entity>
                     <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid24">
                         <a-entity mixin="rect-vs rect-right blue" position="0 1 0" data-tag="cuboid24"></a-entity>
@@ -611,8 +417,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid27">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hl green"></a-entity>
                     <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid27">
                         <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid27"></a-entity>
@@ -632,8 +437,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid33">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-vs blue"></a-entity>
                     <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid33">
                         <a-entity mixin="rect-vl rect-left green" position="0.5 0 0" data-tag="cuboid33"></a-entity>
@@ -653,8 +457,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid35">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hs blue"></a-entity>
                     <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid35">
                         <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid35"></a-entity>
@@ -673,8 +476,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid39">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hs blue"></a-entity>
                     <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid39">
                         <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid39"></a-entity>
@@ -692,8 +494,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid45">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hl green"></a-entity>
                     <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid45">
                         <a-entity mixin="rect-hs rect-right blue" position="0 0.5 0" data-tag="cuboid45">
@@ -713,8 +514,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid49">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hs blue"></a-entity>
                     <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid49">
                         <a-entity mixin="rect-vm rect-right red" position="0 1.5 0" data-tag="cuboid49">
@@ -734,8 +534,7 @@
                       marker-detection-handler
                       data-object-name="Q U A D E R"
                       id="cuboid52">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5"
-                          gesture-handler>
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
                     <a-entity mixin="rect-hs blue"></a-entity>
                     <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid52">
                         <a-entity mixin="rect-vm rect-right red" position="0 1.5 0" data-tag="cuboid52"></a-entity>

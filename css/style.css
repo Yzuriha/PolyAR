@@ -53,6 +53,7 @@ a {
   left: 0;
   height: 30px;
   margin: 10px;
+  opacity: 0.7;
 }
 .lernen .navigation .navigation_back,
 .quiz .navigation .navigation_back {
@@ -65,17 +66,59 @@ a {
   top: 50px;
   right: 0;
   height: 50px;
+  opacity: 0.7;
 }
 .lernen .information .information__text,
 .quiz .information .information__text {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s ease;
   height: 100%;
 }
 .lernen .interaction,
 .quiz .interaction {
   height: 100%;
+}
+.lernen .interaction .interaction__functions,
+.quiz .interaction .interaction__functions {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 1;
+}
+.lernen .interaction .interaction__functions .interaction__scan-marker,
+.quiz .interaction .interaction__functions .interaction__scan-marker {
+  width: 80vw;
+  height: 80vw;
+}
+.lernen .interaction .interaction__functions .interaction__scan-marker .scan-marker-border,
+.quiz .interaction .interaction__functions .interaction__scan-marker .scan-marker-border {
+  transition: stroke 0.5s ease;
+}
+.lernen .interaction .interaction__functions .interaction__scan-marker .interaction__scan-marker-svg,
+.quiz .interaction .interaction__functions .interaction__scan-marker .interaction__scan-marker-svg {
+  width: 100%;
+  height: 100%;
+}
+.lernen .interaction .interaction__functions .interaction__scan-marker.interaction__scan-marker--success .scan-marker-border,
+.quiz .interaction .interaction__functions .interaction__scan-marker.interaction__scan-marker--success .scan-marker-border {
+  stroke: #008363;
+}
+.lernen .interaction .interaction__functions .interaction__scan-marker.interaction__scan-marker--error .scan-marker-border,
+.quiz .interaction .interaction__functions .interaction__scan-marker.interaction__scan-marker--error .scan-marker-border {
+  stroke: #950000;
+}
+.lernen .interaction .interaction__functions .interaction__scan-marker.interaction__scan-marker--info .scan-marker-border,
+.quiz .interaction .interaction__functions .interaction__scan-marker.interaction__scan-marker--info .scan-marker-border {
+  stroke: #003293;
+}
+.lernen .interaction .interaction__functions .interaction__confirm,
+.quiz .interaction .interaction__functions .interaction__confirm {
+  width: 40px;
+  height: 40px;
+  border: 3px solid white;
+  margin: 40px auto;
+  border-radius: 50%;
 }
 .lernen .instruction,
 .quiz .instruction {
@@ -84,15 +127,34 @@ a {
   left: 0;
   right: 0;
   height: 75px;
+  opacity: 0.7;
 }
 .lernen .instruction .instruction__text,
-.quiz .instruction .instruction__text {
+.quiz .instruction .instruction__text,
+.lernen .instruction .instruction__counter,
+.quiz .instruction .instruction__counter {
   text-align: center;
-  height: 100%;
+  transition: opacity 0.5s ease;
+  margin: 5px;
+}
+.lernen .instruction .instruction__progress,
+.quiz .instruction .instruction__progress {
+  position: absolute;
+  background-color: white;
+  bottom: 0;
+  height: 5px;
+  width: 0;
+  transition: all 0.5s ease;
 }
 .center {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.hidden {
+  visibility: hidden;
+}
+.no-opacity {
+  opacity: 0;
 }
 /*# sourceMappingURL=style.css.map */

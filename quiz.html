@@ -11,6 +11,11 @@
     <!-- Custom Components-->
     <script src="js/components/a-four.js"></script>
     <script src="js/components/click-handler.js"></script>
+    <script src="js/components/gesture-detector.js"></script>
+    <script src="js/components/gesture-handler.js"></script>
+<!--    <script src="js/components/marker-detection-handler.js"></script>-->
+    <script src="js/components/custom-cursor.js"></script>
+
 
     <title>PolyAR - Quiz</title>
 </head>
@@ -22,85 +27,552 @@
         </a>
     </section>
     <section class="information">
-        <div>Das Bild wurde schonmal gefunden</div>
+        <div class="information__text"></div>
     </section>
-    <section class="interaction">
-   <!--     <div class="interaction__scan-marker">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path class="scan-marker-border" d="M25,2 L2,2 L2,25"/>
-                <path class="scan-marker-border" d="M2,75 L2,98 L25,98"/>
-                <path class="scan-marker-border" d="M75,98 L98,98 L98,75"/>
-                <path class="scan-marker-border" d="M98,25 L98,2 L75,2"/>
-            </svg>
+    <section class="interaction center">
+
+        <div class="interaction__functions">
+            <div class="interaction__scan-marker">
+                <svg width="209" height="209" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"
+                     class="interaction__scan-marker-svg">
+                    <path class="scan-marker-border" d="M25,2 L2,2 L2,25" fill="none" stroke="white" stroke-width="1"/>
+                    <path class="scan-marker-border" d="M2,75 L2,98 L25,98" fill="none" stroke="white"
+                          stroke-width="1"/>
+                    <path class="scan-marker-border" d="M75,98 L98,98 L98,75" fill="none" stroke="white"
+                          stroke-width="1"/>
+                    <path class="scan-marker-border" d="M98,25 L98,2 L75,2" fill="none" stroke="white"
+                          stroke-width="1"/>
+                </svg>
+            </div>
+            <div class="interaction__confirm hidden"></div>
         </div>
-        <div class="interaction__confirm"></div>
-        <img src="assets/images/placeholderCube.svg" alt="placeholder-cube">-->
 
 
-        <a-scene
-                arjs
-                embedded
-                renderer="logarithmicDepthBuffer: true;"
-                vr-mode-ui="enabled: false"
-                id="scene">
+        <a-scene arjs="patternRatio: 0.85;"
+                 embedded
+                 custom-cursor
+                 gesture-detector
+                 vr-mode-ui="enabled: false"
+                 light="defaultLightsEnabled: false"
+                 id="scene">
+
+            <!-- GLOBAL ASSETS -->
             <a-assets>
-                <a-mixin id="standard-square-blue" a-square="color: #36A3EB"></a-mixin>
-                <a-mixin id="standard-square-green" a-square="color: #9DE0AD"></a-mixin>
-                <a-mixin id="top" a-square="rotationAxis: top"></a-mixin>
-                <a-mixin id="left" a-square="rotationAxis: left"></a-mixin>
-                <a-mixin id="right" a-square="rotationAxis: right"></a-mixin>
+                <a-mixin id="wood" material="src: url(assets/textures/texture.jpg)"></a-mixin>
+                <a-mixin id="red"
+                         material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #950000"></a-mixin>
+                <a-mixin id="green"
+                         material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #008363"></a-mixin>
+                <a-mixin id="blue"
+                         material="src: url(assets/textures/stone3.jpg); repeat: 0.5 0.5; color: #003293"></a-mixin>
             </a-assets>
-            <a-marker cursor="rayOrigin: mouse"
-                      raycaster="objects: .clickable"
-                    preset="hiro"
-                    emitevents="true"
-                    id="markerA">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5">
-                    <a-entity mixin="standard-square-blue"
-                              id="first">
+
+            <!-- CAMERA -->
+            <a-entity camera id="camera"></a-entity>
+
+            <!-- LIGHTS -->
+            <a-entity light="intensity: 0.35; castShadow: true; type: directional" position="-0.5 1 1"></a-entity>
+            <a-entity light="intensity: 0.7; type: ambient"></a-entity>
+
+            <!-- CUBES -->
+            <a-assets>
+                <a-mixin id="square" a-four></a-mixin>
+                <a-mixin id="square-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
+                <a-mixin id="square-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="square-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
+                <a-mixin id="square-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
+            </a-assets>
+
+            <a-marker url="assets/marker/cube/pattern-cube-1.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube1">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green event" position="0 1 0" data-tag="cube1"></a-entity>
+                    <a-entity mixin="square-right blue event" position="0 1 0" data-tag="cube1"></a-entity>
+                    <a-entity mixin="square-left blue event" position="1 0 0" data-tag="cube1"></a-entity>
+                    <a-entity mixin="square-top green event" position="1 0 0" data-tag="cube1">
+                        <a-entity mixin="square-top blue event" position="0 -1 0" data-tag="cube1"></a-entity>
                     </a-entity>
-                    <a-entity mixin="standard-square-green"
-                              position="0 1 0"
-                              id="second"
-                              class="clickable"
-                              click-handler="rotation: 90 0 0">
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube2">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square blue"></a-entity>
+                    <a-entity mixin="square-left red" position="1 0 0" data-tag="cube2">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube2"></a-entity>
                     </a-entity>
-                    <a-entity mixin="standard-square-green right"
-                              position="0 0 0"
-                              id="third"
-                              class="clickable"
-                              click-handler="rotation: 0 90 0">
-                    </a-entity>
-                    <a-entity mixin="standard-square-green left"
-                              position="1 0 0"
-                              id="fourth"
-                              class="clickable"
-                              click-handler="rotation: 0 -90 0">
-                    </a-entity>
-                    <a-entity mixin="standard-square-green top"
-                              position="0 0 0"
-                              id="fifth"
-                              class="clickable"
-                              click-handler="rotation: -90 0 0">
-                        <a-entity mixin="standard-square-blue top"
-                                  position="0 -1 0"
-                                  id="sixth"
-                                  class="clickable"
-                                  click-handler="rotation: -90 0 0">
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube2">
+                        <a-entity mixin="square-right red" position="-1 0 0" data-tag="cube2">
+                            <a-entity mixin="square-top blue" position="0 -1 0" data-tag="cube2"></a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
-
             </a-marker>
-            <a-entity camera id="camera">
-            </a-entity>
+
+            <a-marker url="assets/marker/cube/pattern-cube-3.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube3">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube3">
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube3">
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube3"></a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube3">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube3"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-4.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube4">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square green"></a-entity>
+                    <a-entity mixin="square-bot red" position="0 1 0" data-tag="cube4">
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube4"></a-entity>
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube4"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top red" position="1 0 0" data-tag="cube4">
+                        <a-entity mixin="square-top green" position="0 -1 0" data-tag="cube4"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-5.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube5">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube5">
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube5"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube5">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube5">
+                            <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube5"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-6.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube6">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube6"></a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube6">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube6"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube6">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube6"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-7.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube7">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube7"></a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube7"></a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube7">
+                        <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube7"></a-entity>
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube7"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-8.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube8">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube8">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube8"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube8">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube8">
+                            <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube8"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-9.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube9">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube9">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube9"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube9">
+                        <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube9"></a-entity>
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube9"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-10.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube10">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square green"></a-entity>
+                    <a-entity mixin="square-bot red" position="0 1 0" data-tag="cube10">
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube10"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube10">
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube10">
+                            <a-entity mixin="square-top blue" position="0 -1 0" data-tag="cube10"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cube/pattern-cube-11.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="W Ü R F E L"
+                      data-type="cube"
+                      id="cube11">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="square red"></a-entity>
+                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube11">
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube11"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube11">
+                        <a-entity mixin="square-left blue" position="0 -1 0" data-tag="cube11"></a-entity>
+                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube11"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!-- CUBLOIDS -->
+            <a-assets>
+
+                <a-mixin id="rect-hl" a-four="width: 1.5"></a-mixin>
+                <a-mixin id="rect-hm" a-four="width: 1.5; height: 0.5"></a-mixin>
+                <a-mixin id="rect-hs" a-four="height: 0.5"></a-mixin>
+
+                <a-mixin id="rect-vl" a-four="height: 1.5"></a-mixin>
+                <a-mixin id="rect-vm" a-four="height: 1.5; width: 0.5"></a-mixin>
+                <a-mixin id="rect-vs" a-four="width: 0.5"></a-mixin>
+
+                <a-mixin id="rect-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
+                <a-mixin id="rect-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
+                <a-mixin id="rect-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
+            </a-assets>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid2">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hl green"></a-entity>
+                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid2">
+                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid2"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid2"></a-entity>
+                    <a-entity mixin="rect-vs rect-right blue" position="0 1 0" data-tag="cuboid2"></a-entity>
+                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid2"></a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-4.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid4">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hl green"></a-entity>
+                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid4">
+                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid4"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid4">
+                        <a-entity mixin="rect-hs rect-right blue" position="-1.5 0 0" data-tag="cuboid4"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid4"></a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-9.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid9">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hl green"></a-entity>
+                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid9">
+                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid9">
+                            <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid9"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid9">
+                        <a-entity mixin="rect-hs rect-right blue" position="-1.5 0 0" data-tag="cuboid9"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-15.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid15">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-vm red"></a-entity>
+                    <a-entity mixin="rect-vs rect-bot blue" position="0 1.5 0" data-tag="cuboid15">
+                        <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid15"></a-entity>
+                        <a-entity mixin="rect-hl rect-left green" position="0.5 0 0" data-tag="cuboid15"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-vl rect-right green" position="0 1.5 0" data-tag="cuboid15"></a-entity>
+                    <a-entity mixin="rect-vs rect-top blue" position="0.5 0 0" data-tag="cuboid15"></a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-19.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid19">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-vm red"></a-entity>
+                    <a-entity mixin="rect-vs rect-bot blue" position="0 1.5 0" data-tag="cuboid19">
+                        <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid19">
+                            <a-entity mixin="rect-vl rect-left green" position="0.5 0 0" data-tag="cuboid19"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-vs rect-top blue" position="0.5 0 0" data-tag="cuboid19">
+                        <a-entity mixin="rect-hl rect-right green" position="-0.5 0 0" data-tag="cuboid19"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-24.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid24">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hm red"></a-entity>
+                    <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid24">
+                        <a-entity mixin="rect-vs rect-right blue" position="0 1 0" data-tag="cuboid24"></a-entity>
+                        <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid24"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-hs rect-left blue" position="1.5 0 0" data-tag="cuboid24">
+                        <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid24"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-27.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid27">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hl green"></a-entity>
+                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid27">
+                        <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid27"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid27">
+                        <a-entity mixin="rect-hl rect-top green" position="0 -0.5 0" data-tag="cuboid27">
+                            <a-entity mixin="rect-vs rect-right blue" position="-1.5 0 0"
+                                      data-tag="cuboid27"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-33.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid33">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-vs blue"></a-entity>
+                    <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid33">
+                        <a-entity mixin="rect-vl rect-left green" position="0.5 0 0" data-tag="cuboid33"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-vm rect-top red" position="0.5 0 0" data-tag="cuboid33">
+                        <a-entity mixin="rect-vl rect-right green" position="-0.5 0 0" data-tag="cuboid33">
+                            <a-entity mixin="rect-hs rect-top blue" position="0 -1.5 0" data-tag="cuboid33"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-35.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid35">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hs blue"></a-entity>
+                    <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid35">
+                        <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid35"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid35">
+                        <a-entity mixin="rect-vm rect-right red" position="-1 0 0" data-tag="cuboid35"></a-entity>
+                        <a-entity mixin="rect-vm rect-left red" position="0 -1.5 0" data-tag="cuboid35"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-39.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid39">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hs blue"></a-entity>
+                    <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid39">
+                        <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid39"></a-entity>
+                        <a-entity mixin="rect-vm rect-left red" position="1 0 0" data-tag="cuboid39"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid39"></a-entity>
+                    <a-entity mixin="rect-hm rect-right red" position="0 0.5 0" data-tag="cuboid39"></a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-45.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid45">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hl green"></a-entity>
+                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid45">
+                        <a-entity mixin="rect-hs rect-right blue" position="0 0.5 0" data-tag="cuboid45">
+                            <a-entity mixin="rect-vl rect-bot green" position="-1 0 0" data-tag="cuboid45"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid45">
+                        <a-entity mixin="rect-vm rect-top red" position="0.5 0 0" data-tag="cuboid45"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-49.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid49">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hs blue"></a-entity>
+                    <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid49">
+                        <a-entity mixin="rect-vm rect-right red" position="0 1.5 0" data-tag="cuboid49">
+                            <a-entity mixin="rect-vs rect-bot blue" position="-0.5 0 0" data-tag="cuboid49"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-hm rect-left red" position="1 0 0" data-tag="cuboid49">
+                        <a-entity mixin="rect-hl rect-top green" position="1.5 0 0" data-tag="cuboid49"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/cuboid/pattern-cuboid-52.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      data-object-name="Q U A D E R"
+                      data-type="cuboid"
+                      id="cuboid52">
+                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
+                    <a-entity mixin="rect-hs blue"></a-entity>
+                    <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid52">
+                        <a-entity mixin="rect-vm rect-right red" position="0 1.5 0" data-tag="cuboid52"></a-entity>
+                        <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid52"></a-entity>
+                    </a-entity>
+                    <a-entity mixin="rect-hm rect-left red" position="1 0 0" data-tag="cuboid52">
+                        <a-entity mixin="rect-hl rect-top green" position="1.5 0 0" data-tag="cuboid52"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
         </a-scene>
+
     </section>
     <section class="instruction">
-        <div>W Ü R F E L</div>
-        <div>1 / 6</div>
+        <div class="instruction__text"></div>
+        <div class="instruction__counter"></div>
         <div class="instruction__progress"></div>
     </section>
 </main>
+
+<script src="js/quiz-logic.js"></script>
+
 </body>
 </html>

@@ -2013,14 +2013,14 @@ ARjs.MarkerControls = THREEx.ArMarkerControls = function(context, object3d, para
             var newValue = parameters[ key ]
 
             if( newValue === undefined ){
-                console.warn( "THREEx.ArMarkerControls: '" + key + "' parameter is undefined." )
+                //console.warn( "THREEx.ArMarkerControls: '" + key + "' parameter is undefined." )
                 continue
             }
 
             var currentValue = _this.parameters[ key ]
 
             if( currentValue === undefined ){
-                console.warn( "THREEx.ArMarkerControls: '" + key + "' is not a property of this material." )
+                //console.warn( "THREEx.ArMarkerControls: '" + key + "' is not a property of this material." )
                 continue
             }
 
