@@ -22,8 +22,6 @@ AFRAME.registerComponent("click-handler", {
         // We don't want to fire the Events on the Parent
         event.stopPropagation();
 
-        console.log("FOILD")
-
         // If the Element just has been clicked, it does not have to be clicked again
         if (Date.now() < this.data.lastClicked + 10) {
             return;

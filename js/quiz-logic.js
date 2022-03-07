@@ -36,6 +36,7 @@ let markerColor = "";
  been found will be done when the user presses the confirm button
  */
 SCENE.addEventListener("markerFound", (e) => {
+    console.log(e);
     activeMarker = e.target;
     INTERACTION_CONFIRM.classList.remove("hidden");
 });
@@ -80,6 +81,8 @@ function handleFoundMarker() {
     }
 
     addMarkerColor();
+
+    autoFold();
 
 
     if (foundValidNets.length === currentQuizTargetAmount) {
@@ -170,5 +173,16 @@ function fadeInformationText(text, fadeIn = true) {
     }
 }
 
+// Returns a Promise that resolves after "ms" Milliseconds
+const timer = ms => new Promise(res => setTimeout(res, ms));
+
+async function autoFold() {
+    let foldingElements = document.querySelectorAll(`[data-tag=${activeMarker.id}]`);
+    for (let i = 0; i < foldingElements.length; i++) {
+        foldingElements[i].click();
+        console.log("NEXT");
+        await timer(500);
+    }
+}
 
 getPolyhedron();

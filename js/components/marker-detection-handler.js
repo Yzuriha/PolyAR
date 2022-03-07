@@ -3,8 +3,6 @@ AFRAME.registerComponent("marker-detection-handler", {
         let allClickableEntities = document.querySelectorAll(`[data-tag=${ this.el.object3D.el.id}]`)
 
         this.el.addEventListener("markerFound", (e) => {
-            console.log("MARKER FOUND", this.el.object3D.el.id);
-
             // Add the "clickable" Class so the Raycaster can fire Events on that object
             for (let i = 0; i < allClickableEntities.length; i++) {
                 allClickableEntities[i].classList.add("clickable")
@@ -15,8 +13,6 @@ AFRAME.registerComponent("marker-detection-handler", {
         });
 
         this.el.addEventListener("markerLost", (e) => {
-            console.log("MARKER LOST", this.el);
-
             // Remove the "clickable" Class so the Raycaster stops listening for Clicks, possibly interfering with other Entites
             for (let i = 0; i < allClickableEntities.length; i++) {
                 allClickableEntities[i].classList.remove("clickable")
