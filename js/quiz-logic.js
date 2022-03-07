@@ -146,7 +146,7 @@ function getPolyhedron() {
     }
 
     INSTRUCTION_COUNTER.innerText = `0 / ${currentQuizTargetAmount}`;
-    displayInformationText(`Suche nach allen ${currentQuizTargetAmount} ${polyhedron.normalizedName}-Netze`);
+    displayInformationText(`Suche nach allen ${currentQuizTargetAmount} ${polyhedron.normalizedName}-Netze`, 10000);
 
     return polyhedron;
 }
