@@ -1,0 +1,66 @@
+{
+  "background_color": "none",
+  "description": "Augmented Reality Lernapp",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "PolyAR",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "PolyAR",
+  "start_url": "/",
+  "theme_color": "none",
+  "categories": [],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "blob:https://www.pwabuilder.com/cca28b4d-5b49-47c7-b591-10ad6550ba1c",
+      "type": "image/png",
+      "sizes": "16x16",
+      "purpose": "any"
+    },
+    {
+      "src": "blob:https://www.pwabuilder.com/ed268658-1b85-4fd9-b08b-43b63f378b22",
+      "type": "image/png",
+      "sizes": "32x32",
+      "purpose": "any"
+    },
+    {
+      "src": "blob:https://www.pwabuilder.com/2c818658-d3dc-40ca-8d48-e9cc125e77ba",
+      "type": "image/png",
+      "sizes": "100x100",
+      "purpose": "any"
+    },
+    {
+      "src": "blob:https://www.pwabuilder.com/7db489f4-49f9-4682-9713-0d8fff1dce3a",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any"
+    },
+    {
+      "src": "blob:https://www.pwabuilder.com/c6c43def-b5d9-4459-ba60-2b6bc3113a7b",
+      "type": "image/png",
+      "sizes": "144x144",
+      "purpose": "any"
+    },
+    {
+      "src": "blob:https://www.pwabuilder.com/8e7f9e04-8b4a-4aee-91c5-a23d6966fdfd",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "blob:https://www.pwabuilder.com/d918f98a-2c0f-47be-952a-4c88cff35e0e",
+      "type": "image/png",
+      "sizes": "256x256",
+      "purpose": "any"
+    },
+    {
+      "src": "blob:https://www.pwabuilder.com/dce8f660-7eb9-46c9-9ce2-f88a6e190574",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": []
+}
+
