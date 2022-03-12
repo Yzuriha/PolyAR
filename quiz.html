@@ -13,7 +13,7 @@
     <script src="js/components/click-handler.js"></script>
     <script src="js/components/gesture-detector.js"></script>
     <script src="js/components/gesture-handler.js"></script>
-<!--    <script src="js/components/marker-detection-handler.js"></script>-->
+    <!--    <script src="js/components/marker-detection-handler.js"></script>-->
     <script src="js/components/custom-cursor.js"></script>
 
 
@@ -90,13 +90,17 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube1">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square red"></a-entity>
-                    <a-entity mixin="square-bot green event" position="0 1 0" data-tag="cube1"></a-entity>
-                    <a-entity mixin="square-right blue event" position="0 1 0" data-tag="cube1"></a-entity>
-                    <a-entity mixin="square-left blue event" position="1 0 0" data-tag="cube1"></a-entity>
-                    <a-entity mixin="square-top green event" position="1 0 0" data-tag="cube1">
-                        <a-entity mixin="square-top blue event" position="0 -1 0" data-tag="cube1"></a-entity>
+                <!-- The First Wrap is to make the Object be Flat to the Marker-->
+                <!-- The Second Wrap is realign the Center for the Children to inherit, otherwise it must be added to each children separately-->
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square red"></a-entity>
+                        <a-entity mixin="square-bot green event" position="0 1 0" data-tag="cube1"></a-entity>
+                        <a-entity mixin="square-right blue event" position="0 1 0" data-tag="cube1"></a-entity>
+                        <a-entity mixin="square-left blue event" position="1 0 0" data-tag="cube1"></a-entity>
+                        <a-entity mixin="square-top green event" position="1 0 0" data-tag="cube1">
+                            <a-entity mixin="square-top blue event" position="0 -1 0" data-tag="cube1"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -108,14 +112,16 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube2">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square blue"></a-entity>
-                    <a-entity mixin="square-left red" position="1 0 0" data-tag="cube2">
-                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube2"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube2">
-                        <a-entity mixin="square-right red" position="-1 0 0" data-tag="cube2">
-                            <a-entity mixin="square-top blue" position="0 -1 0" data-tag="cube2"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square blue"></a-entity>
+                        <a-entity mixin="square-left red" position="1 0 0" data-tag="cube2">
+                            <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube2"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube2">
+                            <a-entity mixin="square-right red" position="-1 0 0" data-tag="cube2">
+                                <a-entity mixin="square-top blue" position="0 -1 0" data-tag="cube2"></a-entity>
+                            </a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -128,15 +134,17 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube3">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square red"></a-entity>
-                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube3">
-                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube3">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square red"></a-entity>
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube3">
+                            <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube3">
+                            </a-entity>
                         </a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube3"></a-entity>
-                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube3">
-                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube3"></a-entity>
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube3"></a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube3">
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube3"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -148,14 +156,16 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube4">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square green"></a-entity>
-                    <a-entity mixin="square-bot red" position="0 1 0" data-tag="cube4">
-                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube4"></a-entity>
-                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube4"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top red" position="1 0 0" data-tag="cube4">
-                        <a-entity mixin="square-top green" position="0 -1 0" data-tag="cube4"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square green"></a-entity>
+                        <a-entity mixin="square-bot red" position="0 1 0" data-tag="cube4">
+                            <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube4"></a-entity>
+                            <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube4"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="square-top red" position="1 0 0" data-tag="cube4">
+                            <a-entity mixin="square-top green" position="0 -1 0" data-tag="cube4"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -167,14 +177,16 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube5">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square red"></a-entity>
-                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube5">
-                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube5"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube5">
-                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube5">
-                            <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube5"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square red"></a-entity>
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube5">
+                            <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube5"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube5">
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube5">
+                                <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube5"></a-entity>
+                            </a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -187,14 +199,16 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube6">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square red"></a-entity>
-                    <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube6"></a-entity>
-                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube6">
-                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube6"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube6">
-                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube6"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square red"></a-entity>
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube6"></a-entity>
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube6">
+                            <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube6"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube6">
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube6"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -206,13 +220,15 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube7">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square red"></a-entity>
-                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube7"></a-entity>
-                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube7"></a-entity>
-                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube7">
-                        <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube7"></a-entity>
-                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube7"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square red"></a-entity>
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube7"></a-entity>
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube7"></a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube7">
+                            <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube7"></a-entity>
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube7"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -224,14 +240,16 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube8">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square red"></a-entity>
-                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube8">
-                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube8"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube8">
-                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube8">
-                            <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube8"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square red"></a-entity>
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube8">
+                            <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube8"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube8">
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube8">
+                                <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube8"></a-entity>
+                            </a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -244,14 +262,16 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube9">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square red"></a-entity>
-                    <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube9">
-                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube9"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube9">
-                        <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube9"></a-entity>
-                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube9"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square red"></a-entity>
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube9">
+                            <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube9"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube9">
+                            <a-entity mixin="square-right blue" position="-1 0 0" data-tag="cube9"></a-entity>
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube9"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -263,14 +283,16 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube10">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square green"></a-entity>
-                    <a-entity mixin="square-bot red" position="0 1 0" data-tag="cube10">
-                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube10"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube10">
-                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube10">
-                            <a-entity mixin="square-top blue" position="0 -1 0" data-tag="cube10"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square green"></a-entity>
+                        <a-entity mixin="square-bot red" position="0 1 0" data-tag="cube10">
+                            <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube10"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube10">
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube10">
+                                <a-entity mixin="square-top blue" position="0 -1 0" data-tag="cube10"></a-entity>
+                            </a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -283,14 +305,16 @@
                       data-object-name="W Ü R F E L"
                       data-type="cube"
                       id="cube11">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="square red"></a-entity>
-                    <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube11">
-                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube11"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="square-top green" position="1 0 0" data-tag="cube11">
-                        <a-entity mixin="square-left blue" position="0 -1 0" data-tag="cube11"></a-entity>
-                        <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube11"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="square red"></a-entity>
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube11">
+                            <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube11"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube11">
+                            <a-entity mixin="square-left blue" position="0 -1 0" data-tag="cube11"></a-entity>
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube11"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -319,14 +343,16 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid2">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hl green"></a-entity>
-                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid2">
-                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid2"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hl green"></a-entity>
+                        <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid2">
+                            <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid2"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid2"></a-entity>
+                        <a-entity mixin="rect-vs rect-right blue" position="0 1 0" data-tag="cuboid2"></a-entity>
+                        <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid2"></a-entity>
                     </a-entity>
-                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid2"></a-entity>
-                    <a-entity mixin="rect-vs rect-right blue" position="0 1 0" data-tag="cuboid2"></a-entity>
-                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid2"></a-entity>
                 </a-entity>
             </a-marker>
 
@@ -337,15 +363,17 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid4">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hl green"></a-entity>
-                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid4">
-                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid4"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hl green"></a-entity>
+                        <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid4">
+                            <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid4"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid4">
+                            <a-entity mixin="rect-hs rect-right blue" position="-1.5 0 0" data-tag="cuboid4"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid4"></a-entity>
                     </a-entity>
-                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid4">
-                        <a-entity mixin="rect-hs rect-right blue" position="-1.5 0 0" data-tag="cuboid4"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid4"></a-entity>
                 </a-entity>
             </a-marker>
 
@@ -356,15 +384,18 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid9">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hl green"></a-entity>
-                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid9">
-                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid9">
-                            <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid9"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hl green"></a-entity>
+                        <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid9">
+                            <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid9">
+                                <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0"
+                                          data-tag="cuboid9"></a-entity>
+                            </a-entity>
                         </a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid9">
-                        <a-entity mixin="rect-hs rect-right blue" position="-1.5 0 0" data-tag="cuboid9"></a-entity>
+                        <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid9">
+                            <a-entity mixin="rect-hs rect-right blue" position="-1.5 0 0" data-tag="cuboid9"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -376,14 +407,16 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid15">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-vm red"></a-entity>
-                    <a-entity mixin="rect-vs rect-bot blue" position="0 1.5 0" data-tag="cuboid15">
-                        <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid15"></a-entity>
-                        <a-entity mixin="rect-hl rect-left green" position="0.5 0 0" data-tag="cuboid15"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-vm red"></a-entity>
+                        <a-entity mixin="rect-vs rect-bot blue" position="0 1.5 0" data-tag="cuboid15">
+                            <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid15"></a-entity>
+                            <a-entity mixin="rect-hl rect-left green" position="0.5 0 0" data-tag="cuboid15"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-vl rect-right green" position="0 1.5 0" data-tag="cuboid15"></a-entity>
+                        <a-entity mixin="rect-vs rect-top blue" position="0.5 0 0" data-tag="cuboid15"></a-entity>
                     </a-entity>
-                    <a-entity mixin="rect-vl rect-right green" position="0 1.5 0" data-tag="cuboid15"></a-entity>
-                    <a-entity mixin="rect-vs rect-top blue" position="0.5 0 0" data-tag="cuboid15"></a-entity>
                 </a-entity>
             </a-marker>
 
@@ -394,15 +427,19 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid19">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-vm red"></a-entity>
-                    <a-entity mixin="rect-vs rect-bot blue" position="0 1.5 0" data-tag="cuboid19">
-                        <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid19">
-                            <a-entity mixin="rect-vl rect-left green" position="0.5 0 0" data-tag="cuboid19"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-vm red"></a-entity>
+                        <a-entity mixin="rect-vs rect-bot blue" position="0 1.5 0" data-tag="cuboid19">
+                            <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid19">
+                                <a-entity mixin="rect-vl rect-left green" position="0.5 0 0"
+                                          data-tag="cuboid19"></a-entity>
+                            </a-entity>
                         </a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-vs rect-top blue" position="0.5 0 0" data-tag="cuboid19">
-                        <a-entity mixin="rect-hl rect-right green" position="-0.5 0 0" data-tag="cuboid19"></a-entity>
+                        <a-entity mixin="rect-vs rect-top blue" position="0.5 0 0" data-tag="cuboid19">
+                            <a-entity mixin="rect-hl rect-right green" position="-0.5 0 0"
+                                      data-tag="cuboid19"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -414,14 +451,16 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid24">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hm red"></a-entity>
-                    <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid24">
-                        <a-entity mixin="rect-vs rect-right blue" position="0 1 0" data-tag="cuboid24"></a-entity>
-                        <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid24"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-hs rect-left blue" position="1.5 0 0" data-tag="cuboid24">
-                        <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid24"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hm red"></a-entity>
+                        <a-entity mixin="rect-hl rect-bot green" position="0 0.5 0" data-tag="cuboid24">
+                            <a-entity mixin="rect-vs rect-right blue" position="0 1 0" data-tag="cuboid24"></a-entity>
+                            <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid24"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-hs rect-left blue" position="1.5 0 0" data-tag="cuboid24">
+                            <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid24"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -433,15 +472,17 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid27">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hl green"></a-entity>
-                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid27">
-                        <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid27"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid27">
-                        <a-entity mixin="rect-hl rect-top green" position="0 -0.5 0" data-tag="cuboid27">
-                            <a-entity mixin="rect-vs rect-right blue" position="-1.5 0 0"
-                                      data-tag="cuboid27"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hl green"></a-entity>
+                        <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid27">
+                            <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid27"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-hm rect-top red" position="1.5 0 0" data-tag="cuboid27">
+                            <a-entity mixin="rect-hl rect-top green" position="0 -0.5 0" data-tag="cuboid27">
+                                <a-entity mixin="rect-vs rect-right blue" position="-1.5 0 0"
+                                          data-tag="cuboid27"></a-entity>
+                            </a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -454,14 +495,17 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid33">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-vs blue"></a-entity>
-                    <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid33">
-                        <a-entity mixin="rect-vl rect-left green" position="0.5 0 0" data-tag="cuboid33"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-vm rect-top red" position="0.5 0 0" data-tag="cuboid33">
-                        <a-entity mixin="rect-vl rect-right green" position="-0.5 0 0" data-tag="cuboid33">
-                            <a-entity mixin="rect-hs rect-top blue" position="0 -1.5 0" data-tag="cuboid33"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-vs blue"></a-entity>
+                        <a-entity mixin="rect-vm rect-bot red" position="0 1 0" data-tag="cuboid33">
+                            <a-entity mixin="rect-vl rect-left green" position="0.5 0 0" data-tag="cuboid33"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-vm rect-top red" position="0.5 0 0" data-tag="cuboid33">
+                            <a-entity mixin="rect-vl rect-right green" position="-0.5 0 0" data-tag="cuboid33">
+                                <a-entity mixin="rect-hs rect-top blue" position="0 -1.5 0"
+                                          data-tag="cuboid33"></a-entity>
+                            </a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -474,14 +518,16 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid35">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hs blue"></a-entity>
-                    <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid35">
-                        <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid35"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid35">
-                        <a-entity mixin="rect-vm rect-right red" position="-1 0 0" data-tag="cuboid35"></a-entity>
-                        <a-entity mixin="rect-vm rect-left red" position="0 -1.5 0" data-tag="cuboid35"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hs blue"></a-entity>
+                        <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid35">
+                            <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid35"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid35">
+                            <a-entity mixin="rect-vm rect-right red" position="-1 0 0" data-tag="cuboid35"></a-entity>
+                            <a-entity mixin="rect-vm rect-left red" position="0 -1.5 0" data-tag="cuboid35"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -493,14 +539,16 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid39">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hs blue"></a-entity>
-                    <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid39">
-                        <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid39"></a-entity>
-                        <a-entity mixin="rect-vm rect-left red" position="1 0 0" data-tag="cuboid39"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hs blue"></a-entity>
+                        <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid39">
+                            <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid39"></a-entity>
+                            <a-entity mixin="rect-vm rect-left red" position="1 0 0" data-tag="cuboid39"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid39"></a-entity>
+                        <a-entity mixin="rect-hm rect-right red" position="0 0.5 0" data-tag="cuboid39"></a-entity>
                     </a-entity>
-                    <a-entity mixin="rect-vl rect-top green" position="1 0 0" data-tag="cuboid39"></a-entity>
-                    <a-entity mixin="rect-hm rect-right red" position="0 0.5 0" data-tag="cuboid39"></a-entity>
                 </a-entity>
             </a-marker>
 
@@ -511,15 +559,18 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid45">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hl green"></a-entity>
-                    <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid45">
-                        <a-entity mixin="rect-hs rect-right blue" position="0 0.5 0" data-tag="cuboid45">
-                            <a-entity mixin="rect-vl rect-bot green" position="-1 0 0" data-tag="cuboid45"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hl green"></a-entity>
+                        <a-entity mixin="rect-hm rect-bot red" position="0 1 0" data-tag="cuboid45">
+                            <a-entity mixin="rect-hs rect-right blue" position="0 0.5 0" data-tag="cuboid45">
+                                <a-entity mixin="rect-vl rect-bot green" position="-1 0 0"
+                                          data-tag="cuboid45"></a-entity>
+                            </a-entity>
                         </a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid45">
-                        <a-entity mixin="rect-vm rect-top red" position="0.5 0 0" data-tag="cuboid45"></a-entity>
+                        <a-entity mixin="rect-vs rect-left blue" position="1.5 0 0" data-tag="cuboid45">
+                            <a-entity mixin="rect-vm rect-top red" position="0.5 0 0" data-tag="cuboid45"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -531,15 +582,18 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid49">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hs blue"></a-entity>
-                    <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid49">
-                        <a-entity mixin="rect-vm rect-right red" position="0 1.5 0" data-tag="cuboid49">
-                            <a-entity mixin="rect-vs rect-bot blue" position="-0.5 0 0" data-tag="cuboid49"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hs blue"></a-entity>
+                        <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid49">
+                            <a-entity mixin="rect-vm rect-right red" position="0 1.5 0" data-tag="cuboid49">
+                                <a-entity mixin="rect-vs rect-bot blue" position="-0.5 0 0"
+                                          data-tag="cuboid49"></a-entity>
+                            </a-entity>
                         </a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-hm rect-left red" position="1 0 0" data-tag="cuboid49">
-                        <a-entity mixin="rect-hl rect-top green" position="1.5 0 0" data-tag="cuboid49"></a-entity>
+                        <a-entity mixin="rect-hm rect-left red" position="1 0 0" data-tag="cuboid49">
+                            <a-entity mixin="rect-hl rect-top green" position="1.5 0 0" data-tag="cuboid49"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>
@@ -551,14 +605,16 @@
                       data-object-name="Q U A D E R"
                       data-type="cuboid"
                       id="cuboid52">
-                <a-entity rotation="-90 -90 90" position="-0.5 0 0.5" gesture-handler>
-                    <a-entity mixin="rect-hs blue"></a-entity>
-                    <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid52">
-                        <a-entity mixin="rect-vm rect-right red" position="0 1.5 0" data-tag="cuboid52"></a-entity>
-                        <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid52"></a-entity>
-                    </a-entity>
-                    <a-entity mixin="rect-hm rect-left red" position="1 0 0" data-tag="cuboid52">
-                        <a-entity mixin="rect-hl rect-top green" position="1.5 0 0" data-tag="cuboid52"></a-entity>
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-hs blue"></a-entity>
+                        <a-entity mixin="rect-vl rect-bot green" position="0 0.5 0" data-tag="cuboid52">
+                            <a-entity mixin="rect-vm rect-right red" position="0 1.5 0" data-tag="cuboid52"></a-entity>
+                            <a-entity mixin="rect-hs rect-bot blue" position="0 1.5 0" data-tag="cuboid52"></a-entity>
+                        </a-entity>
+                        <a-entity mixin="rect-hm rect-left red" position="1 0 0" data-tag="cuboid52">
+                            <a-entity mixin="rect-hl rect-top green" position="1.5 0 0" data-tag="cuboid52"></a-entity>
+                        </a-entity>
                     </a-entity>
                 </a-entity>
             </a-marker>

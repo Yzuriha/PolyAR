@@ -95,11 +95,13 @@ a {
     right: 0;
     height: @information-height;
     opacity: 0.7;
+    z-index: -1;
 
     .information__text {
       .center();
       transition: all 0.5s ease;
       height: 100%;
+      text-shadow: 1px 1px 3px #000345;
     }
   }
 
@@ -156,11 +158,13 @@ a {
     right: 0;
     height: @instruction-height;
     opacity: 0.7;
+    z-index: -1;
 
     .instruction__text, .instruction__counter {
       text-align: center;
       transition: opacity 0.5s ease;
       margin: 5px;
+      text-shadow: 1px 1px 3px #000345;
     }
 
     .instruction__progress {
@@ -174,14 +178,104 @@ a {
   }
 }
 
+.onboading {
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  //position: relative;
+  //display: inline;
+  //width: min(80vw, 500px);
+  //height: min(80vw, 500px);
+  //width: 100vw;
+  //height: 100vh;
+  opacity: 0.8;
+}
+
+.onboading__hand {
+  //width: 100%;
+  //position: absolute;
+  z-index: 1;
+  //left: calc(50% - (min(300px, 50vw) / 2) - (min(300px, 50vw) * 0.15));
+  //bottom: calc(50% - (min(300px, 50vw) / 2));
+
+  .center-all();
+
+  img {
+    width: min(300px, 50vw);
+    margin: 0 0 calc(min(300px, 50vw) * -1) calc(min(300px, 50vw) * -1);
+    animation: moveToCenter 5s 2 ease-out;
+  }
+}
+
+.onboading__net {
+  .center-all();
+
+  img {
+    width: min(150px, 20%);
+    animation: fadeInOut 10s ease-out;
+  }
+}
+
+@keyframes moveToCenter {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  70% {
+    margin: 0 0 0 calc((min(150px, 20%) / 2) * -1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    margin: 0 0 0 calc((min(150px, 20%) / 2) * -1);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 .center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.center-all {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .hidden {
   visibility: hidden;
+}
+
+.none {
+  display: none;
 }
 
 .no-opacity {

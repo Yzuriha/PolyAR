@@ -3,7 +3,8 @@ AFRAME.registerComponent("click-handler", {
         position: {default: ""},
         rotation: {default: ""},
         folded: {default: false},
-        lastClicked: {default: 0}
+        lastClicked: {default: 0},
+        opacity: {default: 0.7}
 
     },
     init: function () {
@@ -12,6 +13,8 @@ AFRAME.registerComponent("click-handler", {
         this.el.addEventListener("click", this.handleFold);
 
         this.data.lastClicked = Date.now();
+
+        this.el.setAttribute('material', 'opacity', this.data.opacity);
     },
 
     remove: function () {
@@ -45,5 +48,13 @@ AFRAME.registerComponent("click-handler", {
 
         this.data.folded = !this.data.folded;
         this.data.lastClicked = Date.now();
+
+        let newOpacity = this.data.folded ? 1 : this.data.opacity;
+        if (this.data.folded) {
+            this.el.setAttribute('material', 'opacity', newOpacity);
+        }
+
+        this.el.sceneEl.emit("folded", this.data.folded)
+
     }
 });

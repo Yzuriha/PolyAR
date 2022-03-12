@@ -20,7 +20,7 @@ AFRAME.registerComponent('a-four', {
 
         const extrudeSettings = {
             steps: 1,
-            depth: 0.03,
+            depth: 0.01,
             bevelEnabled: false
         };
 

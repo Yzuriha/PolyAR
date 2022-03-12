@@ -82,6 +82,7 @@ a {
   right: 0;
   height: 50px;
   opacity: 0.7;
+  z-index: -1;
 }
 .lernen .information .information__text,
 .quiz .information .information__text {
@@ -90,6 +91,7 @@ a {
   justify-content: center;
   transition: all 0.5s ease;
   height: 100%;
+  text-shadow: 1px 1px 3px #000345;
 }
 .lernen .interaction,
 .quiz .interaction {
@@ -145,6 +147,7 @@ a {
   right: 0;
   height: 75px;
   opacity: 0.7;
+  z-index: -1;
 }
 .lernen .instruction .instruction__text,
 .quiz .instruction .instruction__text,
@@ -153,6 +156,7 @@ a {
   text-align: center;
   transition: opacity 0.5s ease;
   margin: 5px;
+  text-shadow: 1px 1px 3px #000345;
 }
 .lernen .instruction .instruction__progress,
 .quiz .instruction .instruction__progress {
@@ -163,13 +167,97 @@ a {
   width: 0;
   transition: all 0.5s ease;
 }
+.onboading {
+  opacity: 0.8;
+}
+.onboading__hand {
+  z-index: 1;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.onboading__hand img {
+  width: min(300px, 50vw);
+  margin: 0 0 calc(min(300px, 50vw) * -1) calc(min(300px, 50vw) * -1);
+  animation: moveToCenter 5s 2 ease-out;
+}
+.onboading__net {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.onboading__net img {
+  width: min(150px, 20%);
+  animation: fadeInOut 10s ease-out;
+}
+@keyframes moveToCenter {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  70% {
+    margin: 0 0 0 calc((min(150px, 20%) / 2) * -1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    margin: 0 0 0 calc((min(150px, 20%) / 2) * -1);
+  }
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.center-all {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .hidden {
   visibility: hidden;
+}
+.none {
+  display: none;
 }
 .no-opacity {
   opacity: 0;
