@@ -21,7 +21,7 @@ workbox.routing.registerRoute(
         cacheName: PATTERN,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
-                maxEntries: 100,
+                maxEntries: 1000,
             }),
         ],
     })
@@ -45,7 +45,7 @@ workbox.routing.registerRoute(
         cacheName: JS_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
-                maxEntries: 15,
+                maxEntries: 150,
             }),
         ],
     })
@@ -69,7 +69,7 @@ workbox.routing.registerRoute(
         cacheName: IMAGE_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
-                maxEntries: 15,
+                maxEntries: 150,
             }),
         ],
     })
