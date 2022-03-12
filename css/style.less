@@ -101,7 +101,8 @@ a {
       .center();
       transition: all 0.5s ease;
       height: 100%;
-      text-shadow: 1px 1px 3px #000345;
+      text-shadow: 1px 1px 1px black;
+      text-align: center;
     }
   }
 
@@ -164,7 +165,7 @@ a {
       text-align: center;
       transition: opacity 0.5s ease;
       margin: 5px;
-      text-shadow: 1px 1px 3px #000345;
+      text-shadow: 1px 1px 1px black;
     }
 
     .instruction__progress {
@@ -179,16 +180,8 @@ a {
 }
 
 .onboading {
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
-  //position: relative;
-  //display: inline;
-  //width: min(80vw, 500px);
-  //height: min(80vw, 500px);
-  //width: 100vw;
-  //height: 100vh;
   opacity: 0.8;
+  z-index: 1;
 }
 
 .onboading__hand {
@@ -213,6 +206,16 @@ a {
   img {
     width: min(150px, 20%);
     animation: fadeInOut 10s ease-out;
+  }
+}
+
+.onboading__finger-swipe {
+  .center-all();
+
+  img {
+    margin-left: -50px;
+    width: min(300px, 30vw);
+    animation: moveLeftRight 2.5s 4 alternate ease-in-out;
   }
 }
 
@@ -250,6 +253,14 @@ a {
   }
 }
 
+@keyframes moveLeftRight {
+  from {
+    margin-left: -50px;
+  }
+  to {
+    margin-left: 50px;
+  }
+}
 
 .center {
   display: flex;

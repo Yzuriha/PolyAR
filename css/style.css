@@ -91,7 +91,8 @@ a {
   justify-content: center;
   transition: all 0.5s ease;
   height: 100%;
-  text-shadow: 1px 1px 3px #000345;
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
 }
 .lernen .interaction,
 .quiz .interaction {
@@ -156,7 +157,7 @@ a {
   text-align: center;
   transition: opacity 0.5s ease;
   margin: 5px;
-  text-shadow: 1px 1px 3px #000345;
+  text-shadow: 1px 1px 1px black;
 }
 .lernen .instruction .instruction__progress,
 .quiz .instruction .instruction__progress {
@@ -169,6 +170,7 @@ a {
 }
 .onboading {
   opacity: 0.8;
+  z-index: 1;
 }
 .onboading__hand {
   z-index: 1;
@@ -204,6 +206,23 @@ a {
   width: min(150px, 20%);
   animation: fadeInOut 10s ease-out;
 }
+.onboading__finger-swipe {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.onboading__finger-swipe img {
+  margin-left: -50px;
+  width: min(300px, 30vw);
+  animation: moveLeftRight 2.5s 4 alternate ease-in-out;
+}
 @keyframes moveToCenter {
   0% {
     opacity: 0;
@@ -234,6 +253,14 @@ a {
   }
   100% {
     opacity: 0;
+  }
+}
+@keyframes moveLeftRight {
+  from {
+    margin-left: -50px;
+  }
+  to {
+    margin-left: 50px;
   }
 }
 .center {
