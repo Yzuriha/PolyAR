@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./css/style.css">
 
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="manifest.json"/>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -19,16 +19,23 @@
 </head>
 <body>
 <main class="main-navigation">
-        <a class="navigation__button" href="lernen.html">
-            <div>
-                L E R N E N
-            </div>
-        </a>
-        <a class="navigation__button" href="quiz.html">
-            <div>
-                Q U I Z
-            </div>
-        </a>
+    <a class="navigation__button" href="lernen.html">
+        <div>
+            L E R N E N
+        </div>
+    </a>
+    <a class="navigation__button" href="quiz.html">
+        <div>
+            Q U I Z
+        </div>
+    </a>
+    <div class="clear-cache"></div>
 </main>
 </body>
+<script>
+    document.querySelector(".clear-cache").addEventListener("click", () => {
+        console.log("CLEAR");
+        localStorage.clear();
+    });
+</script>
 </html>

@@ -29,18 +29,15 @@ AFRAME.registerComponent("gesture-handler", {
         if (this.data.enabled) {
             this.el.sceneEl.addEventListener("onefingermove", this.handleRotation);
             this.el.sceneEl.addEventListener("twofingermove", this.handleScale);
-            this.el.sceneEl.addEventListener("fourfingermove", this.resetLocalStorage);
         } else {
             this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
             this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
-            this.el.sceneEl.removeEventListener("fourfingermove", this.resetLocalStorage);
         }
     },
 
     remove: function () {
         this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
         this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
-        this.el.sceneEl.removeEventListener("fourfingermove", this.resetLocalStorage);
     },
 
     handleRotation: function (event) {
@@ -67,8 +64,4 @@ AFRAME.registerComponent("gesture-handler", {
             this.el.object3D.scale.z = this.scaleFactor * this.initialScale.z;
         }
     },
-
-    resetLocalStorage: function () {
-        localStorage.clear();
-    }
 });
