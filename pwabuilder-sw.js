@@ -7,12 +7,25 @@ const JS_CACHE = "javascript";
 const STYLE_CACHE = "stylesheets";
 const IMAGE_CACHE = "images";
 const FONT_CACHE = "fonts";
+const PATTERN = "pattern";
 
 self.addEventListener("message", (event) => {
     if (event.data && event.data.type === "SKIP_WAITING") {
         self.skipWaiting();
     }
 });
+
+workbox.routing.registerRoute(
+    new RegExp('.*\\.patt'),
+    new workbox.strategies.CacheFirst({
+        cacheName: PATTERN,
+        plugins: [
+            new workbox.expiration.ExpirationPlugin({
+                maxEntries: 100,
+            }),
+        ],
+    })
+);
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'document',
@@ -28,7 +41,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'script',
-    new workbox.strategies.StaleWhileRevalidate({
+    new workbox.strategies.CacheFirst({
         cacheName: JS_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
@@ -40,7 +53,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'style',
-    new workbox.strategies.StaleWhileRevalidate({
+    new workbox.strategies.CacheFirst({
         cacheName: STYLE_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
@@ -52,7 +65,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'image',
-    new workbox.strategies.StaleWhileRevalidate({
+    new workbox.strategies.CacheFirst({
         cacheName: IMAGE_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
@@ -64,7 +77,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'font',
-    new workbox.strategies.StaleWhileRevalidate({
+    new workbox.strategies.CacheFirst({
         cacheName: FONT_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
