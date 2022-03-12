@@ -34,8 +34,9 @@
 </body>
 <script>
     document.querySelector(".clear-cache").addEventListener("click", () => {
-        console.log("CLEAR");
-        localStorage.clear();
+        localStorage.removeItem("showTapOnboarding");
+        localStorage.removeItem("showCameraOnboarding");
+        localStorage.removeItem("showRotationOnboarding");
     });
 </script>
 </html>
