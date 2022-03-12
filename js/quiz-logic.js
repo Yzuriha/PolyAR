@@ -9,6 +9,7 @@ const INSTRUCTION_COUNTER = document.querySelector(".instruction__counter");
 const INSTRUCTION_PROGRESS = document.querySelector(".instruction__progress");
 const INTERACTION_SCAN_MARKER = document.querySelector(".interaction__scan-marker");
 const INTERACTION_CONFIRM = document.querySelector(".interaction__confirm");
+const ONBOARDNG_FINGER_SWIPE = document.querySelector('.onboading__finger-swipe');
 
 let polyhedrons = [{
     id: "cube",
@@ -173,6 +174,15 @@ function fadeInformationText(text, fadeIn = true) {
     }
 }
 
+function showRotationOnboarding() {
+    displayInformationText("Wische mit dem Finger um den Körper zu drehen.", 5000);
+    ONBOARDNG_FINGER_SWIPE.classList.remove("none");
+    setTimeout(() => {
+        ONBOARDNG_FINGER_SWIPE.classList.add("none");
+    }, 5000)
+}
+
+
 // Returns a Promise that resolves after "ms" Milliseconds
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
@@ -182,6 +192,9 @@ async function autoFold() {
         foldingElements[i].click();
         console.log("NEXT");
         await timer(500);
+    }
+    if (localStorage.getItem("showRotationOnboarding") !== "false") {
+        showRotationOnboarding()
     }
 }
 

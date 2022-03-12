@@ -1,6 +1,5 @@
 const SCENE = document.getElementById("scene");
 const INFORMATION_TEXT = document.querySelector(".information__text");
-const ONBOARDING = document.querySelector('.onboading');
 const ONBOARDING_HAND = document.querySelector('.onboading__hand');
 const ONBOARDNG_NET = document.querySelector('.onboading__net');
 const ONBOARDNG_FINGER_SWIPE = document.querySelector('.onboading__finger-swipe');
@@ -71,10 +70,8 @@ function hideCameraOnboarding() {
 function showRotationOnboarding() {
     displayInformationText("Wische mit dem Finger um den Körper zu drehen.", 5000);
     ONBOARDNG_FINGER_SWIPE.classList.remove("none");
-    ONBOARDING.style.zIndex = 1
     setTimeout(() => {
         ONBOARDNG_FINGER_SWIPE.classList.add("none");
-        ONBOARDING.style.zIndex = 0
     }, 5000)
 }
 
