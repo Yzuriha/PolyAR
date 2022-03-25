@@ -5,6 +5,11 @@ const ONBOARDNG_NET = document.querySelector('.onboading__net');
 const ONBOARDNG_FINGER_SWIPE = document.querySelector('.onboading__finger-swipe');
 const ONBOARDING_TIME = 30000;
 
+// Disable Onboarding for Developement
+ONBOARDING_HAND.style.display = "none !important";
+ONBOARDNG_NET.style.display = "none !important";
+ONBOARDNG_FINGER_SWIPE.style.display = "none !important";
+
 let showCameraOnboardingAgain = setTimeout(showCameraOnboarding, 10000 + ONBOARDING_TIME);
 
 window.addEventListener("arjs-video-loaded", () => {
@@ -72,7 +77,7 @@ function showRotationOnboarding() {
     ONBOARDNG_FINGER_SWIPE.classList.remove("none");
     setTimeout(() => {
         ONBOARDNG_FINGER_SWIPE.classList.add("none");
-    }, 5000)
+    }, 5000);
 }
 
 

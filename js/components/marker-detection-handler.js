@@ -23,9 +23,9 @@ AFRAME.registerComponent("marker-detection-handler", {
             // Fade Out the name
             document.querySelector(".instruction__text").classList.add("no-opacity")
             // Remove the Text when Marker is list
-            setTimeout(() => {
-                document.querySelector(".instruction__text").innerText = ""
-            }, 500) // fade out takes 500ms
+            // setTimeout(() => {
+            //     document.querySelector(".instruction__text").innerText = ""
+            // }, 500) // fade out takes 500ms
         });
     },
 });

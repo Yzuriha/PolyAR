@@ -1,4 +1,5 @@
 // Component that detects and emits events for touch gestures
+// https://github.com/fcor/arjs-gestures
 
 AFRAME.registerComponent("gesture-detector", {
     schema: {

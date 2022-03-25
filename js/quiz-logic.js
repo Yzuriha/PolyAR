@@ -11,6 +11,9 @@ const INTERACTION_SCAN_MARKER = document.querySelector(".interaction__scan-marke
 const INTERACTION_CONFIRM = document.querySelector(".interaction__confirm");
 const ONBOARDNG_FINGER_SWIPE = document.querySelector('.onboading__finger-swipe');
 
+// Disable Onboarding for Developement
+ONBOARDNG_FINGER_SWIPE.style.display = "none !important";
+
 let polyhedrons = [{
     id: "cube",
     displayName: "W Ü R F E L",
