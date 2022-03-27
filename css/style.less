@@ -1,12 +1,12 @@
-@font-face {
-  font-family: Roboto;
-  src: url(../assets/fonts/Roboto-Regular.ttf);
-}
+//@font-face {
+//  font-family: Roboto;
+//  src: url(../assets/fonts/Roboto-Regular.ttf);
+//}
 
 body {
   color: white;
   //opacity: 0.75;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-size: 18px;
   margin: 10px;
 
@@ -48,6 +48,7 @@ a {
     justify-content: center;
     align-items: center;
     margin: 30px;
+    letter-spacing: 3px;
   }
 }
 
@@ -161,6 +162,9 @@ a {
     opacity: 0.7;
     z-index: -1;
 
+    .instruction__text {
+      letter-spacing: 3px;
+    }
     .instruction__text, .instruction__counter {
       text-align: center;
       transition: opacity 0.5s ease;

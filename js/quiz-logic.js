@@ -12,7 +12,7 @@ const INTERACTION_CONFIRM = document.querySelector(".interaction__confirm");
 const ONBOARDNG_FINGER_SWIPE = document.querySelector('.onboading__finger-swipe');
 
 // Disable Onboarding for Developement
-ONBOARDNG_FINGER_SWIPE.style.display = "none !important";
+ONBOARDNG_FINGER_SWIPE.style.display = "none";
 
 let polyhedrons = [{
     id: "cube",

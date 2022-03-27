@@ -2,6 +2,7 @@ AFRAME.registerComponent("click-handler", {
     schema: {
         position: {default: ""},
         rotation: {default: ""},
+        origRotation: {default: ""},
         folded: {default: false},
         lastClicked: {default: 0},
         opacity: {default: 0.7}
@@ -38,10 +39,10 @@ AFRAME.registerComponent("click-handler", {
             });
         }
         if (this.data.rotation) {
-            // TODO Maybe not Hardcode the 0 0 0
+            let origR = this.data.origRotation ?? "0 0 0"
             this.el.setAttribute("animation", {
                 property: "rotation",
-                to: this.data.folded ? "0 0 0" : this.data.rotation,
+                to: this.data.folded ? origR : this.data.rotation,
                 dur: 250
             });
         }

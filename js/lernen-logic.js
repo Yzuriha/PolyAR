@@ -6,9 +6,9 @@ const ONBOARDNG_FINGER_SWIPE = document.querySelector('.onboading__finger-swipe'
 const ONBOARDING_TIME = 30000;
 
 // Disable Onboarding for Developement
-ONBOARDING_HAND.style.display = "none !important";
-ONBOARDNG_NET.style.display = "none !important";
-ONBOARDNG_FINGER_SWIPE.style.display = "none !important";
+ONBOARDING_HAND.style.display = "none";
+ONBOARDNG_NET.style.display = "none";
+ONBOARDNG_FINGER_SWIPE.style.display = "none";
 
 let showCameraOnboardingAgain = setTimeout(showCameraOnboarding, 10000 + ONBOARDING_TIME);
 

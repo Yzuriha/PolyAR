@@ -10,6 +10,9 @@
     <script src="js/aframe-ar.js"></script>
     <!-- Custom Components-->
     <script src="js/components/a-four.js"></script>
+    <script src="js/components/a-trap.js"></script>
+    <script src="js/components/a-three.js"></script>
+    <script src="js/components/a-six.js"></script>
     <script src="js/components/click-handler.js"></script>
     <script src="js/components/gesture-detector.js"></script>
     <script src="js/components/gesture-handler.js"></script>
@@ -18,7 +21,7 @@
     <script src="js/components/base-plane.js"></script>
 
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="manifest.json"/>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -60,6 +63,8 @@
                          material="src: assets/textures/stone3.jpg; repeat: 0.5 0.5; color: #008363"></a-mixin>
                 <a-mixin id="blue"
                          material="src: assets/textures/stone3.jpg; repeat: 0.5 0.5; color: #003293"></a-mixin>
+                <a-mixin id="yellow"
+                         material="src: assets/textures/stone3.jpg; repeat: 0.5 0.5; color: #D1B758"></a-mixin>
             </a-assets>
 
             <!-- CAMERA -->
@@ -69,33 +74,82 @@
             <a-entity light="intensity: 0.35; castShadow: true; type: directional" position="-0.5 1 1"></a-entity>
             <a-entity light="intensity: 0.7; type: ambient"></a-entity>
 
-            <!-- CUBES -->
             <a-assets>
+                <!-- CUBES -->
                 <a-mixin id="square" a-four></a-mixin>
                 <a-mixin id="square-base" a-four base-plane></a-mixin>
                 <a-mixin id="square-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
                 <a-mixin id="square-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
                 <a-mixin id="square-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
                 <a-mixin id="square-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
+
+                <!-- CUBLOIDS -->
+                <a-mixin id="rect-hl" a-four="width: 1.5"></a-mixin>
+                <a-mixin id="rect-hm" a-four="width: 1.5; height: 0.5"></a-mixin>
+                <a-mixin id="rect-hs" a-four="height: 0.5"></a-mixin>
+
+                <a-mixin id="rect-vl" a-four="height: 1.5"></a-mixin>
+                <a-mixin id="rect-vm" a-four="height: 1.5; width: 0.5"></a-mixin>
+                <a-mixin id="rect-vs" a-four="width: 0.5"></a-mixin>
+
+                <a-mixin id="rect-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
+                <a-mixin id="rect-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
+                <a-mixin id="rect-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
+
+                <!-- PYRAMIDENSTUMPF -->
+                <a-mixin id="square-x" a-four="width: 0.5; height: 0.5" click-handler="rotation: 57.85 0 0"></a-mixin>
+                <a-mixin id="trap" a-trap click-handler="rotation: 123.69 0 0"></a-mixin>
+                <a-mixin id="trap-t" a-trap="rotationAxis: top" click-handler="rotation: 54 0 0"></a-mixin>
+                <a-mixin id="trap-r" a-trap="rotationAxis: right" click-handler="rotation: 72.08 0 0"></a-mixin>
+                <a-mixin id="trap-l" a-trap="rotationAxis: left" click-handler="rotation: -72.08 0 0"></a-mixin>
+
+                <!-- 3ECKPYRAMIDE -->
+                <a-mixin id="three" a-three base-plane></a-mixin>
+                <a-mixin id="three-3" a-three click-handler="rotation: 109.5 0 0"></a-mixin>
+
+                <!-- 4ECKPYRAMIDE -->
+                <!-- 180 - arctan(2*0.707) -->
+                <a-mixin id="three-4" a-three click-handler="rotation: 125.27 0 0"></a-mixin>
+                <a-mixin id="three-4x" a-three click-handler="rotation: 70.64 0 0"></a-mixin>
+
+                <!-- 3ECKPRISMA -->
+                <a-mixin id="rect-3pr-base" base-plane a-four="width: 2; height: 1"></a-mixin>
+                <a-mixin id="rect-3pr" a-four="width: 2; height: 1" click-handler="rotation: 120 0 0"></a-mixin>
+                <a-mixin id="rect-3prx" a-four="width: 1; height: 2" click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="three-3pr" a-three click-handler="rotation: 90 0 0"></a-mixin>
+
+                <!-- 6ECKPRISMA -->
+                <a-mixin id="six-base" a-six base-plane></a-mixin>
+                <a-mixin id="six" a-six click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-6pr" a-four="width: 0.5; height: 1" click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-6prx" a-four="width: 1; height: 0.5" click-handler="rotation: 60 0 0"></a-mixin>
+                <a-mixin id="rect-6prx-base" base-plane a-four="width: 1; height: 0.5"></a-mixin>
+
+                <!-- 6ECKPYRAMIDE -->
+                <a-mixin id="three-6" a-three="widthB: 0.866; widthT: 0.25" click-handler="rotation: 121 0 0"></a-mixin>
+                <a-mixin id="three-6x" a-three="widthB: 0.866; widthT: 0.25; rotationAxis: left"
+                         click-handler="rotation: -50.5 0 0"></a-mixin>
             </a-assets>
 
+            <!-- CUBES -->
             <a-marker url="assets/marker/cube/pattern-cube-1.patt"
                       preset="custom"
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube1">
                 <!-- The First Wrap is to make the Object be Flat to the Marker-->
                 <!-- The Second Wrap is realign the Center for the Children to inherit, otherwise it must be added to each children separately-->
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
                         <a-entity mixin="square-base red" data-tag="cube1"></a-entity>
-                        <a-entity mixin="square-bot green event" position="0 1 0" data-tag="cube1"></a-entity>
-                        <a-entity mixin="square-right blue event" position="0 1 0" data-tag="cube1"></a-entity>
-                        <a-entity mixin="square-left blue event" position="1 0 0" data-tag="cube1"></a-entity>
-                        <a-entity mixin="square-top green event" position="1 0 0" data-tag="cube1">
-                            <a-entity mixin="square-top blue event" position="0 -1 0" data-tag="cube1"></a-entity>
+                        <a-entity mixin="square-bot green" position="0 1 0" data-tag="cube1"></a-entity>
+                        <a-entity mixin="square-right blue" position="0 1 0" data-tag="cube1"></a-entity>
+                        <a-entity mixin="square-left blue" position="1 0 0" data-tag="cube1"></a-entity>
+                        <a-entity mixin="square-top green" position="1 0 0" data-tag="cube1">
+                            <a-entity mixin="square-top red" position="0 -1 0" data-tag="cube1"></a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -106,7 +160,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube2">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -128,7 +182,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube3">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -150,7 +204,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube4">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -171,7 +225,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube5">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -193,7 +247,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube6">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -214,7 +268,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube7">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -234,7 +288,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube8">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -256,7 +310,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube9">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -277,7 +331,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube10">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -299,7 +353,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="W Ü R F E L"
+                      data-object-name="WÜRFEL"
                       id="cube11">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -313,32 +367,15 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-                </a-entity>
             </a-marker>
 
             <!-- CUBLOIDS -->
-            <a-assets>
-
-                <a-mixin id="rect-hl" a-four="width: 1.5"></a-mixin>
-                <a-mixin id="rect-hm" a-four="width: 1.5; height: 0.5"></a-mixin>
-                <a-mixin id="rect-hs" a-four="height: 0.5"></a-mixin>
-
-                <a-mixin id="rect-vl" a-four="height: 1.5"></a-mixin>
-                <a-mixin id="rect-vm" a-four="height: 1.5; width: 0.5"></a-mixin>
-                <a-mixin id="rect-vs" a-four="width: 0.5"></a-mixin>
-
-                <a-mixin id="rect-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
-                <a-mixin id="rect-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
-                <a-mixin id="rect-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
-                <a-mixin id="rect-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
-            </a-assets>
-
             <a-marker url="assets/marker/cuboid/pattern-cuboid-2.patt"
                       preset="custom"
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid2">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -358,7 +395,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid4">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -374,12 +411,12 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker url="assets/marker/cuboid/pattern-cuboid-9.patt"
+            <!--<a-marker url="assets/marker/cuboid/pattern-cuboid-9.patt"
                       preset="custom"
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid9">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -395,14 +432,14 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>
+            </a-marker>-->
 
             <a-marker url="assets/marker/cuboid/pattern-cuboid-15.patt"
                       preset="custom"
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid15">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -422,7 +459,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid19">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -446,7 +483,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid24">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -467,7 +504,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid27">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -490,7 +527,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid33">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -513,7 +550,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid35">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -534,7 +571,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid39">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -549,12 +586,12 @@
                 </a-entity>
             </a-marker>
 
-            <a-marker url="assets/marker/cuboid/pattern-cuboid-45.patt"
+            <!--<a-marker url="assets/marker/cuboid/pattern-cuboid-45.patt"
                       preset="custom"
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid45">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -570,14 +607,14 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-            </a-marker>
+            </a-marker>-->
 
             <a-marker url="assets/marker/cuboid/pattern-cuboid-49.patt"
                       preset="custom"
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid49">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -600,7 +637,7 @@
                       type="pattern"
                       smooth="true"
                       marker-detection-handler
-                      data-object-name="Q U A D E R"
+                      data-object-name="QUADER"
                       id="cuboid52">
                 <a-entity rotation="-90 -90 90" gesture-handler>
                     <a-entity position="-0.5 0 0.5">
@@ -615,6 +652,1004 @@
                     </a-entity>
                 </a-entity>
             </a-marker>
+
+            <!-- PYRAMIDENSTUMPF -->
+            <a-marker url="assets/marker/pyramidenstumpf/pattern-pstumpf-1.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDENSTUMPF"
+                      id="pstumpf1">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square green" base-plane data-tag="pstumpf1"></a-entity>
+                        <a-entity position="0 1 0">
+                            <a-entity mixin="trap blue" data-tag="pstumpf1">
+                                <a-entity position="0.25 0.45 0">
+                                    <a-entity mixin="square-x green" data-tag="pstumpf1"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="trap red" data-tag="pstumpf1"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 0 0" rotation="0 0 180">
+                            <a-entity mixin="trap blue" data-tag="pstumpf1"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 1 0" rotation="0 0 270">
+                            <a-entity mixin="trap red" data-tag="pstumpf1"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/pyramidenstumpf/pattern-pstumpf-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDENSTUMPF"
+                      id="pstumpf2">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square green" base-plane data-tag="pstumpf2"></a-entity>
+                        <a-entity position="0 1 0">
+                            <a-entity mixin="trap blue" data-tag="pstumpf2">
+                                <a-entity position="0.25 0.45 0">
+                                    <a-entity mixin="square-x green" data-tag="pstumpf2"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="trap red" data-tag="pstumpf2">
+                                <a-entity position="0 0 0" rotation="0 0 60.98">
+                                    <a-entity mixin="trap-r blue" data-tag="pstumpf2"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="1 1 0" rotation="0 0 270">
+                            <a-entity mixin="trap red" data-tag="pstumpf2"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/pyramidenstumpf/pattern-pstumpf-3.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDENSTUMPF"
+                      id="pstumpf3">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square green" base-plane data-tag="pstumpf3"></a-entity>
+                        <a-entity position="0 1 0">
+                            <a-entity mixin="trap blue" data-tag="pstumpf3">
+                                <a-entity position="0.25 0.45 0">
+                                    <a-entity mixin="square-x green" data-tag="pstumpf3"></a-entity>
+                                </a-entity>
+                                <a-entity position="1 0 0" rotation="0 0 119.02">
+                                    <a-entity mixin="trap-l red" data-tag="pstumpf3"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="trap red" data-tag="pstumpf3">
+                                <a-entity position="0 0 0" rotation="0 0 60.98">
+                                    <a-entity mixin="trap-r blue" data-tag="pstumpf3"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!--<a-marker url="assets/marker/pyramidenstumpf/pattern-pstumpf-4.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDENSTUMPF"
+                      id="pstumpf4">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square green" base-plane data-tag="pstumpf4"></a-entity>
+                        <a-entity position="0 1 0">
+                            <a-entity mixin="trap blue" data-tag="pstumpf4">
+                                <a-entity position="0.25 0.45 0">
+                                    <a-entity mixin="square-x green" data-tag="pstumpf4">
+                                        <a-entity position="0.5 0.75 0" rotation="0 0 -90">
+                                            <a-entity mixin="trap-t red" data-tag="pstumpf4"></a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="trap red" data-tag="pstumpf4">
+                                <a-entity position="0 0 0" rotation="0 0 60.98">
+                                    <a-entity mixin="trap-r blue" data-tag="pstumpf4"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+            <a-marker url="assets/marker/pyramidenstumpf/pattern-pstumpf-5.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDENSTUMPF"
+                      id="pstumpf5">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square green" base-plane data-tag="pstumpf5"></a-entity>
+                        <a-entity position="0 1 0">
+                            <a-entity mixin="trap blue" data-tag="pstumpf5">
+                                <a-entity position="0.25 0.45 0">
+                                    <a-entity mixin="square-x green" data-tag="pstumpf5">
+                                        <a-entity position="0.5 0.75 0" rotation="0 0 -90">
+                                            <a-entity mixin="trap-t red" data-tag="pstumpf5"></a-entity>
+                                        </a-entity>
+                                        <a-entity position="0 -0.25 0" rotation="0 0 90">
+                                            <a-entity mixin="trap-t red" data-tag="pstumpf5"></a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="1 0 0" rotation="0 0 180">
+                            <a-entity mixin="trap blue" data-tag="pstumpf5"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/pyramidenstumpf/pattern-pstumpf-6.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDENSTUMPF"
+                      id="pstumpf6">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square green" base-plane data-tag="pstumpf6"></a-entity>
+                        <a-entity position="0 1 0">
+                            <a-entity mixin="trap blue" data-tag="pstumpf6">
+                                <a-entity position="0.25 0.45 0">
+                                    <a-entity mixin="square-x green" data-tag="pstumpf6"></a-entity>
+                                </a-entity>
+                                <a-entity position="1 0 0" rotation="0 0 119.02">
+                                    <a-entity mixin="trap-l red" data-tag="pstumpf6"></a-entity>
+                                </a-entity>
+                                <a-entity position="0 0 0" rotation="0 0 60.98">
+                                    <a-entity mixin="trap-r red" data-tag="pstumpf6"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="1 0 0" rotation="0 0 180">
+                            <a-entity mixin="trap blue" data-tag="pstumpf6"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/pyramidenstumpf/pattern-pstumpf-7.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDENSTUMPF"
+                      id="pstumpf7">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square green" base-plane data-tag="pstumpf7"></a-entity>
+                        <a-entity position="0 1 0">
+                            <a-entity mixin="trap blue" data-tag="pstumpf7">
+                                <a-entity position="0.25 0.45 0">
+                                    <a-entity mixin="square-x green" data-tag="pstumpf7">
+                                        <a-entity position="0.5 0.75 0" rotation="0 0 -90">
+                                            <a-entity mixin="trap-t red" data-tag="pstumpf7"></a-entity>
+                                        </a-entity>
+                                        <a-entity position="0 -0.25 0" rotation="0 0 90">
+                                            <a-entity mixin="trap-t red" data-tag="pstumpf7"></a-entity>
+                                        </a-entity>
+                                        <a-entity position="-0.25 0.5 0" rotation="0 0 0">
+                                            <a-entity mixin="trap-t blue" data-tag="pstumpf7"></a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/pyramidenstumpf/pattern-pstumpf-8.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDENSTUMPF"
+                      id="pstumpf8">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square green" base-plane data-tag="pstumpf8"></a-entity>
+                        <a-entity position="0 1 0">
+                            <a-entity mixin="trap blue" data-tag="pstumpf8">
+                                <a-entity position="0.25 0.45 0">
+                                    <a-entity mixin="square-x green" data-tag="pstumpf8"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="1 0 0" rotation="0 0 180">
+                            <a-entity mixin="trap blue" data-tag="pstumpf8">
+                                <a-entity position="1 0 0" rotation="0 0 119.02">
+                                    <a-entity mixin="trap-l red" data-tag="pstumpf8"></a-entity>
+                                </a-entity>
+                                <a-entity position="0 0 0" rotation="0 0 60.98">
+                                    <a-entity mixin="trap-r red" data-tag="pstumpf8"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!-- 3ECKPYRAMIDE -->
+            <a-marker url="assets/marker/dreieckpyramide/pattern-3py-1.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="TETRAEDER"
+                      id="threepy1">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0">
+                        <a-entity position="1 0.866 0" rotation="0 0 180">
+                            <a-entity mixin="three yellow" data-tag="threepy1"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 0.866 0" rotation="0 0 0">
+                            <a-entity mixin="three-3 red" data-tag="threepy1"></a-entity>
+                        </a-entity>
+                        <a-entity position="0.5 0 0" rotation="0 0 120">
+                            <a-entity mixin="three-3 green" data-tag="threepy1"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 0.866 0" rotation="0 0 240">
+                            <a-entity mixin="three-3 blue" data-tag="threepy1"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/dreieckpyramide/pattern-3py-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="TETRAEDER"
+                      id="threepy2">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0">
+                        <a-entity position="1 0.866 0" rotation="0 0 180">
+                            <a-entity mixin="three yellow" data-tag="threepy2"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 0.866 0" rotation="0 0 0">
+                            <a-entity mixin="three-3 red" position="0 0 0" data-tag="threepy2">
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="three-3 blue" data-tag="threepy2"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0.5 0 0" rotation="0 0 120">
+                            <a-entity mixin="three-3 green" data-tag="threepy2"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/dreieckpyramide/pattern-3py-3.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="TETRAEDER"
+                      id="threepy3">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0">
+                        <a-entity position="1 0.866 0" rotation="0 0 180">
+                            <a-entity mixin="three yellow" data-tag="threepy3"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 0.866 0" rotation="0 0 0">
+                            <a-entity mixin="three-3 red" data-tag="threepy3"></a-entity>
+                        </a-entity>
+                        <a-entity position="0.5 0 0" rotation="0 0 120">
+                            <a-entity mixin="three-3 green" position="0 0 0" data-tag="threepy3">
+                                <a-entity position="0 0 0" rotation="0 0 60">
+                                    <a-entity mixin="three-3 blue" data-tag="threepy3"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!-- 4ECKPYRAMIDE -->
+            <a-marker url="assets/marker/viereckpyramide/pattern-4py-1.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDE"
+                      id="fourpy1">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square-base green" data-tag="fourpy1"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="three-4 red" data-tag="fourpy1"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy1"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 0 0" rotation="0 0 180">
+                            <a-entity mixin="three-4 red" data-tag="fourpy1"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 1 0" rotation="0 0 270">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy1"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!--<a-marker url="assets/marker/viereckpyramide/pattern-4py-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDE"
+                      id="fourpy2">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square-base green" data-tag="fourpy2"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy2"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="three-4 red" data-tag="fourpy2"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 1 0" rotation="0 0 270">
+                            <a-entity mixin="three-4 red" data-tag="fourpy2">
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="three-4x blue" data-tag="fourpy2"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+            <a-marker url="assets/marker/viereckpyramide/pattern-4py-3.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDE"
+                      id="fourpy3">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square-base green" data-tag="fourpy3"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="three-4 red" data-tag="fourpy3">
+                                <a-entity position="0 0 0" rotation="0 0 60">
+                                    <a-entity mixin="three-4x blue" data-tag="fourpy3"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="1 1 0" rotation="0 0 270">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy3">
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="three-4x red" data-tag="fourpy3"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/viereckpyramide/pattern-4py-4.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDE"
+                      id="fourpy4">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square-base green" data-tag="fourpy4"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy4">
+                                <a-entity position="0 0 0" rotation="0 0 60">
+                                    <a-entity mixin="three-4x red" data-tag="fourpy4"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="1 0 0" rotation="0 0 180">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy4">
+                                <a-entity position="0 0 0" rotation="0 0 60">
+                                    <a-entity mixin="three-4x red" data-tag="fourpy4"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/viereckpyramide/pattern-4py-5.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDE"
+                      id="fourpy5">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square-base green" data-tag="fourpy5"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy5"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 0 0" rotation="0 0 180">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy5">
+                                <a-entity position="0 0 0" rotation="0 0 60">
+                                    <a-entity mixin="three-4x red" data-tag="fourpy5"></a-entity>
+                                </a-entity>
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="three-4x red" data-tag="fourpy5"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/viereckpyramide/pattern-4py-5.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDE"
+                      id="fourpy6">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square-base green" data-tag="fourpy6"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy6">
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="three-4x red" data-tag="fourpy6">
+                                        <a-entity position="0 0 0" rotation="0 0 60">
+                                            <a-entity mixin="three-4x blue" data-tag="fourpy6"></a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="three-4 red" data-tag="fourpy6"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/viereckpyramide/pattern-4py-7.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDE"
+                      id="fourpy7">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square-base green" data-tag="fourpy7"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="three-4 blue" data-tag="fourpy7">
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="three-4x red" data-tag="fourpy7">
+                                        <a-entity position="0 0 0" rotation="0 0 60">
+                                            <a-entity mixin="three-4x blue" data-tag="fourpy7"></a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                                <a-entity position="0 0 0" rotation="0 0 60">
+                                    <a-entity mixin="three-4x red" data-tag="fourpy7"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/viereckpyramide/pattern-4py-8.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="PYRAMIDE"
+                      id="fourpy8">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.5 0.5">
+                        <a-entity mixin="square-base green" data-tag="fourpy8"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="three-4 red" data-tag="fourpy8">
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="three-4x blue" data-tag="fourpy8">
+                                        <a-entity position="0 0 0" rotation="0 0 60">
+                                            <a-entity mixin="three-4x red" data-tag="fourpy8">
+                                                <a-entity position="0 0 0" rotation="0 0 60">
+                                                    <a-entity mixin="three-4x blue" data-tag="fourpy8"></a-entity>
+                                                </a-entity>
+                                            </a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!-- 3ECKPRISMA -->
+            <a-marker url="assets/marker/dreieckprisma/pattern-3pr-1.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="DREIECK PRISMA"
+                      id="dreipr1">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 0 0.5">
+                        <a-entity mixin="rect-3pr-base yellow" data-tag="dreipr1"></a-entity>
+                        <a-entity position="2 1 0" rotation="0 0 270">
+                            <a-entity mixin="three-3pr red" data-tag="dreipr1"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="three-3pr red" data-tag="dreipr1"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="rect-3pr blue" data-tag="dreipr1"></a-entity>
+                        </a-entity>
+                        <a-entity position="2 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-3pr green" data-tag="dreipr1"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!--<a-marker url="assets/marker/dreieckprisma/pattern-3pr-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="DREIECK PRISMA"
+                      id="dreipr2">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-1 -0.5 0.5">
+                        <a-entity mixin="rect-3pr-base yellow" data-tag="dreipr2"></a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="three-3pr red" data-tag="dreipr2"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="rect-3pr blue" data-tag="dreipr2">
+                                <a-entity position="2 1 0" rotation="0 0 270">
+                                    <a-entity mixin="three-3pr red" data-tag="dreipr2"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="2 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-3pr green" data-tag="dreipr2"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+            <a-marker url="assets/marker/dreieckprisma/pattern-3pr-3.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="DREIECK PRISMA"
+                      id="dreipr3">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-1 -0.5 0.5">
+                        <a-entity mixin="rect-3pr-base yellow" data-tag="dreipr3"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="rect-3pr blue" data-tag="dreipr3">
+                                <a-entity position="2 1 0" rotation="0 0 270">
+                                    <a-entity mixin="three-3pr red" data-tag="dreipr3"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="2 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-3pr green" data-tag="dreipr3">
+                                <a-entity position="2 1 0" rotation="0 0 270">
+                                    <a-entity mixin="three-3pr red" data-tag="dreipr3"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!--<a-marker url="assets/marker/dreieckprisma/pattern-3pr-4.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="DREIECK PRISMA"
+                      id="dreipr4">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-1 -0.5 0.5">
+                        <a-entity mixin="rect-3pr-base yellow" data-tag="dreipr4"></a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="rect-3pr blue" data-tag="dreipr4">
+                                <a-entity position="2 1 0" rotation="0 0 270">
+                                    <a-entity mixin="three-3pr red" data-tag="dreipr4"></a-entity>
+                                </a-entity>
+                                <a-entity position="0 0 0" rotation="0 0 90">
+                                    <a-entity mixin="three-3pr red" data-tag="dreipr4"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="2 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-3pr green" data-tag="dreipr4"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+            <!--<a-marker url="assets/marker/dreieckprisma/pattern-3pr-5.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="DREIECK PRISMA"
+                      id="dreipr5">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-1 -0.5 0.5">
+                        <a-entity mixin="rect-3pr-base yellow" data-tag="dreipr5"></a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="three-3pr red" data-tag="dreipr5"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 1 0" rotation="0 0 0">
+                            <a-entity mixin="rect-3pr blue" data-tag="dreipr5"></a-entity>
+                        </a-entity>
+                        <a-entity position="2 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-3pr green" data-tag="dreipr5">
+                                <a-entity position="0 0 0" rotation="0 0 90">
+                                    <a-entity mixin="three-3pr red" data-tag="dreipr5"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>-->
+
+            <a-marker url="assets/marker/dreieckprisma/pattern-3pr-6.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="DREIECK PRISMA"
+                      id="dreipr6">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-1 -0.5 0.5">
+                        <a-entity mixin="rect-3pr-base yellow" data-tag="dreipr6"></a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="three-3pr red" data-tag="dreipr6">
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="rect-3prx blue" data-tag="dreipr6"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="2 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-3pr green" data-tag="dreipr6">
+                                <a-entity position="0 0 0" rotation="0 0 90">
+                                    <a-entity mixin="three-3pr red" data-tag="dreipr6"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/dreieckprisma/pattern-3pr-7.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="DREIECK PRISMA"
+                      id="dreipr7">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-1 -0.5 0.5">
+                        <a-entity mixin="rect-3pr-base yellow" data-tag="dreipr7"></a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 90">
+                            <a-entity mixin="three-3pr red" data-tag="dreipr7"></a-entity>
+                        </a-entity>
+                        <a-entity position="2 1 0" rotation="0 0 -90">
+                            <a-entity mixin="three-3pr red" data-tag="dreipr7">
+                                <a-entity position="0.5 0.866 0" rotation="0 0 -60">
+                                    <a-entity mixin="rect-3prx green" data-tag="dreipr7"></a-entity>
+                                </a-entity>
+                                <a-entity position="0 0 0" rotation="0 0 60">
+                                    <a-entity mixin="rect-3prx blue" data-tag="dreipr7"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!-- 6ECKPRISMA -->
+            <a-marker url="assets/marker/sechseckprisma/pattern-6pr-1.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="SECHSECK PRISMA"
+                      id="sixpris1">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.25 0.5">
+                        <a-entity mixin="rect-6prx-base green" data-tag="sixpris1"></a-entity>
+                        <a-entity position="0 0.5 0" rotation="0 0 0">
+                            <a-entity mixin="rect-6prx red" data-tag="sixpris1">
+                                <a-entity position="0 0.5 0" rotation="0 0 0">
+                                    <a-entity mixin="rect-6prx blue" data-tag="sixpris1">
+                                        <a-entity position="0 0.5 0" rotation="0 0 0">
+                                            <a-entity mixin="rect-6prx green" data-tag="sixpris1"></a-entity>
+                                        </a-entity>
+                                        <a-entity position="1 0.75 0" rotation="0 0 -90">
+                                            <a-entity mixin="six yellow" data-tag="sixpris1"></a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0 -0.25 0" rotation="0 0 90">
+                            <a-entity mixin="six yellow" data-tag="sixpris1"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-6prx blue" data-tag="sixpris1">
+                                <a-entity position="0 0.5 0" rotation="0 0 0">
+                                    <a-entity mixin="rect-6prx red" data-tag="sixpris1"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/sechseckprisma/pattern-6pr-3.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="SECHSECK PRISMA"
+                      id="sixpris3">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0.5">
+                        <a-entity mixin="six-base yellow" data-tag="sixpris3"></a-entity>
+                        <a-entity position="0.25 0.866 0" rotation="0 0 0">
+                            <a-entity mixin="rect-6pr red" data-tag="sixpris3">
+                                <a-entity position="-0.25 1 0" rotation="0 0 0">
+                                    <a-entity mixin="six yellow" data-tag="sixpris3"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0.75 0.866 0" rotation="0 0 -60">
+                            <a-entity mixin="rect-6pr green" data-tag="sixpris3"></a-entity>
+                        </a-entity>
+                        <a-entity position="1 0.433 0" rotation="0 0 -120">
+                            <a-entity mixin="rect-6pr blue" data-tag="sixpris3"></a-entity>
+                        </a-entity>
+                        <a-entity position="0.75 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-6pr red" data-tag="sixpris3"></a-entity>
+                        </a-entity>
+                        <a-entity position="0.25 0 0" rotation="0 0 -240">
+                            <a-entity mixin="rect-6pr green" data-tag="sixpris3"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 0.433 0" rotation="0 0 -300">
+                            <a-entity mixin="rect-6pr blue" data-tag="sixpris3"></a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/sechseckprisma/pattern-6pr-5.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="SECHSECK PRISMA"
+                      id="sixpris5">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0.5">
+                        <a-entity mixin="six-base yellow" data-tag="sixpris5"></a-entity>
+                        <a-entity position="0.25 0.866 0" rotation="0 0 0">
+                            <a-entity mixin="rect-6pr red" data-tag="sixpris5">
+                                <a-entity position="-0.25 1 0" rotation="0 0 0">
+                                    <a-entity mixin="six yellow" data-tag="sixpris5"></a-entity>
+                                </a-entity>
+                                <a-entity position="0.5 1 0" rotation="0 0 -90">
+                                    <a-entity mixin="rect-6prx green" data-tag="sixpris5"></a-entity>
+                                </a-entity>
+                                <a-entity position="0 0 0" rotation="0 0 90">
+                                    <a-entity mixin="rect-6prx blue" data-tag="sixpris5"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0.75 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-6pr red" data-tag="sixpris5">
+                                <a-entity position="0.5 1 0" rotation="0 0 -90">
+                                    <a-entity mixin="rect-6prx green" data-tag="sixpris5"></a-entity>
+                                </a-entity>
+                                <a-entity position="0 0 0" rotation="0 0 90">
+                                    <a-entity mixin="rect-6prx blue" data-tag="sixpris5"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/sechseckprisma/pattern-6pr-7.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="SECHSECK PRISMA"
+                      id="sixpris7">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0.5">
+                        <a-entity mixin="six-base yellow" data-tag="sixpris7"></a-entity>
+                        <a-entity position="0.25 0.866 0" rotation="0 0 0">
+                            <a-entity mixin="rect-6pr red" data-tag="sixpris7">
+                                <a-entity position="-0.25 1 0" rotation="0 0 0">
+                                    <a-entity mixin="six yellow" data-tag="sixpris7"></a-entity>
+                                </a-entity>
+                                <a-entity position="0.5 1 0" rotation="0 0 -90">
+                                    <a-entity mixin="rect-6prx green" data-tag="sixpris7"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="1 0.433 0" rotation="0 0 -120">
+                            <a-entity mixin="rect-6pr blue" data-tag="sixpris7"></a-entity>
+                        </a-entity>
+                        <a-entity position="0.75 0 0" rotation="0 0 180">
+                            <a-entity mixin="rect-6pr red" data-tag="sixpris7"></a-entity>
+                        </a-entity>
+                        <a-entity position="0 0.433 0" rotation="0 0 -300">
+                            <a-entity mixin="rect-6pr blue" data-tag="sixpris7">
+                                <a-entity position="0 0 0" rotation="0 0 90">
+                                    <a-entity mixin="rect-6prx green" data-tag="sixpris7"></a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <!-- 6ECKPYRAMIDE -->
+            <a-marker url="assets/marker/sechseckpyramide/pattern-6py-1.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="SECHSECK PYRAMIDE"
+                      id="sixpy1">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0.5">
+                        <a-entity mixin="six-base yellow" data-tag="sixpy1"></a-entity>
+                    </a-entity>
+                    <a-entity position="-0.25 0.433 0.5">
+                        <a-entity mixin="three-6 blue" data-tag="sixpy1"></a-entity>
+                    </a-entity>
+                    <a-entity position="0.25 0.433 0.5" rotation="0 0 -60">
+                        <a-entity mixin="three-6 green" data-tag="sixpy1"></a-entity>
+                    </a-entity>
+                    <a-entity position="0.5 0 0.5" rotation="0 0 -120">
+                        <a-entity mixin="three-6 red" data-tag="sixpy1"></a-entity>
+                    </a-entity>
+                    <a-entity position="0.25 -0.433 0.5" rotation="0 0 -180">
+                        <a-entity mixin="three-6 blue" data-tag="sixpy1"></a-entity>
+                    </a-entity>
+                    <a-entity position="-0.25 -0.433 0.5" rotation="0 0 -240">
+                        <a-entity mixin="three-6 green" data-tag="sixpy1"></a-entity>
+                    </a-entity>
+                    <a-entity position="-0.5 0 0.5" rotation="0 0 -300">
+                        <a-entity mixin="three-6 red" data-tag="sixpy1"></a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/sechseckpyramide/pattern-6py-2.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="SECHSECK PYRAMIDE"
+                      id="sixpy2">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0.5">
+                        <a-entity mixin="six-base yellow" data-tag="sixpy2"></a-entity>
+                    </a-entity>
+                    <a-entity position="-0.25 0.433 0.5">
+                        <a-entity mixin="three-6 blue" data-tag="sixpy2">
+                            <a-entity position="0.5 0 0" rotation="0 0 106.370">
+                                <a-entity mixin="three-6x green" data-tag="sixpy2">
+                                    <a-entity position="0.148 -0.477 0" rotation="0 0 33.485">
+                                        <a-entity mixin="three-6x red" data-tag="sixpy2">
+                                            <a-entity position="0.148 -0.477 0" rotation="0 0 33.485">
+                                                <a-entity mixin="three-6x blue" data-tag="sixpy2">
+                                                    <a-entity position="0.148 -0.477 0" rotation="0 0 33.485">
+                                                        <a-entity mixin="three-6x green" data-tag="sixpy2">
+                                                            <a-entity position="0.148 -0.477 0" rotation="0 0 33.485">
+                                                                <a-entity mixin="three-6x red"
+                                                                          data-tag="sixpy2"></a-entity>
+                                                            </a-entity>
+                                                        </a-entity>
+                                                    </a-entity>
+                                                </a-entity>
+                                            </a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
+            <a-marker url="assets/marker/sechseckpyramide/pattern-6py-3.patt"
+                      preset="custom"
+                      type="pattern"
+                      smooth="true"
+                      marker-detection-handler
+                      data-object-name="SECHSECK PYRAMIDE"
+                      id="sixpy3">
+                <a-entity rotation="-90 -90 90" gesture-handler>
+                    <a-entity position="-0.5 -0.433 0.5">
+                        <a-entity mixin="six-base yellow" data-tag="sixpy3"></a-entity>
+                    </a-entity>
+                    <a-entity position="-0.25 0.433 0.5">
+                        <a-entity mixin="three-6 blue" data-tag="sixpy3">
+                            <a-entity position="0.5 0 0" rotation="0 0 106.370">
+                                <a-entity mixin="three-6x green" data-tag="sixpy3">
+                                    <a-entity position="0.148 -0.477 0" rotation="0 0 33.485">
+                                        <a-entity mixin="three-6x red" data-tag="sixpy3">
+                                            <a-entity position="0.148 -0.477 0" rotation="0 0 33.485"></a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                        <a-entity position="0.5 -0.866 0" rotation="0 0 -180">
+                            <a-entity mixin="three-6 blue" data-tag="sixpy3">
+                                <a-entity position="0.5 0 0" rotation="0 0 106.37">
+                                    <a-entity mixin="three-6x green" data-tag="sixpy3">
+                                        <a-entity position="0.148 -0.477 0" rotation="0 0 33.485">
+                                            <a-entity mixin="three-6x red" data-tag="sixpy3"></a-entity>
+                                        </a-entity>
+                                    </a-entity>
+                                </a-entity>
+                            </a-entity>
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+            </a-marker>
+
         </a-scene>
 
     </section>
