@@ -1,8 +1,20 @@
 const SCENE = document.getElementById("scene");
 const CUBES = document.querySelectorAll("[id^='cube']");
-const CUBES_AMOUNT = CUBES.length;
 const CUBOIDS = document.querySelectorAll("[id^='cuboid']");
+const PYRAMIDENSTUMPF = document.querySelectorAll("[id^='pstumpf']");
+const TETRAEDER = document.querySelectorAll("[id^='threepy']");
+const PYRAMIDE = document.querySelectorAll("[id^='fourpy']");
+const DREIECK_PRISMA = document.querySelectorAll("[id^='dreipr']");
+const SECHSECK_PRISMA = document.querySelectorAll("[id^='sixpris']");
+const SECHSECK_PYRAMIDE = document.querySelectorAll("[id^='sixpy']");
+const CUBES_AMOUNT = CUBES.length;
 const CUBOIDS_AMOUNT = CUBOIDS.length;
+const PYRAMIDENSTUMPF_AMOUNT = PYRAMIDENSTUMPF.length;
+const TETRAEDER_AMOUNT = TETRAEDER.length;
+const PYRAMIDE_AMOUNT = PYRAMIDE.length;
+const DREIECK_PRISMA_AMOUNT = DREIECK_PRISMA.length;
+const SECHSECK_PRISMA_AMOUNT = SECHSECK_PRISMA.length;
+const SECHSECK_PYRAMIDE_AMOUNT = SECHSECK_PYRAMIDE.length;
 const INFORMATION_TEXT = document.querySelector(".information__text");
 const INSTRUCTION_TEXT = document.querySelector(".instruction__text");
 const INSTRUCTION_COUNTER = document.querySelector(".instruction__counter");
@@ -16,12 +28,36 @@ ONBOARDNG_FINGER_SWIPE.style.display = "none";
 
 let polyhedrons = [{
     id: "cube",
-    displayName: "W Ü R F E L",
+    displayName: "WÜRFEL",
     normalizedName: "Würfel"
 }, {
     id: "cuboid",
-    displayName: "Q U A D E R",
+    displayName: "QUADER",
     normalizedName: "Quader"
+}, {
+    id: "pyramidenstumpf",
+    displayName: "PYRAMIDENSTUMPF",
+    normalizedName: "Pyramidenstumpf"
+}, {
+    id: "tetraeder",
+    displayName: "TETRAEDER",
+    normalizedName: "Tetraeder"
+}, {
+    id: "pyramide",
+    displayName: "PYRAMIDE",
+    normalizedName: "Pyramide"
+}, {
+    id: "dreieckprisma",
+    displayName: "DREIECK PRISMA",
+    normalizedName: "Dreieck Prisma"
+}, {
+    id: "sechseckprisma",
+    displayName: "SECHSECK PRISMA",
+    normalizedName: "Sechseck Prisma"
+}, {
+    id: "sechseckpyramide",
+    displayName: "SECHSECK PYRAMIDE",
+    normalizedName: "Sechseck Pyramide"
 }];
 
 // The name of the Polyhedron that currently has to be searched
@@ -72,7 +108,6 @@ function handleFoundMarker() {
     } else {
         foundNets.push(activeMarker.id);
     }
-
 
     if (activeMarker.dataset.type === currentQuizTarget) {
         foundValidNets.push(activeMarker.id);
@@ -147,6 +182,18 @@ function getPolyhedron() {
         currentQuizTargetAmount = CUBES_AMOUNT;
     } else if (currentQuizTarget === "cuboid") {
         currentQuizTargetAmount = CUBOIDS_AMOUNT;
+    } else if (currentQuizTarget === "pyramidenstumpf") {
+        currentQuizTargetAmount = PYRAMIDENSTUMPF_AMOUNT;
+    } else if (currentQuizTarget === "tetraeder") {
+        currentQuizTargetAmount = TETRAEDER_AMOUNT;
+    } else if (currentQuizTarget === "pyramide") {
+        currentQuizTargetAmount = PYRAMIDE_AMOUNT;
+    } else if (currentQuizTarget === "dreieckprisma") {
+        currentQuizTargetAmount = DREIECK_PRISMA_AMOUNT;
+    } else if (currentQuizTarget === "sechseckprisma") {
+        currentQuizTargetAmount = SECHSECK_PRISMA_AMOUNT;
+    } else if (currentQuizTarget === "sechseckpyramide") {
+        currentQuizTargetAmount = SECHSECK_PYRAMIDE_AMOUNT;
     }
 
     INSTRUCTION_COUNTER.innerText = `0 / ${currentQuizTargetAmount}`;
@@ -193,7 +240,6 @@ async function autoFold() {
     let foldingElements = document.querySelectorAll(`[data-tag=${activeMarker.id}]`);
     for (let i = 0; i < foldingElements.length; i++) {
         foldingElements[i].click();
-        console.log("NEXT");
         await timer(500);
     }
     if (localStorage.getItem("showRotationOnboarding") !== "false") {
