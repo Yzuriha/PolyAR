@@ -16,7 +16,7 @@ AFRAME.registerComponent('a-six', {
         square.moveTo(0.25, 0);
         square.lineTo(0.75, 0);
         square.lineTo(1, 0.25 * Math.sqrt(3));
-        square.lineTo(0.75,2 * (0.25 * Math.sqrt(3)));
+        square.lineTo(0.75, 2 * (0.25 * Math.sqrt(3)));
         square.lineTo(0.25, 2 * (0.25 * Math.sqrt(3)));
         square.lineTo(0, 0.25 * Math.sqrt(3));
 
