@@ -17,7 +17,7 @@ self.addEventListener("message", (event) => {
 
 workbox.routing.registerRoute(
     new RegExp('.*\\.patt'),
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: PATTERN,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
@@ -29,7 +29,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'document',
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: HTML_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
@@ -41,7 +41,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'script',
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: JS_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
@@ -53,7 +53,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'style',
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: STYLE_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
@@ -65,7 +65,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'image',
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: IMAGE_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
@@ -77,7 +77,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     ({event}) => event.request.destination === 'font',
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: FONT_CACHE,
         plugins: [
             new workbox.expiration.ExpirationPlugin({
