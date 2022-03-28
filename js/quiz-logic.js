@@ -229,7 +229,7 @@ function showRotationOnboarding() {
     ONBOARDNG_FINGER_SWIPE.classList.remove("none");
     setTimeout(() => {
         ONBOARDNG_FINGER_SWIPE.classList.add("none");
-    }, 5000)
+    }, 5000);
 }
 
 
@@ -243,7 +243,7 @@ async function autoFold() {
         await timer(500);
     }
     if (localStorage.getItem("showRotationOnboarding") !== "false") {
-        showRotationOnboarding()
+        showRotationOnboarding();
     }
 }
 
