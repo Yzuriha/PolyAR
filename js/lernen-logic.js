@@ -26,8 +26,18 @@ ONBOARDING_HAND.addEventListener('animationend', () => {
 let lastActiveMarker = "";
 let allClickableEntitiesLength = 0;
 let currentFolded = 0;
+let isMarkerOnDisplay = false;
 
 SCENE.addEventListener("markerFound", (e) => {
+
+    // Check whether one marker is already displayed to disable the display of other markers
+    if (isMarkerOnDisplay) {
+        return;
+    }
+
+    // When no marker was displayed yet, then change in input value to prevent more than one to be displayed
+    isMarkerOnDisplay = true
+
     if (localStorage.getItem("showTapOnboarding") !== "false") {
         displayInformationText("Tippe die Seitenflächen an", 10000);
         localStorage.setItem("showTapOnboarding", "false");
@@ -44,6 +54,10 @@ SCENE.addEventListener("markerFound", (e) => {
 
     hideCameraOnboarding();
     clearTimeout(showCameraOnboardingAgain);
+});
+
+SCENE.addEventListener("markerLost", (e) => {
+    isMarkerOnDisplay = false
 });
 
 

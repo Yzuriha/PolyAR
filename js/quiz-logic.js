@@ -71,17 +71,29 @@ let foundValidNets = [];
 let activeMarker;
 // The colour of the Scan Marker. Can be either Green (Success), Red (Wrong), Blue (Informational)
 let markerColor = "";
+
+let isMarkerOnDisplay = false;
+
 /*
  When a Marker has been found, just display it, but dont do anything else. The check whether the right/wrong one has
  been found will be done when the user presses the confirm button
  */
 SCENE.addEventListener("markerFound", (e) => {
-    console.log(e);
+    // Check whether one marker is already displayed to disable the display of other markers
+    if (isMarkerOnDisplay) {
+        return;
+    }
+
+    // When no marker was displayed yet, then change in input value to prevent more than one to be displayed
+    isMarkerOnDisplay = true;
+
     activeMarker = e.target;
     INTERACTION_CONFIRM.classList.remove("hidden");
 });
 
 SCENE.addEventListener("markerLost", (e) => {
+    isMarkerOnDisplay = false;
+
     INTERACTION_CONFIRM.classList.add("hidden");
     if (markerColor) {
         INTERACTION_SCAN_MARKER.classList.remove(markerColor);
@@ -101,7 +113,7 @@ function handleFoundMarker() {
     fadeInformationText("", false);
 
     if (foundNets.includes(activeMarker.id)) {
-        displayInformationText("Du hast das schonmal gefunden");
+        displayInformationText("Du hast das schonmal gefunden.");
         markerColor = "interaction__scan-marker--info";
         addMarkerColor();
         return;
