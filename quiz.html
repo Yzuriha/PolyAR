@@ -14,6 +14,7 @@
     <script src="js/components/a-three.js"></script>
     <script src="js/components/a-six.js"></script>
     <script src="js/components/click-handler.js"></script>
+    <script src="js/components/dblclick-handler.js"></script>
     <script src="js/components/gesture-detector.js"></script>
     <script src="js/components/gesture-handler.js"></script>
     <script src="js/components/custom-cursor.js"></script>
@@ -95,10 +96,10 @@
                 <!-- CUBES -->
                 <a-mixin id="square" a-four></a-mixin>
                 <a-mixin id="square-base" a-four base-plane></a-mixin>
-                <a-mixin id="square-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
-                <a-mixin id="square-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
-                <a-mixin id="square-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
-                <a-mixin id="square-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
+                <a-mixin id="square-top" a-four="rotationAxis: top" dblclick-handler click-handler="rotation: -90 0 0"></a-mixin>
+                <a-mixin id="square-bot" a-four="rotationAxis: bot" dblclick-handler click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="square-left" a-four="rotationAxis: left" dblclick-handler click-handler="rotation: 0 -90 0"></a-mixin>
+                <a-mixin id="square-right" a-four="rotationAxis: right" dblclick-handler click-handler="rotation: 0 90 0"></a-mixin>
 
                 <!-- CUBLOIDS -->
                 <a-mixin id="rect-hl" a-four="width: 1.5"></a-mixin>
@@ -109,44 +110,44 @@
                 <a-mixin id="rect-vm" a-four="height: 1.5; width: 0.5"></a-mixin>
                 <a-mixin id="rect-vs" a-four="width: 0.5"></a-mixin>
 
-                <a-mixin id="rect-top" a-four="rotationAxis: top" click-handler="rotation: -90 0 0"></a-mixin>
-                <a-mixin id="rect-bot" a-four="rotationAxis: bot" click-handler="rotation: 90 0 0"></a-mixin>
-                <a-mixin id="rect-left" a-four="rotationAxis: left" click-handler="rotation: 0 -90 0"></a-mixin>
-                <a-mixin id="rect-right" a-four="rotationAxis: right" click-handler="rotation: 0 90 0"></a-mixin>
+                <a-mixin id="rect-top" a-four="rotationAxis: top" dblclick-handler click-handler="rotation: -90 0 0"></a-mixin>
+                <a-mixin id="rect-bot" a-four="rotationAxis: bot" dblclick-handler click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-left" a-four="rotationAxis: left" dblclick-handler click-handler="rotation: 0 -90 0"></a-mixin>
+                <a-mixin id="rect-right" a-four="rotationAxis: right" dblclick-handler click-handler="rotation: 0 90 0"></a-mixin>
 
                 <!-- PYRAMIDENSTUMPF -->
-                <a-mixin id="square-x" a-four="width: 0.5; height: 0.5" click-handler="rotation: 57.85 0 0"></a-mixin>
-                <a-mixin id="trap" a-trap click-handler="rotation: 123.69 0 0"></a-mixin>
-                <a-mixin id="trap-t" a-trap="rotationAxis: top" click-handler="rotation: 54 0 0"></a-mixin>
-                <a-mixin id="trap-r" a-trap="rotationAxis: right" click-handler="rotation: 72.08 0 0"></a-mixin>
-                <a-mixin id="trap-l" a-trap="rotationAxis: left" click-handler="rotation: -72.08 0 0"></a-mixin>
+                <a-mixin id="square-x" a-four="width: 0.5; height: 0.5" dblclick-handler click-handler="rotation: 57.85 0 0"></a-mixin>
+                <a-mixin id="trap" a-trap dblclick-handler click-handler="rotation: 123.69 0 0"></a-mixin>
+                <a-mixin id="trap-t" a-trap="rotationAxis: top" dblclick-handler click-handler="rotation: 54 0 0"></a-mixin>
+                <a-mixin id="trap-r" a-trap="rotationAxis: right" dblclick-handler click-handler="rotation: 72.08 0 0"></a-mixin>
+                <a-mixin id="trap-l" a-trap="rotationAxis: left" dblclick-handler click-handler="rotation: -72.08 0 0"></a-mixin>
 
                 <!-- 3ECKPYRAMIDE -->
                 <a-mixin id="three" a-three base-plane></a-mixin>
-                <a-mixin id="three-3" a-three click-handler="rotation: 109.5 0 0"></a-mixin>
+                <a-mixin id="three-3" a-three dblclick-handler click-handler="rotation: 109.5 0 0"></a-mixin>
 
                 <!-- 4ECKPYRAMIDE -->
                 <!-- 180 - arctan(2*0.707) -->
-                <a-mixin id="three-4" a-three click-handler="rotation: 125.27 0 0"></a-mixin>
-                <a-mixin id="three-4x" a-three click-handler="rotation: 70.64 0 0"></a-mixin>
+                <a-mixin id="three-4" a-three dblclick-handler click-handler="rotation: 125.27 0 0"></a-mixin>
+                <a-mixin id="three-4x" a-three dblclick-handler click-handler="rotation: 70.64 0 0"></a-mixin>
 
                 <!-- 3ECKPRISMA -->
                 <a-mixin id="rect-3pr-base" base-plane a-four="width: 2; height: 1"></a-mixin>
-                <a-mixin id="rect-3pr" a-four="width: 2; height: 1" click-handler="rotation: 120 0 0"></a-mixin>
-                <a-mixin id="rect-3prx" a-four="width: 1; height: 2" click-handler="rotation: 90 0 0"></a-mixin>
-                <a-mixin id="three-3pr" a-three click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-3pr" a-four="width: 2; height: 1" dblclick-handler click-handler="rotation: 120 0 0"></a-mixin>
+                <a-mixin id="rect-3prx" a-four="width: 1; height: 2" dblclick-handler click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="three-3pr" a-three dblclick-handler click-handler="rotation: 90 0 0"></a-mixin>
 
                 <!-- 6ECKPRISMA -->
                 <a-mixin id="six-base" a-six base-plane></a-mixin>
-                <a-mixin id="six" a-six click-handler="rotation: 90 0 0"></a-mixin>
-                <a-mixin id="rect-6pr" a-four="width: 0.5; height: 1" click-handler="rotation: 90 0 0"></a-mixin>
-                <a-mixin id="rect-6prx" a-four="width: 1; height: 0.5" click-handler="rotation: 60 0 0"></a-mixin>
+                <a-mixin id="six" a-six dblclick-handler click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-6pr" a-four="width: 0.5; height: 1" dblclick-handler click-handler="rotation: 90 0 0"></a-mixin>
+                <a-mixin id="rect-6prx" a-four="width: 1; height: 0.5" dblclick-handler click-handler="rotation: 60 0 0"></a-mixin>
                 <a-mixin id="rect-6prx-base" base-plane a-four="width: 1; height: 0.5"></a-mixin>
 
                 <!-- 6ECKPYRAMIDE -->
-                <a-mixin id="three-6" a-three="widthB: 0.866; widthT: 0.25" click-handler="rotation: 121 0 0"></a-mixin>
+                <a-mixin id="three-6" a-three="widthB: 0.866; widthT: 0.25" dblclick-handler click-handler="rotation: 121 0 0"></a-mixin>
                 <a-mixin id="three-6x" a-three="widthB: 0.866; widthT: 0.25; rotationAxis: left"
-                         click-handler="rotation: -50.5 0 0"></a-mixin>
+                         dblclick-handler click-handler="rotation: -50.5 0 0"></a-mixin>
             </a-assets>
 
             <!-- CUBES -->

@@ -91,6 +91,13 @@ SCENE.addEventListener("markerFound", (e) => {
     INTERACTION_CONFIRM.classList.remove("hidden");
 });
 
+
+let dblClickEvent = new MouseEvent('dblclick', {
+    'view': window,
+    'bubbles': true,
+    'cancelable': true
+});
+
 SCENE.addEventListener("markerLost", (e) => {
     isMarkerOnDisplay = false;
 
@@ -98,6 +105,14 @@ SCENE.addEventListener("markerLost", (e) => {
     if (markerColor) {
         INTERACTION_SCAN_MARKER.classList.remove(markerColor);
     }
+
+    // After marker is lost, reset the foldings after 3 seconds (3 to ensure all have been folded first)
+    setTimeout(() => {
+        let resetNets = document.querySelectorAll(`[data-tag=${activeMarker.id}]`);
+        for (let i = 0; i < resetNets.length; i++) {
+            resetNets[i].dispatchEvent(dblClickEvent);
+        }
+    }, 3000)
 });
 
 INTERACTION_CONFIRM.addEventListener("click", () => {
@@ -177,6 +192,13 @@ function getPolyhedron() {
         displayInformationText("Es gibt keine weiteren Quizzes, du hast alle gelöst!", 10000);
         return;
     }
+    //
+    // foundNets.forEach(net => {
+    //     let resetNets = document.querySelectorAll(`[data-tag=${net}]`);
+    //     for (let i = 0; i < resetNets.length; i++) {
+    //         resetNets[i].dispatchEvent(dblClickEvent);
+    //     }
+    // })
 
     // Reset everything when a new Quiz starts
     foundNets = [];
