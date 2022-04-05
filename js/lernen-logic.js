@@ -39,7 +39,7 @@ SCENE.addEventListener("markerFound", (e) => {
     isMarkerOnDisplay = true
 
     if (localStorage.getItem("showTapOnboarding") !== "false") {
-        displayInformationText("Tippe die Seitenflächen an", 10000);
+        displayInformationText("Tippe die Seitenflächen an.", 10000);
         localStorage.setItem("showTapOnboarding", "false");
     }
 

@@ -128,7 +128,7 @@ function handleFoundMarker() {
         INSTRUCTION_PROGRESS.style.width = `${(foundValidNets.length / currentQuizTargetAmount) * 100}%`;
     } else {
         markerColor = "interaction__scan-marker--error";
-        displayInformationText(`Das ist ein ${polyhedrons.find(e => e.id === activeMarker.dataset.type).normalizedName}`);
+        displayInformationText(`Das ist ein(e) ${polyhedrons.find(e => e.id === activeMarker.dataset.type).normalizedName}.`);
     }
 
     addMarkerColor();
